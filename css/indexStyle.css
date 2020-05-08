@@ -10,14 +10,43 @@ body {
     /* 背景画像が読み込まれる前に表示される背景のカラー */
     background-color: #464646;
 
-    overflow: hidden;
+    overflow:hidden;
+}
+
+iframe#content {
+    position: absolute;
+    width: 65vw;
+    height: 100vh;
+    border: none;
+}
+
+/*--------------------------------------------*/
+@media screen and (max-width: 900px) {
+    .body {
+        overflow: scroll;
+    }
+    .side-bar {
+        color: #FAFAFA;
+        text-align: center;
+        width: auto;
+        height: 30vh;
+        display: inline;
+    }
+    .content {
+        width: auto;
+        height: auto;
+        display: inline;
+    }
+    .card {
+        width: 100%
+    }
 }
 
 /*--------------------------------------------*/
 .side-bar {
     color: #FAFAFA;
     text-align: center;
-    width: 60rem;
+    width: 34vw;
     height: 100vh;
 
     display: table-cell;
@@ -29,26 +58,6 @@ body {
     font-size: 5rem;
     line-height: 0.5;
     font-weight: 600;
-}
-
-.btn-flat-border {
-    display: inline-block;
-    padding: 0.5em 1.5em;
-    text-decoration: none;
-    color: #FAFAFA;
-    /*ボタンの枠線*/
-    border: solid 1px #FAFAFA;
-    /*丸み*/
-    border-radius: 6px;
-    /*アニメーション速度*/
-    transition: .2s;
-
-    margin-right: 1rem;
-}
-
-.btn-flat-border:hover {
-    color: #64B5F6;
-    border-color: #64B5F6;
 }
 
 .sns_box {
@@ -65,6 +74,7 @@ body {
     -webkit-transition: all 280ms ease;
     transition: all 280ms ease;
 }
+
 .sns_button a {
     display: table-cell;
     width: 44px;
@@ -77,10 +87,12 @@ body {
     -webkit-transition: all 280ms ease;
     transition: all 280ms ease;
 }
+
 .sns_button i {
     font-size: 20px;
     vertical-align: middle;
 }
+
 .sns_button:hover {
     box-shadow: inset 0 0 0 22px #fff;
 }
@@ -103,63 +115,6 @@ body {
 
 .team:hover a {
     color: #616161;
-}
-
-
-/*--------------------------------------------*/
-.content {
-    width: 100vw;
-    height: 100vh;
-    display: table-cell;
-}
-
-.card{
-    width: 21%;
-    min-width: 10rem;
-    height: auto;
-    margin: 2rem 1rem 0 1rem;
-    display: inline-block;
-}
-
-.content ul {
-    list-style: none;
-}
-
-.card-skin{
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,.2);
-}
-
-.card_imgframe{
-    width: 100%;
-    height: auto;
-    padding-top: 60%;
-    background: url("../image/NoImage.jpg") no-repeat center;
-    background-size: cover;
-    box-sizing: border-box;
-}
-
-.card_textbox{
-    width: 100%;
-    height: auto;
-    padding: 20px 18px;
-    background: #ffffff;
-    box-sizing: border-box;
-}
-
-.card_textbox > * + *{
-    margin-top: 10px;
-}
-
-.card_titletext{
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 125%;
-}
-
-.card_overviewtext{
-    font-size: 12px;
-    line-height: 150%;
 }
 
 #hide {
