@@ -1,0 +1,171 @@
+body {
+    background-image: url("../image/bg.jpg");
+    background-position: center center;
+    /* 画像をタイル状に繰り返し表示しない */
+    background-repeat: no-repeat;
+    /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+    background-attachment: fixed;
+    /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+    background-size: cover;
+    /* 背景画像が読み込まれる前に表示される背景のカラー */
+    background-color: #464646;
+
+    overflow: hidden;
+}
+
+/*--------------------------------------------*/
+.side-bar {
+    color: #FAFAFA;
+    text-align: center;
+    width: 50rem;
+    height: 100vh;
+
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title{
+    font-family: "Catamaran", sans-serif;
+    font-size: 5rem;
+    line-height: 0.5;
+    font-weight: 600;
+}
+
+.btn-flat-border {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    color: #FAFAFA;
+    /*ボタンの枠線*/
+    border: solid 1px #FAFAFA;
+    /*丸み*/
+    border-radius: 6px;
+    /*アニメーション速度*/
+    transition: .2s;
+
+    margin-right: 1rem;
+}
+
+.btn-flat-border:hover {
+    color: #64B5F6;
+    border-color: #64B5F6;
+}
+
+.sns_box {
+    display: inline-block;
+    text-align: center;
+}
+
+.sns_button {
+    float: left;
+    box-shadow: inset 0 0 0 2px #fff;
+    border-radius: 100%;
+    -moz-transition: all 280ms ease;
+    -o-transition: all 280ms ease;
+    -webkit-transition: all 280ms ease;
+    transition: all 280ms ease;
+}
+.sns_button a {
+    display: table-cell;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -moz-transition: all 280ms ease;
+    -o-transition: all 280ms ease;
+    -webkit-transition: all 280ms ease;
+    transition: all 280ms ease;
+}
+.sns_button i {
+    font-size: 20px;
+    vertical-align: middle;
+}
+.sns_button:hover {
+    box-shadow: inset 0 0 0 22px #fff;
+}
+
+.sns_button + .sns_button {
+    margin: 0 0 0 12px;
+}
+
+.twitter:hover a {
+    color: #1B95E0;
+}
+
+.youtube:hover a {
+    color: #dd4b39;
+}
+
+.github:hover a {
+    color: #000000;
+}
+
+.team:hover a {
+    color: #616161;
+}
+
+
+/*--------------------------------------------*/
+.content {
+    width: 100vw;
+    height: 100vh;
+    display: table-cell;
+}
+
+.card{
+    width: 24rem;
+    height: auto;
+    margin: 1rem 2rem 1rem 1rem;
+    display: inline-block;
+}
+
+.content ul {
+    list-style: none;
+}
+
+.card-skin{
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.2);
+}
+
+.card_imgframe{
+    width: 100%;
+    height: auto;
+    padding-top: 48%;
+    background: url("../image/No Image.jpg") no-repeat center;
+    background-size: cover;
+    box-sizing: border-box;
+}
+
+.card_textbox{
+    width: 100%;
+    height: auto;
+    padding: 20px 18px;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+.card_textbox > * + *{
+    margin-top: 10px;
+}
+
+.card_titletext{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 125%;
+}
+
+.card_overviewtext{
+    font-size: 12px;
+    line-height: 150%;
+}
+
+#hide {
+    display: inline;
+}
+
+#hide.is-hide {
+    display: none;
+}
