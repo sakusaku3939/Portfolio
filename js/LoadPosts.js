@@ -16,7 +16,6 @@ function toggle(isToggle = true) {
         iframe.setAttribute("style", "" +
             "background-color: #FAFAFA;" +
             "    border: none;" +
-            "    border-radius: 5px;" +
             "    position: absolute;" +
             "    top: 55%;" +
             "    left: 50%;" +

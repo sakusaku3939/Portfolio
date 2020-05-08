@@ -17,7 +17,7 @@ body {
 .side-bar {
     color: #FAFAFA;
     text-align: center;
-    width: 50rem;
+    width: 60rem;
     height: 100vh;
 
     display: table-cell;
@@ -114,9 +114,10 @@ body {
 }
 
 .card{
-    width: 24rem;
+    width: 21%;
+    min-width: 10rem;
     height: auto;
-    margin: 1rem 2rem 1rem 1rem;
+    margin: 2rem 1rem 0 1rem;
     display: inline-block;
 }
 
@@ -126,15 +127,14 @@ body {
 
 .card-skin{
     overflow: hidden;
-    border-radius: 5px;
     box-shadow: 0 4px 15px rgba(0,0,0,.2);
 }
 
 .card_imgframe{
     width: 100%;
     height: auto;
-    padding-top: 48%;
-    background: url("../image/No Image.jpg") no-repeat center;
+    padding-top: 60%;
+    background: url("../image/NoImage.jpg") no-repeat center;
     background-size: cover;
     box-sizing: border-box;
 }
