@@ -1,0 +1,7 @@
+#hide {
+    display: inline;
+}
+
+#hide.is-hide {
+    display: none;
+}

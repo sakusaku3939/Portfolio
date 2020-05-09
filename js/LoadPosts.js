@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", onLoad);
+window.addEventListener('popstate', toggle, false)
+
+//記事カードのクリックリスナー
+$('#iframe_content').load(function(){
+    const iframe = $('#iframe_content').contents();
+    iframe.find(".card").click(function(){
+        toggle()
+        history.pushState(null, null, "?p=test");
+    });
+});
 
 function onLoad() {
     toggle(location.search !== '')
@@ -34,10 +44,3 @@ function toggle(isToggle = true) {
         }
     }
 }
-
-function posts() {
-    toggle()
-    history.pushState(null, null, "?p=test");
-}
-
-window.addEventListener('popstate', toggle, false)

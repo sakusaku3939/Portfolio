@@ -13,33 +13,8 @@ body {
     overflow:hidden;
 }
 
-iframe#content {
-    position: absolute;
-    width: 65vw;
-    height: 100vh;
-    border: none;
-}
-
 /*--------------------------------------------*/
 @media screen and (max-width: 900px) {
-    .body {
-        overflow: scroll;
-    }
-    .side-bar {
-        color: #FAFAFA;
-        text-align: center;
-        width: auto;
-        height: 30vh;
-        display: inline;
-    }
-    .content {
-        width: auto;
-        height: auto;
-        display: inline;
-    }
-    .card {
-        width: 100%
-    }
 }
 
 /*--------------------------------------------*/
@@ -51,6 +26,13 @@ iframe#content {
 
     display: table-cell;
     vertical-align: middle;
+}
+
+#iframe_content {
+    position: absolute;
+    width: 65vw;
+    height: 100vh;
+    border: none;
 }
 
 .title{
@@ -115,12 +97,4 @@ iframe#content {
 
 .team:hover a {
     color: #616161;
-}
-
-#hide {
-    display: inline;
-}
-
-#hide.is-hide {
-    display: none;
 }
