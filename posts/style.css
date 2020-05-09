@@ -1,0 +1,9 @@
+body {
+    overflow: hidden;
+    margin: 3rem;
+}
+
+img {
+    display: block;
+    width: 100%;
+}

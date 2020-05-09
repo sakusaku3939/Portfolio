@@ -9,12 +9,11 @@ body {
     background-size: cover;
     /* 背景画像が読み込まれる前に表示される背景のカラー */
     background-color: #464646;
-
-    overflow:hidden;
 }
 
-/*--------------------------------------------*/
-@media screen and (max-width: 900px) {
+body#index {
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /*--------------------------------------------*/
@@ -97,4 +96,44 @@ body {
 
 .team:hover a {
     color: #616161;
+}
+
+/*--------------------------------------------*/
+#posts {
+    display: inline;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    max-width: 70rem;
+}
+
+#iframe-posts {
+    display: inline;
+    background-color: #FAFAFA;
+    border: none;
+    width: 100%;
+}
+
+#back {
+    width: 35px;
+    height: 35px;
+    margin: 1rem 0 2rem 0;
+    padding-bottom: 12px;
+    padding-left: 4px;
+    font-size: 35px;
+    color: #ffffff;
+    overflow: hidden;
+    transition-duration: 0.3s;
+}
+
+#back:hover {
+    background-color: rgba(255, 255, 255, .07);
+}
+
+/*--------------------------------------------*/
+@media screen and (max-width: 900px) {
+    #back {
+        font-size: 30px;
+    }
 }
