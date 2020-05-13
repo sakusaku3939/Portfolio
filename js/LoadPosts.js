@@ -6,12 +6,12 @@ $('#iframe_content').load(function () {
     const iframe = $('#iframe_content').contents()
     iframe.find(".card").click(function () {
         toggle()
-        history.pushState(null, null, "?p=test")
+        history.pushState(null, null, "#test")
     });
 });
 
 function onLoad() {
-    toggle(location.search !== '')
+    toggle(location.hash !== '')
 }
 
 function toggle(isToggle = true) {
