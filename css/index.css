@@ -115,25 +115,47 @@ body#index {
     width: 100%;
 }
 
+/*#back {*/
+/*    width: 35px;*/
+/*    height: 35px;*/
+/*    margin: 1rem 0 2rem 0;*/
+/*    padding-bottom: 12px;*/
+/*    padding-left: 4px;*/
+/*    font-size: 35px;*/
+/*    color: #ffffff;*/
+/*    overflow: hidden;*/
+/*    transition-duration: 0.3s;*/
+/*}*/
+
+#navigation-bar {
+    width: 120px;
+    height: 70px;
+    padding-top: 20px;
+}
+
 #back {
-    width: 35px;
-    height: 35px;
-    margin: 1rem 0 2rem 0;
-    padding-bottom: 12px;
-    padding-left: 4px;
-    font-size: 35px;
+    line-height: 40px;
+    font-size: 15px;
+    text-align: center;
     color: #ffffff;
-    overflow: hidden;
-    transition-duration: 0.3s;
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+    padding-right: 5px;
+    transition-duration: 0.5s;
+}
+
+.fa-angle-left {
+    margin-right: 10px;
+    font-size: 12px;
 }
 
 #back:hover {
-    background-color: rgba(255, 255, 255, .07);
+    background-color: rgba(255, 255, 255, .15);
 }
 
 /*--------------------------------------------*/
 @media screen and (max-width: 900px) {
     #back {
-        font-size: 30px;
+        width: 90px;
     }
 }
