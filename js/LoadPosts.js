@@ -11,7 +11,7 @@ $('#iframe_content').load(function () {
 });
 
 function onLoad() {
-    toggle(location.search !== '')
+    toggle(location.search === '?posts=test')
 }
 
 function toggle(isToggle = true) {
