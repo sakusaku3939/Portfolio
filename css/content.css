@@ -3,11 +3,6 @@ body::-webkit-scrollbar {
 }
 
 /*--------------------------------------------*/
-.content {
-    width: 100vw;
-    height: 100vh;
-}
-
 .card {
     width: 21%;
     min-width: 10rem;
@@ -56,4 +51,17 @@ body::-webkit-scrollbar {
 .card_overviewtext {
     font-size: 12px;
     line-height: 150%;
+}
+
+/*--------------------------------------------*/
+@media screen and (max-width: 1000px) {
+    .card {
+        width: 44%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .card {
+        width: 90%;
+    }
 }

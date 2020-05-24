@@ -158,7 +158,17 @@ body#index {
 }
 
 /*--------------------------------------------*/
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
+    .side-bar {
+        width: 100vw;
+        height: 40vh;
+    }
+
+    #iframe_content {
+        position: static;
+        width: 100vw;
+    }
+
     #back {
         width: 80px;
     }
