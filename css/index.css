@@ -110,6 +110,7 @@ body#index {
     animation-name: fadein;
     animation-duration: 0.7s;
     animation-iteration-count: 1;
+    /*height: 100vw;*/
 }
 
 #iframe-posts {
@@ -117,6 +118,7 @@ body#index {
     background-color: #FAFAFA;
     border: none;
     width: 100%;
+    height: 100vh;
 }
 
 #navigation-bar {
