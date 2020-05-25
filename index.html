@@ -12,7 +12,9 @@
     <!-- アイコン -->
     <script src="https://kit.fontawesome.com/57176a007a.js" crossorigin="anonymous"></script>
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body id="index">
 <div id="hide">
@@ -39,6 +41,17 @@
 <div id="posts" style="display: none">
     <div id="navigation-bar">
         <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
+        <div id="share" onclick="click_share()"><i class="fas fa-share-alt"></i></div>
+        <ul id="share_menu">
+            <li><a onclick="copyToClipboard()"><span class="menu_icon">
+                <i class="fas fa-link"></i></span>リンクを取得</a></li>
+            <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
+                <i class="fab fa-twitter"></i></span>Twitter</a></li>
+            <li><a id="facebook" href="#" target="_blank"><span class="menu_icon">
+                <i class="fab fa-facebook-f"></i></span>Facebook</a></li>
+            <li><a id="pocket" href="#" target="_blank"><span class="menu_icon">
+                <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
+        </ul>
     </div>
     <iframe id="iframe-posts" onLoad="posts_height()"></iframe>
 </div>
