@@ -169,6 +169,9 @@ body#index {
         font-size: 4rem;
     }
 
+    .sns_box {
+    }
+
     #iframe_content {
         position: static;
         width: 100vw;
@@ -182,5 +185,11 @@ body#index {
     #back {
         font-size: 13px;
         width: 70px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .title {
+        font-size: 3rem;
     }
 }

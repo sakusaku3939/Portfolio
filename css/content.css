@@ -63,5 +63,6 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 650px) {
     .card {
         width: 90%;
+        margin: 2vw 1vw 0;
     }
 }

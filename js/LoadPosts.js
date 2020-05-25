@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", onLoad);
+// document.addEventListener("DOMContentLoaded", onLoad);
 window.addEventListener('popstate', toggle, false)
 
 //ウィンドウの横幅変更後リスナー
@@ -27,9 +27,9 @@ $('#iframe_content').load(function () {
 });
 
 //読み込まれた場合
-function onLoad() {
+$(window).load(function () {
     toggle(location.search === '?posts=test')
-}
+})
 
 //戻るボタンが押された場合
 function back() {
@@ -81,6 +81,6 @@ function scroll_toggle() {
 function iframe_height() {
     const elm = document.getElementById("iframe_content");
     if (window.matchMedia('(max-width: 1000px)').matches) {
-        elm.style.height = 30 + elm.contentWindow.document.body.scrollHeight + "px";
+        elm.style.height = 20 + elm.contentWindow.document.body.scrollHeight + "px";
     }
 }
