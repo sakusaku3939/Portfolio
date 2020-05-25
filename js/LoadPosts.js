@@ -47,9 +47,11 @@ function toggle(isToggle = true) {
     if (element.classList.contains('is-hide')) {
         const iframe = document.getElementById("iframe-posts")
         const index = document.getElementById("index")
-        posts.style.display = "inline"
-        iframe.src = "posts/test.html"
-        index.style.overflowY = "scroll"
+        $("iframe-posts").ready(function () {
+            posts.style.display = "inline"
+            iframe.src = "posts/test.html"
+            index.style.overflowY = "scroll"
+        })
     } else {
         posts.style.display = "none"
     }
