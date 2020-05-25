@@ -33,6 +33,7 @@ function onLoad() {
 
 //戻るボタンが押された場合
 function back() {
+    toggle(false)
     window.history.back()
 }
 
@@ -40,44 +41,38 @@ function back() {
 function toggle(isToggle = true) {
     const element = document.querySelector("#hide")
     const posts = document.getElementById("posts")
-    const iframe = document.getElementById("iframe-posts")
-    const index = document.getElementById("index")
 
     if (isToggle) element.classList.toggle('is-hide')
+    scroll_toggle()
     if (element.classList.contains('is-hide')) {
+        const iframe = document.getElementById("iframe-posts")
+        const index = document.getElementById("index")
         posts.style.display = "inline"
         iframe.src = "posts/test.html"
         index.style.overflowY = "scroll"
     } else {
         posts.style.display = "none"
-        scroll_toggle()
     }
 }
 
 //記事ページのheightを設定
 function posts_height() {
     if (document.getElementById("iframe-posts")) {
-        const myF = document.getElementById("iframe-posts");
-        const myC = myF.contentWindow.document.documentElement;
-        let myH;
-        if (document) {
-            myH = myC.scrollHeight;
-        } else {
-            myH = myC.offsetHeight;
-        }
-        myF.style.height = myH + "px";
+        const elm = document.getElementById("iframe-posts");
+        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px";
     }
 }
 
 //スクロール表示・非表示の切り替え
 function scroll_toggle() {
-    const iframe = document.getElementById("iframe_content")
     const index = document.getElementById("index")
     if (window.matchMedia('(max-width: 1000px)').matches) {
         index.style.overflowY = "scroll"
-        iframe_height()
+        const hide = document.querySelector("#hide")
+        hide.classList.contains('is-hide') ? posts_height() : iframe_height()
     } else {
         index.style.overflowY = "hidden"
+        const iframe = document.getElementById("iframe_content")
         iframe.style.height = "100vh"
     }
 }

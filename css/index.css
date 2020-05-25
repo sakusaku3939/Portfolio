@@ -104,8 +104,9 @@ body#index {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 80vw;
+    width: 90vw;
     max-width: 70rem;
+    margin-bottom: 2rem;
     animation-name: fadein;
     animation-duration: 0.7s;
     animation-iteration-count: 1;
@@ -164,12 +165,22 @@ body#index {
         height: 40vh;
     }
 
+    .title {
+        font-size: 4rem;
+    }
+
     #iframe_content {
         position: static;
         width: 100vw;
     }
 
+    #navigation-bar {
+        height: 60px;
+        padding-top: 10px;
+    }
+
     #back {
-        width: 80px;
+        font-size: 13px;
+        width: 70px;
     }
 }
