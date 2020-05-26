@@ -128,7 +128,6 @@ body#index {
     background-color: #FAFAFA;
     border: none;
     width: 100%;
-    height: 100vh;
 }
 
 #navigation-bar {
@@ -163,10 +162,10 @@ body#index {
     margin-top: 25px;
     display: inline-block;
     text-align: right;
-    color: #757575;
+    color: #616161;
     position: absolute;
-    right: 10px;
-    padding: 5px 9px 2px 6px;
+    right: 5px;
+    padding: 7px 11px 3px 8px;
     transition-duration: 0.1s;
 }
 
@@ -176,9 +175,9 @@ body#index {
 
 #share:active {
     background-color: rgba(0, 0, 0, .1);
-    border-radius: 30%;
-    -moz-border-radius: 30%;
-    -webkit-border-radius: 30%;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
 }
 
 #share_menu {

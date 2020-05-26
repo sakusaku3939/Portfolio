@@ -41,7 +41,7 @@
 <div id="posts" style="display: none">
     <div id="navigation-bar">
         <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
-        <div id="share" onclick="click_share()"><i class="fas fa-share-alt"></i></div>
+        <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i></div>
         <ul id="share_menu">
             <li><a onclick="copyToClipboard()"><span class="menu_icon">
                 <i class="fas fa-link"></i></span>リンクを取得</a></li>
@@ -53,7 +53,7 @@
                 <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
         </ul>
     </div>
-    <iframe id="iframe-posts" onLoad="posts_height()"></iframe>
+    <iframe id="iframe-posts" onLoad="posts_loading()"></iframe>
 </div>
 </body>
 </html>

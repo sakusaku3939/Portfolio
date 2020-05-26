@@ -37,20 +37,8 @@ $('#iframe_content').on('load', function () {
 
 //シェアメニューのクリックリスナー
 let isShare_menu = false
-function click_share() {
-    $('#share_menu').addClass('.menu_show').fadeIn();
-    setTimeout(function () {
-        isShare_menu = true
-    }, 500);
-}
-
 $(document).on('click touchend', function () {
-    if (isShare_menu) {
-        $('#share_menu').fadeOut();
-        setTimeout(function () {
-            isShare_menu = false
-        }, 500);
-    }
+    share_off()
 });
 
 //記事表示・非表示の切り替え
@@ -88,6 +76,32 @@ function share() {
     pocket.href = "http://getpocket.com/edit?url=" + location.href
 }
 
+//シェアメニューをオン
+let on_animation = false
+function share_on() {
+    if (!isShare_menu && !off_animation) {
+        $('#share_menu').addClass('.menu_show').fadeIn();
+        on_animation = true
+        setTimeout(function () {
+            isShare_menu = true
+            on_animation = false
+        }, 100);
+    }
+}
+
+//シェアメニューをオフ
+let off_animation = false
+function share_off() {
+    if (isShare_menu && !on_animation) {
+        $('#share_menu').fadeOut();
+        off_animation = true
+        setTimeout(function () {
+            isShare_menu = false
+            off_animation = false
+        }, 100);
+    }
+}
+
 //クリップボードにコピー
 function copyToClipboard() {
     const tmp = document.createElement("div");
@@ -113,12 +127,18 @@ function copyToClipboard() {
     });
 }
 
-//記事ページのheightを設定
-function posts_height() {
-    if (document.getElementById("iframe-posts")) {
-        const elm = document.getElementById("iframe-posts");
-        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px";
-    }
+//記事ページの設定（読み込み前）
+function posts_before_loading() {
+    const elm = document.getElementById("iframe-posts");
+    elm.style.height = "100vh";
+}
+
+//記事ページの設定（読み込み後）
+function posts_loading() {
+    $("#iframe-posts").contents().on('click touchend', share_off);
+
+    const elm = document.getElementById("iframe-posts");
+    elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px";
 }
 
 //スクロール表示・非表示の切り替え
@@ -128,7 +148,7 @@ function scroll_toggle() {
     if (window.matchMedia('(max-width: 1000px)').matches || element.classList.contains('is-hide')) {
         index.style.overflowY = "scroll"
         const hide = document.querySelector("#hide")
-        hide.classList.contains('is-hide') ? posts_height() : iframe_height()
+        hide.classList.contains('is-hide') ? posts_before_loading() : iframe_height()
     } else {
         index.style.overflowY = "hidden"
         const iframe = document.getElementById("iframe_content")
