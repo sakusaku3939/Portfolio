@@ -103,7 +103,7 @@ function share_off() {
 }
 
 //クリップボードにコピー
-function copyToClipboard() {
+function copy_clipboard() {
     const tmp = document.createElement("div");
     const pre = document.createElement('pre');
 

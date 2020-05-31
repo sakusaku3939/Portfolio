@@ -30,8 +30,8 @@
             <div class="sns_button github">
                 <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
             </div>
-            <div class="sns_button team">
-                <a href="https://bww8231.fuji3.info/" title="Team"><i class="far fa-building"></i></a>
+            <div class="sns_button mail">
+                <a href="" title="Mail"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
         <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
         <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i></div>
         <ul id="share_menu">
-            <li><a onclick="copyToClipboard()"><span class="menu_icon">
+            <li><a onclick="copy_clipboard()"><span class="menu_icon">
                 <i class="fas fa-link"></i></span>リンクを取得</a></li>
             <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
                 <i class="fab fa-twitter"></i></span>Twitter</a></li>
@@ -53,7 +53,7 @@
                 <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
         </ul>
     </div>
-    <iframe id="iframe-posts" onLoad="posts_loading()"></iframe>
+    <iframe id="iframe-posts" onLoad="posts_loading()" scrolling="no"></iframe>
 </div>
 </body>
 </html>
