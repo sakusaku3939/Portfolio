@@ -31,6 +31,7 @@ $('#iframe_content').on('load', function () {
     iframe.find(".card").click(function () {
         toggle()
         history.pushState(null, null, "?posts=test")
+        if (navigator.appVersion.indexOf("Safari") > -1) location.reload();
     });
     iframe_height()
 });
@@ -78,6 +79,7 @@ function share() {
 
 //シェアメニューをオン
 let on_animation = false
+
 function share_on() {
     if (!isShare_menu && !off_animation) {
         $('#share_menu').addClass('.menu_show').fadeIn();
@@ -91,6 +93,7 @@ function share_on() {
 
 //シェアメニューをオフ
 let off_animation = false
+
 function share_off() {
     if (isShare_menu && !on_animation) {
         $('#share_menu').fadeOut();
