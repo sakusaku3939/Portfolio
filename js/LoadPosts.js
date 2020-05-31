@@ -31,7 +31,9 @@ $('#iframe_content').on('load', function () {
     iframe.find(".card").click(function () {
         toggle()
         history.pushState(null, null, "?posts=test")
-        if (navigator.appVersion.indexOf("Safari") > -1) location.reload();
+
+        const isIOS = /[ (]iP/.test(navigator.userAgent)
+        if (isIOS) location.reload();
     });
     iframe_height()
 });
