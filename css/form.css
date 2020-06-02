@@ -72,14 +72,14 @@ label {
 }
 
 input {
-    background: linear-gradient(to bottom, transparent 92%, #00ACC1 8%) no-repeat -300px 0;
+    background: linear-gradient(to bottom, transparent 92%, #4DD0E1 8%) no-repeat -300px 0;
     background-size: 300px 100%;
     display: block;
     width: 250px;
     padding: 5px 0;
     margin-top: 12px;
     border: none;
-    border-bottom: solid 1px #00ACC1;
+    border-bottom: solid 1px #4DD0E1;
     font-size: 15px;
     transition: all 0.3s;
 }
@@ -95,7 +95,7 @@ input:focus, input:valid {
 
 input:focus ~ label, input:valid ~ label {
     top: -12px;
-    color: #00ACC1;
+    color: #4DD0E1;
     font: 700 12px Roboto;
 }
 
@@ -105,7 +105,7 @@ textarea, textarea:focus {
     height: 230px;
     padding: 9px;
     margin-top: 30px;
-    border: 1px solid #00ACC1;
+    border: 1px solid #4DD0E1;
     outline: none;
     font: 300 15px Roboto;
     resize: none;
@@ -113,13 +113,13 @@ textarea, textarea:focus {
 
 textarea:focus, textarea:valid, textarea:focus:focus, textarea:focus:valid {
     padding: 7px;
-    border: 3px solid #00ACC1;
+    border: 3px solid #4DD0E1;
 }
 
 textarea:focus ~ label, textarea:valid ~ label, textarea:focus:focus ~ label, textarea:focus:valid ~ label {
     top: 12px;
     left: 0;
-    color: #00ACC1;
+    color: #4DD0E1;
     font: 700 12px Roboto;
 }
 
@@ -147,6 +147,6 @@ button:hover {
 }
 
 ::selection {
-    background: #00ACC1;
+    background: #4DD0E1;
     color: white;
 }
