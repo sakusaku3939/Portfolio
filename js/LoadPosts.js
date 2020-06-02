@@ -1,5 +1,8 @@
 window.addEventListener('popstate', toggle, false)
 
+let isPost = false  //記事が表示されているか
+let isMin = false  //横幅が1000px以下か
+
 //読み込まれた場合
 $(window).on('load', function () {
     toggle(location.search === '?posts=test')
@@ -30,7 +33,7 @@ window.addEventListener('resize', function () {
     //縦幅変更
     if (lastInnerHeight !== window.innerHeight) {
         lastInnerHeight = window.innerHeight;
-        if (!isMedia_min) {
+        if (!isMin) {
             $('#form').css('height', (window.innerHeight / 2 - 150) + 'px')
         }
     }
@@ -44,12 +47,13 @@ $('#iframe_content').on('load', function () {
         history.pushState(null, null, "?posts=test")
     });
     iframe_height()
+
+    iframe.on('click touchend', form_off);
 });
 
-//シェアメニューのクリックリスナー
-let isShare_menu = false
+//ドキュメント全体のクリックリスナー
 $(document).on('click touchend', function () {
-    share_off()
+    isPost ? share_off() : form_off()
 });
 
 //記事表示・非表示の切り替え
@@ -63,6 +67,7 @@ function toggle(isToggle = true) {
     share()
 
     if (element.classList.contains('is-hide')) {
+        isPost = true
         const iframe = document.getElementById("iframe-posts")
         const index = document.getElementById("index")
         $("#iframe-posts").ready(function () {
@@ -71,6 +76,7 @@ function toggle(isToggle = true) {
             index.style.overflowY = "scroll"
         })
     } else {
+        isPost = false
         posts.style.display = "none"
     }
 }
@@ -79,6 +85,40 @@ function toggle(isToggle = true) {
 function form_pos() {
     const pos = $('.mail').offset()
     $('#form').css('left', (pos.left - 128) + 'px')
+}
+
+//フォームのON/OFF
+let isForm = false
+let form_on_animation = false
+let form_off_animation = false
+
+function form_on() {
+    if (!isForm && !form_off_animation) {
+        $('#form').addClass('.form_show').fadeIn(200);
+        document.getElementById("index").style.overflowY = "hidden"
+        form_pos()
+        document.documentElement.scrollTop = 0
+
+        form_on_animation = true
+        setTimeout(function () {
+            isForm = true
+            form_on_animation = false
+        }, 100);
+    }
+}
+
+function form_off() {
+    if (isForm && !form_on_animation) {
+        $('#form').fadeOut(200);
+        scroll_toggle()
+        form_pos()
+
+        form_off_animation = true
+        setTimeout(function () {
+            isForm = false
+            form_off_animation = false
+        }, 100);
+    }
 }
 
 //記事のシェア用リンク設定
@@ -93,30 +133,31 @@ function share() {
     pocket.href = "http://getpocket.com/edit?url=" + location.href
 }
 
-//シェアメニューをオン
-let on_animation = false
+//シェアメニューのON/OFF
+let isShare_menu = false
+let share_on_animation = false
+let share_off_animation = false
 
 function share_on() {
-    if (!isShare_menu && !off_animation) {
+    if (!isShare_menu && !share_off_animation) {
         $('#share_menu').addClass('.menu_show').fadeIn();
-        on_animation = true
+
+        share_on_animation = true
         setTimeout(function () {
             isShare_menu = true
-            on_animation = false
+            share_on_animation = false
         }, 100);
     }
 }
 
-//シェアメニューをオフ
-let off_animation = false
-
 function share_off() {
-    if (isShare_menu && !on_animation) {
+    if (isShare_menu && !share_on_animation) {
         $('#share_menu').fadeOut();
-        off_animation = true
+
+        share_off_animation = true
         setTimeout(function () {
             isShare_menu = false
-            off_animation = false
+            share_off_animation = false
         }, 100);
     }
 }
@@ -161,18 +202,17 @@ function posts_loading() {
 }
 
 //スクロール表示・非表示の切り替え
-let isMedia_min = false
 function scroll_toggle() {
     const index = document.getElementById("index")
     const element = document.querySelector("#hide")
     if (window.matchMedia('(max-width: 1000px)').matches || element.classList.contains('is-hide')) {
-        isMedia_min = true
+        isMin = true
         index.style.overflowY = "scroll"
         const hide = document.querySelector("#hide")
         hide.classList.contains('is-hide') ? posts_before_loading() : iframe_height()
         $('#form').css('height', '420px')
     } else {
-        isMedia_min = false
+        isMin = false
         index.style.overflowY = "hidden"
         const iframe = document.getElementById("iframe_content")
         iframe.style.height = "100vh"

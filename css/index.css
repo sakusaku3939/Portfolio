@@ -37,6 +37,7 @@ body#index {
 }
 
 #form {
+    display: none;
     position: fixed;
     z-index: 2;
     margin: 1em 0;
@@ -55,6 +56,10 @@ body#index {
     margin-left: -15px;
     border: 15px solid transparent;
     border-bottom: 15px solid #ffffff;
+}
+
+.form_show {
+    display: inline;
 }
 
 .title {
