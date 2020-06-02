@@ -3,6 +3,7 @@ window.addEventListener('popstate', toggle, false)
 //読み込まれた場合
 $(window).on('load', function () {
     toggle(location.search === '?posts=test')
+    form_pos()
 })
 
 //戻るボタンが押された場合
@@ -10,18 +11,28 @@ function back() {
     window.history.back()
 }
 
-//ウィンドウの横幅変更後リスナー
+//ウィンドウの横幅変更リスナー
 let resizeTimer;
 let lastInnerWidth = window.innerWidth;
+let lastInnerHeight = window.innerHeight;
 window.addEventListener('resize', function () {
+    //横幅変更
     if (lastInnerWidth !== window.innerWidth) {
         lastInnerWidth = window.innerWidth;
+        form_pos()
         if (!resizeTimer) {
             clearTimeout(resizeTimer);
         }
         resizeTimer = setTimeout(function () {
             scroll_toggle()
         }, 300);
+    }
+    //縦幅変更
+    if (lastInnerHeight !== window.innerHeight) {
+        lastInnerHeight = window.innerHeight;
+        if (!isMedia_min) {
+            $('#form').css('height', (window.innerHeight / 2 - 150) + 'px')
+        }
     }
 });
 
@@ -62,6 +73,12 @@ function toggle(isToggle = true) {
     } else {
         posts.style.display = "none"
     }
+}
+
+//メールフォームの座標をセット
+function form_pos() {
+    const pos = $('.mail').offset()
+    $('#form').css('left', (pos.left - 128) + 'px')
 }
 
 //記事のシェア用リンク設定
@@ -144,17 +161,22 @@ function posts_loading() {
 }
 
 //スクロール表示・非表示の切り替え
+let isMedia_min = false
 function scroll_toggle() {
     const index = document.getElementById("index")
     const element = document.querySelector("#hide")
     if (window.matchMedia('(max-width: 1000px)').matches || element.classList.contains('is-hide')) {
+        isMedia_min = true
         index.style.overflowY = "scroll"
         const hide = document.querySelector("#hide")
         hide.classList.contains('is-hide') ? posts_before_loading() : iframe_height()
+        $('#form').css('height', '420px')
     } else {
+        isMedia_min = false
         index.style.overflowY = "hidden"
         const iframe = document.getElementById("iframe_content")
         iframe.style.height = "100vh"
+        $('#form').css('height', (window.innerHeight / 2 - 150) + 'px')
     }
 }
 
