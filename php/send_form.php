@@ -19,6 +19,9 @@ if (mb_send_mail('yuukiyuuki223@gmail.com', 'Resumeからお問い合わせが�
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 <style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
     .center {
         text-align: center;
         margin: 45% 0 20%;
