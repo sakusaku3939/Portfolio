@@ -110,13 +110,13 @@ function form_on() {
 function form_off() {
     if (isForm && !form_on_animation) {
         $('#form').fadeOut(200);
-        scroll_toggle()
         form_pos()
 
         form_off_animation = true
         setTimeout(function () {
             isForm = false
             form_off_animation = false
+            scroll_toggle()
         }, 100);
     }
 }
@@ -207,7 +207,7 @@ function scroll_toggle() {
     const element = document.querySelector("#hide")
     if (window.matchMedia('(max-width: 1000px)').matches || element.classList.contains('is-hide')) {
         isMin = true
-        index.style.overflowY = "scroll"
+        if (!isForm) index.style.overflowY = "scroll"
         const hide = document.querySelector("#hide")
         hide.classList.contains('is-hide') ? posts_before_loading() : iframe_height()
         $('#form').css('height', '425px')
