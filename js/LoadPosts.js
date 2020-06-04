@@ -210,7 +210,7 @@ function scroll_toggle() {
         index.style.overflowY = "scroll"
         const hide = document.querySelector("#hide")
         hide.classList.contains('is-hide') ? posts_before_loading() : iframe_height()
-        $('#form').css('height', '420px')
+        $('#form').css('height', '425px')
     } else {
         isMin = false
         index.style.overflowY = "hidden"

@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/form.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title></title>
 </head>
 <body>
-<form class="contact">
-    <div class="group"><input type="text" id="name" required="required" /><label for="name">名前</label></div>
-    <div class="group"><input type="text" id="email" required="required" /><label for="email">メールアドレス</label></div>
-    <div class="group"><textarea id="message" required="required"></textarea><label for="message">ここに送る内容を入力</label></div>
+<form class="contact" action="php/send_form.php" method="post">
+    <div class="group"><input type="text" id="name" name="name" required="required"><label for="name">名前</label></div>
+    <div class="group"><input type="email" id="email" name="email" required="required"><label for="email">メールアドレス</label></div>
+    <div class="group"><textarea id="message" name="message" required="required"></textarea><label for="message">ここに送る内容を入力</label></div>
     <button value="submit">送信</button>
 </form>
 </body>
