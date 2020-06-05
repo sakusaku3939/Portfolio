@@ -63,8 +63,12 @@ body::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 650px) {
+    body {
+        text-align: center;
+    }
     .card {
+        text-align: left;
         width: 90%;
-        margin: 2vw 1vw 0;
+        margin: 0 0 4vw;
     }
 }

@@ -84,7 +84,7 @@ function toggle(isToggle = true) {
 //メールフォームの座標をセット
 function form_pos() {
     const pos = $('.mail').offset()
-    $('#form').css('left', (pos.left - 128) + 'px')
+    $('#form').css('left', (pos.left - 118) + 'px')
 }
 
 //フォームのON/OFF
