@@ -70,11 +70,9 @@ function toggle(isToggle = true) {
         isPost = true
         const iframe = document.getElementById("iframe-posts")
         const index = document.getElementById("index")
-        $("#iframe-posts").ready(function () {
-            posts.style.display = "inline"
-            iframe.src = "posts/20200101/test-title.html"
-            index.style.overflowY = "scroll"
-        })
+        posts.style.display = "inline"
+        iframe.src = "posts/20200101/test-title.html"
+        index.style.overflowY = "scroll"
     } else {
         isPost = false
         posts.style.display = "none"
