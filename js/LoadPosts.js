@@ -5,7 +5,7 @@ let isMin = false  //横幅が1000px以下か
 
 //読み込まれた場合
 $(window).on('load', function () {
-    toggle(location.search === '?posts=test')
+    toggle(location.search === '?posts=20200101')
     form_pos()
 })
 
@@ -40,11 +40,11 @@ window.addEventListener('resize', function () {
 });
 
 //記事一覧のクリックリスナー
-$('#iframe_content').on('load', function () {
-    const iframe = $('#iframe_content').contents()
+$('#iframe-list').on('load', function () {
+    const iframe = $('#iframe-list').contents()
     iframe.find(".card").click(function () {
         toggle()
-        history.pushState(null, null, "?posts=test")
+        history.pushState(null, null, "?posts=20200101")
     });
     iframe_height()
 
@@ -72,7 +72,7 @@ function toggle(isToggle = true) {
         const index = document.getElementById("index")
         $("#iframe-posts").ready(function () {
             posts.style.display = "inline"
-            iframe.src = "posts/test.html"
+            iframe.src = "posts/20200101/test-title.html"
             index.style.overflowY = "scroll"
         })
     } else {
@@ -214,7 +214,7 @@ function scroll_toggle() {
     } else {
         isMin = false
         index.style.overflowY = "hidden"
-        const iframe = document.getElementById("iframe_content")
+        const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
         $('#form').css('height', (window.innerHeight / 2 - 150) + 'px')
     }
@@ -222,7 +222,7 @@ function scroll_toggle() {
 
 //記事一覧のheightを設定
 function iframe_height() {
-    const elm = document.getElementById("iframe_content");
+    const elm = document.getElementById("iframe-list");
     if (window.matchMedia('(max-width: 1000px)').matches) {
         elm.style.height = 20 + elm.contentWindow.document.body.scrollHeight + "px";
     }
