@@ -26,7 +26,6 @@ body::-webkit-scrollbar {
     width: 100%;
     height: auto;
     padding-top: 62%;
-    background: url("../image/NoImage.jpg") no-repeat center;
     background-size: cover;
     box-sizing: border-box;
 }

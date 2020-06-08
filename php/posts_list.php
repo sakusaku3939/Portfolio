@@ -5,9 +5,12 @@ foreach (filename('../posts/') as $folder) {
     if ($folder !== 'style.css') {
         $parameter = _parameter($folder);
         $path = '../posts/' . $folder . '/' . $parameter . '.html';
-        $title = _title($path);
-        $overview = _overview($path);
-        $post_data[] = ['title' => $title, 'overview' => $overview, 'parameter' => $parameter];
+        $content = file_get_contents($path);
+        $title = _title($content);
+        $overview = _overview($content);
+        $image_path = _image($content, $folder);
+
+        $post_data[] = ['title' => $title, 'overview' => $overview, 'image' => $image_path, 'parameter' => $parameter];
     }
 }
 
@@ -22,22 +25,28 @@ function filename($directory)
     return $file_list;
 }
 
-function _title($path)
+function _title($content)
 {
-    $content = file_get_contents($path);
     if ($content and preg_match('!<h1>(.*?)</h1>!s', $content, $title)) {
         return $title[1];
     }
     return 'no title';
 }
 
-function _overview($path)
+function _overview($content)
 {
-    $content = file_get_contents($path);
     if ($content and preg_match('!<div id="overview">(.*?)</div>!s', $content, $overview)) {
         return $overview[1];
     }
     return 'no overview';
+}
+
+function _image($content, $folder)
+{
+    if ($content and preg_match('!<img src="(.*?)" alt="">!s', $content, $image_path)) {
+        return '../posts/' . $folder . '/' . $image_path[1];
+    }
+    return '../image/NoImage.jpg';
 }
 
 function _parameter($folder)
@@ -66,14 +75,13 @@ function _parameter($folder)
 </head>
 <body>
 <div class="card card-skin">
-    <div class="card_imgframe"></div>
+    <div class="card_imgframe" style="background-image: url(<?php echo $post_data[1]['image']; ?>)"></div>
     <div class="card_textbox">
         <div class="card_titletext">
             <?php echo $post_data[1]['title']; ?>
         </div>
         <div class="card_overviewtext">
             <?php echo $post_data[1]['overview']; ?>
-            <!--            ここは概要となります。ここは概要となります。ここは概要となります。-->
         </div>
     </div>
 </div>
