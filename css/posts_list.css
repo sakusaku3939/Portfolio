@@ -35,6 +35,7 @@ body::-webkit-scrollbar {
     font-family: 'Noto Sans JP', sans-serif;
     width: 100%;
     height: auto;
+    min-height: 110px;
     padding: 20px 18px;
     background: #ffffff;
     box-sizing: border-box;
@@ -45,14 +46,22 @@ body::-webkit-scrollbar {
 }
 
 .card_titletext {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    line-height: 125%;
+    line-height: 150%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card_overviewtext {
     font-size: 12px;
     line-height: 150%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /*--------------------------------------------*/
@@ -63,12 +72,9 @@ body::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 650px) {
-    body {
-        text-align: center;
-    }
     .card {
         text-align: left;
         width: 90%;
-        margin: 0 0 4vw;
+        margin: 0 1vw 4vw 2vw;
     }
 }
