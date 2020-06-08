@@ -4,12 +4,15 @@ $post_data = [];
 foreach (filename('../posts/') as $folder) {
     if ($folder !== 'style.css') {
         $parameter = _parameter($folder);
-        $title = _title('../posts/'.$folder.'/'.$parameter.'.html');
-        $post_data[] = ['title' => $title, 'parameter' => $parameter];
+        $path = '../posts/' . $folder . '/' . $parameter . '.html';
+        $title = _title($path);
+        $overview = _overview($path);
+        $post_data[] = ['title' => $title, 'overview' => $overview, 'parameter' => $parameter];
     }
 }
 
-function filename($directory) {
+function filename($directory)
+{
     $file_list = [];
     foreach (scandir($directory) as $name) {
         if ($name !== '.' and $name !== '..') {
@@ -19,15 +22,26 @@ function filename($directory) {
     return $file_list;
 }
 
-function _title($path) {
+function _title($path)
+{
     $content = file_get_contents($path);
-    if ($content and preg_match('!<h1>(.*?)</h1>!s', $content, $title)){
+    if ($content and preg_match('!<h1>(.*?)</h1>!s', $content, $title)) {
         return $title[1];
     }
     return 'no title';
 }
 
-function _parameter($folder) {
+function _overview($path)
+{
+    $content = file_get_contents($path);
+    if ($content and preg_match('!<div id="overview">(.*?)</div>!s', $content, $overview)) {
+        return $overview[1];
+    }
+    return 'no overview';
+}
+
+function _parameter($folder)
+{
     foreach (filename('../posts/' . $folder) as $name) {
         if (strpos($name, '.html')) {
             return preg_replace("/(.+)(\.[^.]+$)/", "$1", $name);
@@ -58,8 +72,8 @@ function _parameter($folder) {
             <?php echo $post_data[1]['title']; ?>
         </div>
         <div class="card_overviewtext">
-            <?php ?>
-            ここは概要となります。ここは概要となります。ここは概要となります。
+            <?php echo $post_data[1]['overview']; ?>
+            <!--            ここは概要となります。ここは概要となります。ここは概要となります。-->
         </div>
     </div>
 </div>

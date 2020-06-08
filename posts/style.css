@@ -7,3 +7,7 @@ img {
     display: block;
     width: 100%;
 }
+
+#overview {
+    display: none;
+}
