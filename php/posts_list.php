@@ -1,7 +1,7 @@
 <?php
 
 $post_data = [];
-foreach (filename('../posts/') as $folder) {
+foreach (getFilename('../posts/') as $folder) {
     if ($folder !== 'style.css') {
         $parameter = _parameter($folder);
         $path = '../posts/' . $folder . '/' . $parameter . '.html';
@@ -14,15 +14,17 @@ foreach (filename('../posts/') as $folder) {
     }
 }
 
-function filename($directory)
-{
-    $file_list = [];
-    foreach (scandir($directory) as $name) {
-        if ($name !== '.' and $name !== '..') {
-            $file_list[] = $name;
-        }
-    }
-    return $file_list;
+foreach ($post_data as $post) {
+    echo '<div class="card card-skin">' .
+        '<div class="card_imgframe" style="background-image: url(' . $post['image'] . ')"></div>' .
+        '<div class="card_textbox">' .
+        '<div class="card_titletext">' . $post['title'] . '</div>' .
+        '<div class="card_overviewtext">' . $post['overview'] . '</div>' .
+        '</div></div>';
+}
+
+function getFilename($directory) {
+    return array_diff(scandir($directory, 1), array('.', '..'));
 }
 
 function _title($content)
@@ -51,7 +53,7 @@ function _image($content, $folder)
 
 function _parameter($folder)
 {
-    foreach (filename('../posts/' . $folder) as $name) {
+    foreach (getFilename('../posts/' . $folder) as $name) {
         if (strpos($name, '.html')) {
             return preg_replace("/(.+)(\.[^.]+$)/", "$1", $name);
         }
@@ -74,104 +76,5 @@ function _parameter($folder)
     <title></title>
 </head>
 <body>
-<div class="card card-skin">
-    <div class="card_imgframe" style="background-image: url(<?php echo $post_data[1]['image']; ?>)"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            <?php echo $post_data[1]['title']; ?>
-        </div>
-        <div class="card_overviewtext">
-            <?php echo $post_data[1]['overview']; ?>
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル2
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル3
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル4
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル5
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル6
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル7
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル8
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
-<div class="card card-skin">
-    <div class="card_imgframe"></div>
-    <div class="card_textbox">
-        <div class="card_titletext">
-            タイトル9
-        </div>
-        <div class="card_overviewtext">
-            ここは概要となります。ここは概要となります。ここは概要となります。
-        </div>
-    </div>
-</div>
 </body>
 </html>

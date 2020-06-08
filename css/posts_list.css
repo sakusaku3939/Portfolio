@@ -27,6 +27,7 @@ body::-webkit-scrollbar {
     height: auto;
     padding-top: 62%;
     background-size: cover;
+    background-position: center center;
     box-sizing: border-box;
 }
 
