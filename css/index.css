@@ -242,6 +242,7 @@ li a {
     color: #525252;
     text-decoration: none;
     display: block;
+    font-family: sans-serif;
 }
 
 li a:hover {
