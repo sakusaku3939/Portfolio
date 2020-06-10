@@ -20,6 +20,8 @@ foreach (getFilename('../posts/') as $folder) {
     }
 }
 
+$json = json_encode($post_data, JSON_UNESCAPED_UNICODE);
+
 foreach ($post_data as $post) {
     echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
         '<div class="card_imgframe" style="background-image: url(' . $post['image'] . ')"></div>' .
@@ -81,6 +83,8 @@ function _parameter($folder)
 </head>
 <body>
 <script>
+    window.parent.setPost_data(<?php echo $json?>)
+
     function click_posts(date, parameter) {
         window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
         window.parent.history.pushState(null, null, "?posts=" + parameter)

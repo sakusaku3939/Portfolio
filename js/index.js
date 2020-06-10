@@ -1,7 +1,10 @@
-window.addEventListener('popstate', () => {toggle(true)}, false)
+window.addEventListener('popstate', () => {
+    toggle(true)
+}, false)
 
 let isPost = false  //記事が表示されているか
 let isMin = false  //横幅が1000px以下か
+let post_data = {}  //記事データ(連想配列)を格納する変数
 
 //読み込まれた場合
 $(window).on('load', function () {
@@ -64,7 +67,6 @@ function toggle(isPath = false, isToggle = true) {
         const index = document.getElementById("index")
         main.style.display = "none"
         posts.style.display = "inline"
-        alert(sessionStorage.getItem('src'))
 
         scrollTo(0, 0)
         let addPath = isPath ? "./" : "../"
@@ -222,5 +224,23 @@ function iframe_height() {
     const elm = document.getElementById("iframe-list");
     if (window.matchMedia('(max-width: 1000px)').matches) {
         elm.style.height = elm.contentWindow.document.body.scrollHeight + "px";
+    }
+}
+
+//外部リンクから記事ページに来た場合、phpから直接記事データを格納する
+function setPost_data(data) {
+    post_data = data
+    let _getIndex = function (value, arr, prop) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i][prop] === value) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    let index = _getIndex(location.search.substr(7), post_data, 'parameter')
+    if (index !== -1) {
+        sessionStorage.setItem("src", "posts/" + post_data[index]['date'] + "/" + post_data[index]['parameter'] + ".html")
     }
 }
