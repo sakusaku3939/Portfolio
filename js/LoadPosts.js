@@ -1,12 +1,18 @@
-window.addEventListener('popstate', toggle, false)
+window.addEventListener('popstate', a, false)
+
+function a() {
+    toggle()
+}
 
 let isPost = false  //記事が表示されているか
 let isMin = false  //横幅が1000px以下か
 
 //読み込まれた場合
 $(window).on('load', function () {
-    toggle(location.search === '?posts=20200101')
+    console.log("load")
+    if (location.search !== '') toggle()
     form_pos()
+    scroll_toggle()
 })
 
 //戻るボタンが押された場合
@@ -42,13 +48,8 @@ window.addEventListener('resize', function () {
 //記事一覧のクリックリスナー
 $('#iframe-list').on('load', function () {
     const iframe = $('#iframe-list').contents()
-    iframe.find(".card").click(function () {
-        toggle()
-        history.pushState(null, null, "?posts=20200101")
-    });
-    iframe_height()
-
     iframe.on('click touchend', form_off);
+    iframe_height()
 });
 
 //ドキュメント全体のクリックリスナー
@@ -57,26 +58,28 @@ $(document).on('click touchend', function () {
 });
 
 //記事表示・非表示の切り替え
-function toggle(isToggle = true) {
-    const element = document.querySelector("#hide")
+function toggle() {
+    const main = document.getElementById("main")
     const posts = document.getElementById("posts")
 
-    if (isToggle) element.classList.toggle('is-hide')
-
-    scroll_toggle()
     share()
 
-    if (element.classList.contains('is-hide')) {
+    if (!isPost) {
         isPost = true
         const iframe = document.getElementById("iframe-posts")
         const index = document.getElementById("index")
+        main.style.display = "none"
         posts.style.display = "inline"
-        iframe.src = "posts/20200101/test-title.html"
+
+        iframe.src = sessionStorage.getItem('src')
         index.style.overflowY = "scroll"
     } else {
         isPost = false
+        main.style.display = "inline"
         posts.style.display = "none"
     }
+
+    scroll_toggle()
 }
 
 //メールフォームの座標をセット
@@ -202,12 +205,10 @@ function posts_loading() {
 //スクロール表示・非表示の切り替え
 function scroll_toggle() {
     const index = document.getElementById("index")
-    const element = document.querySelector("#hide")
-    if (window.matchMedia('(max-width: 1000px)').matches || element.classList.contains('is-hide')) {
+    if (window.matchMedia('(max-width: 1000px)').matches || isPost) {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
-        const hide = document.querySelector("#hide")
-        hide.classList.contains('is-hide') ? posts_before_loading() : iframe_height()
+        isPost ? posts_before_loading() : iframe_height()
         $('#form').css('height', '425px')
     } else {
         isMin = false
@@ -218,10 +219,10 @@ function scroll_toggle() {
     }
 }
 
-//記事一覧のheightを設定
+//記事一覧のiframeのheightを設定
 function iframe_height() {
     const elm = document.getElementById("iframe-list");
     if (window.matchMedia('(max-width: 1000px)').matches) {
-        elm.style.height = 20 + elm.contentWindow.document.body.scrollHeight + "px";
+        elm.style.height = elm.contentWindow.document.body.scrollHeight + "px";
     }
 }

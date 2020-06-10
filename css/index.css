@@ -13,6 +13,10 @@ body#index {
 }
 
 /*--------------------------------------------*/
+#main {
+    display: inline;
+}
+
 .side-bar {
     color: #FAFAFA;
     text-align: center;
@@ -20,7 +24,6 @@ body#index {
     height: 100vh;
 
     display: table-cell;
-    vertical-align: middle;
 }
 
 #iframe-list {
@@ -64,8 +67,8 @@ body#index {
 .title {
     font-family: "Catamaran", sans-serif;
     font-size: 5rem;
-    line-height: 0.5;
     font-weight: 600;
+    margin-top: 45vh;
 }
 
 .sns_box {
@@ -250,10 +253,12 @@ li a:hover {
     .side-bar {
         width: 100vw;
         height: 40vh;
+        vertical-align: middle;
     }
 
     .title {
         font-size: 4rem;
+        margin-top: 0;
     }
 
     #iframe-list {
@@ -268,6 +273,10 @@ li a:hover {
 }
 
 @media screen and (max-width: 500px) {
+    .side-bar {
+        height: 30vh;
+    }
+
     .title {
         font-size: 3rem;
     }

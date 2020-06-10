@@ -10,12 +10,18 @@ foreach (getFilename('../posts/') as $folder) {
         $overview = _overview($content);
         $image_path = _image($content, $folder);
 
-        $post_data[] = ['title' => $title, 'overview' => $overview, 'image' => $image_path, 'parameter' => $parameter];
+        $post_data[] = [
+            'title' => $title,
+            'overview' => $overview,
+            'image' => $image_path,
+            'parameter' => $parameter,
+            'date' => $folder
+        ];
     }
 }
 
 foreach ($post_data as $post) {
-    echo '<div class="card card-skin">' .
+    echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
         '<div class="card_imgframe" style="background-image: url(' . $post['image'] . ')"></div>' .
         '<div class="card_textbox">' .
         '<div class="card_titletext">' . $post['title'] . '</div>' .
@@ -23,7 +29,8 @@ foreach ($post_data as $post) {
         '</div></div>';
 }
 
-function getFilename($directory) {
+function getFilename($directory)
+{
     return array_diff(scandir($directory, 1), array('.', '..'));
 }
 
@@ -67,14 +74,20 @@ function _parameter($folder)
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/style.css" type="text/css">
     <link rel="stylesheet" href="../css/posts_list.css" type="text/css">
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- フォント -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <title></title>
 </head>
 <body>
+<script>
+    function click_posts(date, parameter) {
+        const iframe = window.parent.document.getElementById("iframe-posts")
+        iframe.src = "posts/" + date + "/" + parameter + ".html"
+        window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
+        window.parent.history.pushState(null, null, "?posts=" + parameter)
+        window.parent.toggle()
+    }
+</script>
 </body>
 </html>

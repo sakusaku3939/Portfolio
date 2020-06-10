@@ -4,7 +4,7 @@ body::-webkit-scrollbar {
 
 /*--------------------------------------------*/
 .card {
-    width: 21%;
+    width: 30%;
     min-width: 10rem;
     height: auto;
     margin: 2vw 1vw 0 2vw;
