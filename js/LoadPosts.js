@@ -1,15 +1,10 @@
-window.addEventListener('popstate', a, false)
-
-function a() {
-    toggle()
-}
+window.addEventListener('popstate', toggle, false)
 
 let isPost = false  //記事が表示されているか
 let isMin = false  //横幅が1000px以下か
 
 //読み込まれた場合
 $(window).on('load', function () {
-    console.log("load")
     if (location.search !== '') toggle()
     form_pos()
     scroll_toggle()
@@ -61,17 +56,16 @@ $(document).on('click touchend', function () {
 function toggle() {
     const main = document.getElementById("main")
     const posts = document.getElementById("posts")
-
-    share()
+    const iframe = document.getElementById("iframe-posts")
 
     if (!isPost) {
         isPost = true
-        const iframe = document.getElementById("iframe-posts")
         const index = document.getElementById("index")
         main.style.display = "none"
         posts.style.display = "inline"
 
-        iframe.src = sessionStorage.getItem('src')
+        scrollTo(0, 0)
+        iframe.contentWindow.location.replace("../" + sessionStorage.getItem('src'))
         index.style.overflowY = "scroll"
     } else {
         isPost = false
@@ -79,6 +73,7 @@ function toggle() {
         posts.style.display = "none"
     }
 
+    share()
     scroll_toggle()
 }
 

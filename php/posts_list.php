@@ -82,8 +82,6 @@ function _parameter($folder)
 <body>
 <script>
     function click_posts(date, parameter) {
-        const iframe = window.parent.document.getElementById("iframe-posts")
-        iframe.src = "posts/" + date + "/" + parameter + ".html"
         window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
         window.parent.history.pushState(null, null, "?posts=" + parameter)
         window.parent.toggle()
