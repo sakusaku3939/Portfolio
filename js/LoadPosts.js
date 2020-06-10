@@ -40,7 +40,7 @@ window.addEventListener('resize', function () {
     if (lastInnerHeight !== window.innerHeight) {
         lastInnerHeight = window.innerHeight;
         if (!isMin) {
-            $('#form').css('height', (window.innerHeight / 2 - 150) + 'px')
+            $('#form').css('height', (window.innerHeight / 2 - 170) + 'px')
         }
     }
 });
@@ -215,7 +215,7 @@ function scroll_toggle() {
         index.style.overflowY = "hidden"
         const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
-        $('#form').css('height', (window.innerHeight / 2 - 150) + 'px')
+        $('#form').css('height', (window.innerHeight / 2 - 160) + 'px')
     }
 }
 
