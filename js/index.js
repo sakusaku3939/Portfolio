@@ -6,7 +6,7 @@ let isPost = false  //記事が表示されているか
 let isMin = false  //横幅が1000px以下か
 let post_data = {}  //記事データ(連想配列)を格納する変数
 
-//読み込まれた場合
+//読み込み時
 $(window).on('load', function () {
     toggle(true, location.search !== '')
     form_pos()
@@ -43,7 +43,7 @@ window.addEventListener('resize', function () {
     }
 });
 
-//記事一覧のクリックリスナー
+//記事一覧の読み込み時
 $('#iframe-list').on('load', function () {
     const iframe = $('#iframe-list').contents()
     iframe.on('click touchend', form_off);
@@ -62,9 +62,11 @@ function toggle(isPath = false, isToggle = true) {
     const iframe = document.getElementById("iframe-posts")
     let addPath = isPath ? "./" : "../"
 
-    if (isToggle) isPost = !isPost
+    scroll_toggle()
 
+    if (isToggle) isPost = !isPost
     if (isPost) {
+        posts_before_loading()
         const index = document.getElementById("index")
         main.style.display = "none"
         posts.style.display = "inline"
@@ -78,9 +80,7 @@ function toggle(isPath = false, isToggle = true) {
         posts.style.display = "none"
         iframe.contentWindow.location.replace(addPath + "hold.html")
     }
-
     share()
-    scroll_toggle()
 }
 
 //外部リンクから記事ページに来た場合、phpから直接記事データを格納する
@@ -225,10 +225,10 @@ function posts_loading() {
 //スクロール表示・非表示の切り替え
 function scroll_toggle() {
     const index = document.getElementById("index")
+    isPost ? posts_loading() : iframe_height()
     if (window.matchMedia('(max-width: 1000px)').matches || isPost) {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
-        isPost ? posts_before_loading() : iframe_height()
         $('#form').css('height', '425px')
     } else {
         isMin = false

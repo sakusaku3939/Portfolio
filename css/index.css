@@ -134,8 +134,8 @@ body#index {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 90vw;
-    max-width: 50rem;
+    width: 70vw;
+    max-width: 55rem;
     margin-bottom: 2rem;
     animation-name: fadein;
     animation-duration: 0.7s;
@@ -162,8 +162,8 @@ body#index {
 
 #navigation-bar {
     width: 100%;
-    height: 70px;
-    margin-bottom: 20px;
+    height: 80px;
+    margin-bottom: 15px;
 }
 
 #back {
@@ -314,9 +314,8 @@ li a:hover {
         width: 100vw;
     }
 
-    #back {
-        font-size: 13px;
-        width: 70px;
+    #posts {
+        width: 90vw;
     }
 }
 
@@ -327,5 +326,10 @@ li a:hover {
 
     .title {
         font-size: 3rem;
+    }
+
+    #back {
+        font-size: 13px;
+        width: 70px;
     }
 }
