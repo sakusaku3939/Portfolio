@@ -249,6 +249,53 @@ li a:hover {
     background-color: rgba(0, 0, 0, .04);
 }
 
+#loader,#loader:after {
+    border-radius: 50%;
+    width: 7em;
+    height: 7em;
+    z-index: 4;
+    text-align: center;
+}
+#loader {
+    font-size: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:  50vh auto;
+    text-indent: -9999em;
+    border-top: 1.1em solid #E0E0E0;
+    border-right: 1.1em solid #E0E0E0;
+    border-bottom: 1.1em solid #E0E0E0;
+    border-left: 1.1em solid #F5F5F5;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 0.7s infinite linear;
+    animation: load8 0.7s infinite linear;
+}
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
 /*--------------------------------------------*/
 @media screen and (max-width: 1000px) {
     .side-bar {

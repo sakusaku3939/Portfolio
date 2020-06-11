@@ -60,6 +60,7 @@ function toggle(isPath = false, isToggle = true) {
     const main = document.getElementById("main")
     const posts = document.getElementById("posts")
     const iframe = document.getElementById("iframe-posts")
+    let addPath = isPath ? "./" : "../"
 
     if (isToggle) isPost = !isPost
 
@@ -67,19 +68,37 @@ function toggle(isPath = false, isToggle = true) {
         const index = document.getElementById("index")
         main.style.display = "none"
         posts.style.display = "inline"
+        document.getElementById("loader").style.display = "inline"
 
         scrollTo(0, 0)
-        let addPath = isPath ? "./" : "../"
         iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
         index.style.overflowY = "scroll"
     } else {
         main.style.display = "inline"
         posts.style.display = "none"
-        iframe.contentWindow.location.replace("")
+        iframe.contentWindow.location.replace(addPath + "hold.html")
     }
 
     share()
     scroll_toggle()
+}
+
+//外部リンクから記事ページに来た場合、phpから直接記事データを格納する
+function setPost_data(data) {
+    post_data = data
+    let _getIndex = function (value, arr, prop) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i][prop] === value) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    let index = _getIndex(location.search.substr(7), post_data, 'parameter')
+    if (index !== -1) {
+        sessionStorage.setItem("src", "posts/" + post_data[index]['date'] + "/" + post_data[index]['parameter'] + ".html")
+    }
 }
 
 //メールフォームの座標をセット
@@ -190,16 +209,17 @@ function copy_clipboard() {
 
 //記事ページの設定（読み込み前）
 function posts_before_loading() {
-    const elm = document.getElementById("iframe-posts");
-    elm.style.height = "100vh";
+    const elm = document.getElementById("iframe-posts")
+    elm.style.height = "100vh"
 }
 
 //記事ページの設定（読み込み後）
 function posts_loading() {
-    $("#iframe-posts").contents().on('click touchend', share_off);
+    $("#iframe-posts").contents().on('click touchend', share_off)
 
-    const elm = document.getElementById("iframe-posts");
-    elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px";
+    const elm = document.getElementById("iframe-posts")
+    elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
+    document.getElementById("loader").style.display = "none"
 }
 
 //スクロール表示・非表示の切り替え
@@ -224,23 +244,5 @@ function iframe_height() {
     const elm = document.getElementById("iframe-list");
     if (window.matchMedia('(max-width: 1000px)').matches) {
         elm.style.height = elm.contentWindow.document.body.scrollHeight + "px";
-    }
-}
-
-//外部リンクから記事ページに来た場合、phpから直接記事データを格納する
-function setPost_data(data) {
-    post_data = data
-    let _getIndex = function (value, arr, prop) {
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i][prop] === value) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    let index = _getIndex(location.search.substr(7), post_data, 'parameter')
-    if (index !== -1) {
-        sessionStorage.setItem("src", "posts/" + post_data[index]['date'] + "/" + post_data[index]['parameter'] + ".html")
     }
 }
