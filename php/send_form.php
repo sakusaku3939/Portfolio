@@ -10,7 +10,7 @@ $mail_message .= $message;
 mb_language('Japanese');
 mb_internal_encoding('UTF-8');
 
-if (mb_send_mail('yuukiyuuki223@gmail.com', 'Resumeからお問い合わせが来ています', $mail_message, 'From: yuukiyuuki223@gmail.com')) {
+if (mb_send_mail('yuukiyuuki223@gmail.com', 'Portfolioからお問い合わせが来ています', $mail_message, 'From: yuukiyuuki223@gmail.com')) {
     echo '<div class="center"><span class="dli-check"></span></div><p>メールが送信されました</p><br>';
 } else {
     echo '<div class="center"><span class="dli-close"></span></div><p>メールの送信に失敗しました</p>';
