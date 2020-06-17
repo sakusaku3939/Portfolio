@@ -62,19 +62,17 @@ function toggle(isPath = false, isToggle = true) {
     const iframe = document.getElementById("iframe-posts")
     let addPath = isPath ? "./" : "../"
 
-    scroll_toggle()
-
     if (isToggle) isPost = !isPost
+
+    scroll_toggle()
     if (isPost) {
         posts_before_loading()
-        const index = document.getElementById("index")
         main.style.display = "none"
         posts.style.display = "inline"
         document.getElementById("loader").style.display = "inline"
 
         scrollTo(0, 0)
         iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
-        index.style.overflowY = "scroll"
     } else {
         main.style.display = "inline"
         posts.style.display = "none"
@@ -226,13 +224,13 @@ function posts_loading() {
 function scroll_toggle() {
     const index = document.getElementById("index")
     isPost ? posts_loading() : iframe_height()
-    if (window.matchMedia('(max-width: 1000px)').matches || isPost) {
+    if (window.matchMedia('(max-width: 1000px)').matches) {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
         $('#form').css('height', '425px')
     } else {
         isMin = false
-        index.style.overflowY = "hidden"
+        index.style.overflowY = isPost ? "scroll" : "hidden"
         const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
         $('#form').css('height', (window.innerHeight / 2 - 160) + 'px')
