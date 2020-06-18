@@ -12,10 +12,15 @@ body#index {
     overflow-y: hidden;
 }
 
-/*--------------------------------------------*/
 #main {
-    display: inline;
+    display: none;
 }
+
+.pace-running .wrap {
+    display:none;
+}
+
+/*--------------------------------------------*/
 
 .side-bar {
     color: #FAFAFA;
@@ -258,13 +263,12 @@ li a:hover {
 }
 
 #loader {
-    font-size: 8px;
+    font-size: 40%;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 50vh;
+    left: 45%;
+    right: 45%;
     bottom: 0;
-    margin: 50vh auto;
     text-indent: -9999em;
     border-top: 1.1em solid #E0E0E0;
     border-right: 1.1em solid #E0E0E0;

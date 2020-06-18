@@ -17,6 +17,10 @@ img {
 }
 
 @media screen and (max-width: 500px) {
+    body {
+        margin: 20px;
+    }
+
     h1 {
         font-size: 20px;
     }

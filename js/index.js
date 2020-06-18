@@ -67,9 +67,8 @@ function toggle(isPath = false, isToggle = true) {
     scroll_toggle()
     if (isPost) {
         posts_before_loading()
-        main.style.display = "none"
-        posts.style.display = "inline"
-        document.getElementById("loader").style.display = "inline"
+
+        // document.getElementById("loader").style.display = "inline"
 
         scrollTo(0, 0)
         iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
@@ -218,6 +217,13 @@ function posts_loading() {
     const elm = document.getElementById("iframe-posts")
     elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
     document.getElementById("loader").style.display = "none"
+
+    if (isPost) {
+        const main = document.getElementById("main")
+        const posts = document.getElementById("posts")
+        main.style.display = "none"
+        posts.style.display = "inline"
+    }
 }
 
 //スクロール表示・非表示の切り替え
