@@ -189,7 +189,7 @@ body#index {
 }
 
 #share {
-    margin-top: 25px;
+    margin-top: 24px;
     display: inline-block;
     text-align: right;
     color: #616161;
@@ -249,13 +249,14 @@ li a:hover {
     background-color: rgba(0, 0, 0, .04);
 }
 
-#loader,#loader:after {
+#loader, #loader:after {
     border-radius: 50%;
     width: 7em;
     height: 7em;
     z-index: 4;
     text-align: center;
 }
+
 #loader {
     font-size: 8px;
     position: fixed;
@@ -263,7 +264,7 @@ li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    margin:  50vh auto;
+    margin: 50vh auto;
     text-indent: -9999em;
     border-top: 1.1em solid #E0E0E0;
     border-right: 1.1em solid #E0E0E0;
@@ -275,6 +276,7 @@ li a:hover {
     -webkit-animation: load8 0.7s infinite linear;
     animation: load8 0.7s infinite linear;
 }
+
 @-webkit-keyframes load8 {
     0% {
         -webkit-transform: rotate(0deg);
@@ -285,6 +287,7 @@ li a:hover {
         transform: rotate(360deg);
     }
 }
+
 @keyframes load8 {
     0% {
         -webkit-transform: rotate(0deg);
@@ -317,6 +320,18 @@ li a:hover {
     #posts {
         width: 90vw;
     }
+
+    #navigation-bar {
+        height: 70px;
+    }
+
+    #back {
+        margin-top: 15px;
+    }
+
+    #share {
+        margin-top: 17px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -328,8 +343,18 @@ li a:hover {
         font-size: 3rem;
     }
 
+    #navigation-bar {
+        height: 50px;
+    }
+
     #back {
         font-size: 13px;
         width: 70px;
+        line-height: 38px;
+        margin-top: 7px;
+    }
+
+    #share {
+        margin-top: 8px;
     }
 }

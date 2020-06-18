@@ -3,6 +3,10 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+h1 {
+    font-size: 28px;
+}
+
 img {
     display: block;
     width: 100%;
@@ -10,4 +14,10 @@ img {
 
 #overview {
     display: none;
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 20px;
+    }
 }
