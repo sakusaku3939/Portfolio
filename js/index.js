@@ -13,6 +13,11 @@ $(window).on('load', function () {
     scroll_toggle()
 })
 
+//ロード時
+Pace.on('done', function () {
+    $('#loader').fadeIn(300)
+})
+
 //戻るボタンが押された場合
 function back() {
     window.history.back()
@@ -57,8 +62,6 @@ $(document).on('click touchend', function () {
 
 //記事表示・非表示の切り替え
 function toggle(isPath = false, isToggle = true) {
-    const main = document.getElementById("main")
-    const posts = document.getElementById("posts")
     const iframe = document.getElementById("iframe-posts")
     let addPath = isPath ? "./" : "../"
 
@@ -67,12 +70,11 @@ function toggle(isPath = false, isToggle = true) {
     scroll_toggle()
     if (isPost) {
         posts_before_loading()
-
-        // document.getElementById("loader").style.display = "inline"
-
         scrollTo(0, 0)
         iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
     } else {
+        const main = document.getElementById("main")
+        const posts = document.getElementById("posts")
         main.style.display = "inline"
         posts.style.display = "none"
         iframe.contentWindow.location.replace(addPath + "hold.html")
@@ -216,7 +218,6 @@ function posts_loading() {
 
     const elm = document.getElementById("iframe-posts")
     elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
-    document.getElementById("loader").style.display = "none"
 
     if (isPost) {
         const main = document.getElementById("main")
