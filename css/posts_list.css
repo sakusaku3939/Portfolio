@@ -15,10 +15,10 @@ body::-webkit-scrollbar {
 .card-skin {
     overflow: hidden;
     box-shadow: 0 0 15px rgba(0, 0, 0, .2);
-    transition: 0.3s;
+    transition: 0.15s;
 }
 
-.card-skin:hover {
+.card-skin:active {
     transform: scale(0.98);
 }
 
@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
 /*--------------------------------------------*/
 @media screen and (max-width: 1000px) {
     .card {
-        width: 45%;
+        width: 44vw;
         margin: 0 0 3vw 3vw;
     }
 }
@@ -79,7 +79,7 @@ body::-webkit-scrollbar {
 
     .card {
         text-align: left;
-        width: 90%;
-        margin: 0 0 4vw;
+        width: 90vw;
+        margin: 0 0 2vw;
     }
 }

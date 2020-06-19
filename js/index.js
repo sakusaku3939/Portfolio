@@ -3,19 +3,19 @@ window.addEventListener('popstate', () => {
 }, false)
 
 let isPost = false  //記事が表示されているか
+let isPost_loading_now = false  //記事の読み込み中か
+let isPost_click = false  //記事がクリックされたか(重複クリック防止)
+setPost_click = (bool) => isPost_click = bool
+getPost_click = () => isPost_click
+
 let isMin = false  //横幅が1000px以下か
 let post_data = {}  //記事データ(連想配列)を格納する変数
 
-//読み込み時
-$(window).on('load', function () {
-    toggle(true, location.search !== '')
-    form_pos()
-    scroll_toggle()
-})
-
-//ロード時
+//読み込み完了時
 Pace.on('done', function () {
     $('#loader').fadeIn(300)
+    toggle(true, location.search !== '')
+    form_pos()
 })
 
 //戻るボタンが押された場合
@@ -37,7 +37,7 @@ window.addEventListener('resize', function () {
         }
         resizeTimer = setTimeout(function () {
             scroll_toggle()
-        }, 300);
+        }, 500);
     }
     //縦幅変更
     if (lastInnerHeight !== window.innerHeight) {
@@ -52,7 +52,6 @@ window.addEventListener('resize', function () {
 $('#iframe-list').on('load', function () {
     const iframe = $('#iframe-list').contents()
     iframe.on('click touchend', form_off);
-    iframe_height()
 });
 
 //ドキュメント全体のクリックリスナー
@@ -66,8 +65,6 @@ function toggle(isPath = false, isToggle = true) {
     let addPath = isPath ? "./" : "../"
 
     if (isToggle) isPost = !isPost
-
-    scroll_toggle()
     if (isPost) {
         posts_before_loading()
         scrollTo(0, 0)
@@ -80,6 +77,7 @@ function toggle(isPath = false, isToggle = true) {
         iframe.contentWindow.location.replace(addPath + "hold.html")
     }
     share()
+    scroll_toggle()
 }
 
 //外部リンクから記事ページに来た場合、phpから直接記事データを格納する
@@ -208,12 +206,14 @@ function copy_clipboard() {
 
 //記事ページの設定（読み込み前）
 function posts_before_loading() {
+    isPost_loading_now = true
     const elm = document.getElementById("iframe-posts")
     elm.style.height = "100vh"
 }
 
 //記事ページの設定（読み込み後）
 function posts_loading() {
+    isPost_loading_now = false
     $("#iframe-posts").contents().on('click touchend', share_off)
 
     const elm = document.getElementById("iframe-posts")
@@ -224,23 +224,29 @@ function posts_loading() {
         const posts = document.getElementById("posts")
         main.style.display = "none"
         posts.style.display = "inline"
+        setPost_click(false)
     }
 }
 
 //スクロール表示・非表示の切り替え
 function scroll_toggle() {
     const index = document.getElementById("index")
-    isPost ? posts_loading() : iframe_height()
     if (window.matchMedia('(max-width: 1000px)').matches) {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
         $('#form').css('height', '425px')
+        isPost ? posts_loading() : iframe_height()
     } else {
         isMin = false
-        index.style.overflowY = isPost ? "scroll" : "hidden"
         const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
         $('#form').css('height', (window.innerHeight / 2 - 160) + 'px')
+        if (isPost) {
+            posts_loading()
+            index.style.overflowY = "scroll"
+        } else {
+            index.style.overflowY = "hidden"
+        }
     }
 }
 
@@ -248,6 +254,6 @@ function scroll_toggle() {
 function iframe_height() {
     const elm = document.getElementById("iframe-list");
     if (window.matchMedia('(max-width: 1000px)').matches) {
-        elm.style.height = elm.contentWindow.document.body.scrollHeight + "px";
+        elm.style.height = 10 + elm.contentWindow.document.body.scrollHeight + "px";
     }
 }
