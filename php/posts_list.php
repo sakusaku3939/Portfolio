@@ -86,9 +86,11 @@ function _parameter($folder)
     window.parent.setPost_data(<?php echo $json?>)
 
     function click_posts(date, parameter) {
-        window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
-        window.parent.history.pushState(null, null, "?posts=" + parameter)
-        window.parent.toggle()
+        if (!window.parent.getPost_click()) {
+            window.parent.setPost_click(true)
+            window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
+            window.parent.history.pushState(null, null, "?posts=" + parameter)
+        }
     }
 </script>
 </body>
