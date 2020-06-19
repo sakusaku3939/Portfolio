@@ -213,13 +213,13 @@ function posts_before_loading() {
 
 //記事ページの設定（読み込み後）
 function posts_loading() {
-    isPost_loading_now = false
-    $("#iframe-posts").contents().on('click touchend', share_off)
-
-    const elm = document.getElementById("iframe-posts")
-    elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
-
     if (isPost) {
+        isPost_loading_now = false
+        $("#iframe-posts").contents().on('click touchend', share_off)
+
+        const elm = document.getElementById("iframe-posts")
+        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
+
         const main = document.getElementById("main")
         const posts = document.getElementById("posts")
         main.style.display = "none"
