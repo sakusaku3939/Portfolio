@@ -1,1 +1,6 @@
-{}
+{
+  "require": {
+    "ext-mbstring": "*",
+    "ext-json": "*"
+  }
+}
