@@ -66,7 +66,6 @@ function toggle(isPath = false, isToggle = true) {
 
     if (isToggle) isPost = !isPost
     if (isPost) {
-        posts_before_loading()
         scrollTo(0, 0)
         iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
     } else {
@@ -215,16 +214,16 @@ function posts_before_loading() {
 function posts_loading() {
     if (isPost) {
         isPost_loading_now = false
-        $("#iframe-posts").contents().on('click touchend', share_off)
-
-        const elm = document.getElementById("iframe-posts")
-        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
-
         const main = document.getElementById("main")
         const posts = document.getElementById("posts")
         main.style.display = "none"
         posts.style.display = "inline"
         setPost_click(false)
+
+        $("#iframe-posts").contents().on('click touchend', share_off)
+
+        const elm = document.getElementById("iframe-posts")
+        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
     }
 }
 
@@ -235,18 +234,13 @@ function scroll_toggle() {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
         $('#form').css('height', '425px')
-        isPost ? posts_loading() : iframe_height()
+        if (!isPost) iframe_height()
     } else {
         isMin = false
         const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
         $('#form').css('height', (window.innerHeight / 2 - 160) + 'px')
-        if (isPost) {
-            posts_loading()
-            index.style.overflowY = "scroll"
-        } else {
-            index.style.overflowY = "hidden"
-        }
+        index.style.overflowY = isPost ? "scroll" : "hidden"
     }
 }
 
