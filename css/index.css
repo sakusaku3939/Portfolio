@@ -196,7 +196,7 @@ body#index {
     margin-top: 24px;
     display: inline-block;
     text-align: right;
-    color: #616161;
+    color: #424242;
     position: absolute;
     right: 5px;
     padding: 7px 11px 3px 8px;
@@ -243,7 +243,7 @@ li a {
     width: 100%;
     height: 50px;
     line-height: 50px;
-    color: #525252;
+    color: #424242;
     text-decoration: none;
     display: block;
     font-family: sans-serif;
