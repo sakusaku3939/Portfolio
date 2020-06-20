@@ -224,6 +224,9 @@ function posts_loading() {
 
         const elm = document.getElementById("iframe-posts")
         elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
+
+        const index = document.getElementById("index")
+        index.style.overflowY = "scroll"
     }
 }
 
@@ -240,7 +243,7 @@ function scroll_toggle() {
         const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
         $('#form').css('height', (window.innerHeight / 2 - 160) + 'px')
-        index.style.overflowY = isPost ? "scroll" : "hidden"
+        if (!isPost) index.style.overflowY = "hidden"
     }
 }
 
