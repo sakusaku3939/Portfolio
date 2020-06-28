@@ -31,6 +31,17 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
 }
 
+.card_date::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background-color: #ffffff;
+}
+
 .card_date {
     position: absolute;
     font-family: 'Open Sans', sans-serif;
@@ -39,9 +50,9 @@ body::-webkit-scrollbar {
     z-index: 1;
     top: 8px;
     left: 20px;
-    padding-right: 12px;
-    padding-bottom: 3px;
-    border-bottom: solid 1px #ffffff;
+    /*padding-left: 1px;*/
+    /*padding-right: -12px;*/
+    /*padding-bottom: 3px;*/
 }
 
 .card_textbox {
