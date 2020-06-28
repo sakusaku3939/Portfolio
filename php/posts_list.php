@@ -26,7 +26,7 @@ foreach ($post_data as $post) {
     echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
         '<div class="card_date">2020.1.3</div>' .
         '<div class="card_imgframe"
-         style="background-image: linear-gradient(to bottom,rgba(0, 0, 0, .3),transparent,transparent,transparent,rgba(0, 0, 0, .2),rgba(0, 0, 0, .5)), url(' . $post['image'] . ')
+         style="background-image: linear-gradient(to bottom,rgba(0, 0, 0, .3),transparent,transparent,transparent,transparent,rgba(0, 0, 0, .2),rgba(0, 0, 0, .4)), url(' . $post['image'] . ')
          "></div>' .
         '<div class="card_textbox">' .
         '<div class="card_titletext">' . $post['title'] . '</div>' .
