@@ -100,7 +100,11 @@ function setPost_data(data) {
 //メールフォームの座標をセット
 function form_pos() {
     const pos = $('.mail').offset()
-    $('#form').css('left', (pos.left - 118) + 'px')
+    if (isMin) {
+        $('#form').css('left', (pos.left - 118) + 'px')
+    } else {
+        $('#form').css('left', (pos.left - 125) + 'px')
+    }
 }
 
 //フォームのON/OFF

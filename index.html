@@ -23,24 +23,27 @@
 <div id="loader">
     <div id="main">
         <div class="side-bar">
-            <div class="title">Portfolio</div>
-            <div class="sns_box">
-                <div style="display: inline-block">
-                    <div class="sns_button twitter">
-                        <a href="https://twitter.com/_aokiyuki" title="Twitter"><i class="fa fa-twitter"></i></a>
+            <div id="vertical">
+                <div class="title">Portfolio</div>
+                <div class="sns_box">
+                    <div style="display: inline-block">
+                        <div class="sns_button twitter">
+                            <a href="https://twitter.com/_aokiyuki" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        </div>
+                        <div class="sns_button youtube">
+                            <a href="https://www.youtube.com/c/3939jp" title="YouTube"><i
+                                    class="fab fa-youtube"></i></a>
+                        </div>
+                        <div class="sns_button mail">
+                            <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
+                        </div>
+                        <div class="sns_button github">
+                            <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
+                        </div>
                     </div>
-                    <div class="sns_button youtube">
-                        <a href="https://www.youtube.com/c/3939jp" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <div id="form">
+                        <iframe id="iframe-form" src="form.html"></iframe>
                     </div>
-                    <div class="sns_button mail">
-                        <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
-                    </div>
-                    <div class="sns_button github">
-                        <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
-                    </div>
-                </div>
-                <div id="form">
-                    <iframe id="iframe-form" src="form.html"></iframe>
                 </div>
             </div>
         </div>
@@ -67,21 +70,5 @@
     </div>
     <iframe id="iframe-posts" src="" onLoad="posts_loading()" scrolling="no"></iframe>
 </div>
-<script>
-    // body読み込み時に一度だけbodyサイズを設定
-    document.body.onload = ()=>{
-        document.body.style.minHeight = window.innerHeight + 'px';
-    }
-
-    // リサイズを停止して500ms後にbodyサイズを設定
-    let timeoutId;
-    window.addEventListener("resize", () => {
-        clearTimeout(timeoutId);
-
-        timeoutId = setTimeout(() => {
-            document.body.style.minHeight = window.innerHeight + 'px';
-        }, 500);
-    });
-</script>
 </body>
 </html>

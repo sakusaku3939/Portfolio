@@ -68,11 +68,17 @@ body#index {
     display: inline;
 }
 
+#vertical {
+    position: relative;
+    top: 55%;
+    -webkit-transform: translateY(-55%);
+    transform: translateY(-55%);
+}
+
 .title {
     font-family: "Catamaran", sans-serif;
     font-size: 5rem;
     font-weight: 600;
-    margin-top: 45vh;
 }
 
 .sns_box {
@@ -258,6 +264,13 @@ li a:hover {
         width: 100vw;
         height: 40vh;
         vertical-align: middle;
+    }
+
+    #vertical {
+        position: initial;
+        top: initial;
+        -webkit-transform: initial;
+        transform: initial;
     }
 
     .title {
