@@ -21,11 +21,16 @@ body#index {
     display: none;
 }
 
+:root {
+    --vh: 1vh;
+}
+
 .side-bar {
     color: #FAFAFA;
     text-align: center;
     width: 34vw;
-    height: 100vh;
+    /*height: 100vh;*/
+    height: calc(var(--vh, 1vh) * 100);
 
     display: table-cell;
     vertical-align: middle;
