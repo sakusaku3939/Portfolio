@@ -12,6 +12,10 @@ body#index {
     overflow-y: hidden;
 }
 
+:root {
+    --vh: 0;
+}
+
 /*--------------------------------------------*/
 #main {
     display: inline;
@@ -21,15 +25,10 @@ body#index {
     display: none;
 }
 
-:root {
-    --vh: 0;
-}
-
 .side-bar {
     color: #FAFAFA;
     text-align: center;
     width: 34vw;
-    /*height: 100vh;*/
     height: calc(var(--vh, 1vh) * 100);
 
     display: table-cell;
@@ -39,7 +38,7 @@ body#index {
 #iframe-list {
     position: absolute;
     width: 65vw;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     border: none;
 }
 
@@ -258,7 +257,7 @@ li a:hover {
     background-color: rgba(0, 0, 0, .04);
 }
 /*--------------------------------------------*/
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
     .title {
         font-size: 4rem;
     }
