@@ -16,12 +16,12 @@ img {
     display: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 450px) {
     body {
         margin: 20px;
     }
 
     h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 }

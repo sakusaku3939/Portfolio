@@ -200,7 +200,7 @@ body#index {
     margin-top: 24px;
     display: inline-block;
     text-align: right;
-    color: #424242;
+    color: #515151;
     position: absolute;
     right: 5px;
     padding: 7px 11px 3px 8px;
@@ -303,6 +303,10 @@ li a:hover {
 
     .title {
         font-size: 3rem;
+    }
+
+    #posts {
+        width: 95vw;
     }
 
     #navigation-bar {
