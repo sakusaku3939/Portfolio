@@ -11,12 +11,16 @@ getPost_click = () => isPost_click
 let isMin = false  //横幅が1000px以下か
 let post_data = {}  //記事データ(連想配列)を格納する変数
 
+//準備完了時
+$(document).ready(function () {
+    sideBar_height()
+})
+
 //読み込み完了時
 Pace.on('done', function () {
     $('#loader').fadeIn(300)
     toggle(true, location.search !== '')
     form_pos()
-    sideBar_height()
 })
 
 //戻るボタンが押された場合
@@ -264,12 +268,15 @@ function iframe_height() {
 
 // ブラウザサイズを自動で取得してiOS対策
 function sideBar_height() {
-    if (!window.matchMedia('(max-width: 1000px)').matches) {
-        const hSize = $(window).height()
-        $(".side-bar").height(hSize)
-    } else if (!window.matchMedia('(max-width: 500px)').matches) {
-        $(".side-bar").height('40vh')
-    } else {
-        $(".side-bar").height('30vh')
+    const isIOS = /[ \(]iP/.test(navigator.userAgent)
+    if (isIOS) {
+        if (!window.matchMedia('(max-width: 1000px)').matches) {
+            const hSize = $(window).height()
+            $(".side-bar").height(hSize)
+        } else if (!window.matchMedia('(max-width: 500px)').matches) {
+            $(".side-bar").height('40vh')
+        } else {
+            $(".side-bar").height('30vh')
+        }
     }
 }
