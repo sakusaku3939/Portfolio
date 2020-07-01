@@ -22,7 +22,7 @@ body#index {
 }
 
 :root {
-    --vh: 1vh;
+    --vh: 0;
 }
 
 .side-bar {
