@@ -268,7 +268,7 @@ function iframe_height() {
 
 // ブラウザサイズを自動で取得してiOS対策
 function sideBar_height() {
-    const isIOS = /[ \(]iP/.test(navigator.userAgent)
+    const isIOS = /[ (]iP/.test(navigator.userAgent)
     if (isIOS) {
         if (!window.matchMedia('(max-width: 1000px)').matches) {
             const hSize = $(window).height()

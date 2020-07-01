@@ -253,6 +253,12 @@ li a:hover {
     background-color: rgba(0, 0, 0, .04);
 }
 /*--------------------------------------------*/
+@media screen and (max-width: 1300px) {
+    .title {
+        font-size: 4rem;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .side-bar {
         width: 100vw;
