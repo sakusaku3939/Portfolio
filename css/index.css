@@ -28,6 +28,7 @@ body#index {
     height: 100vh;
 
     display: table-cell;
+    vertical-align: middle;
 }
 
 #iframe-list {
@@ -69,10 +70,10 @@ body#index {
 }
 
 #vertical {
-    position: relative;
-    top: 55%;
-    -webkit-transform: translateY(-55%);
-    transform: translateY(-55%);
+    /*position: relative;*/
+    /*top: 55%;*/
+    /*-webkit-transform: translateY(-55%);*/
+    /*transform: translateY(-55%);*/
 }
 
 .title {
@@ -263,14 +264,14 @@ li a:hover {
     .side-bar {
         width: 100vw;
         height: 40vh;
-        vertical-align: middle;
+        /*vertical-align: middle;*/
     }
 
     #vertical {
-        position: initial;
-        top: initial;
-        -webkit-transform: initial;
-        transform: initial;
+        /*position: initial;*/
+        /*top: initial;*/
+        /*-webkit-transform: initial;*/
+        /*transform: initial;*/
     }
 
     .title {
