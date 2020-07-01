@@ -89,6 +89,7 @@ body::-webkit-scrollbar {
     .card {
         width: 44vw;
         margin: 0 0 3vw 3vw;
+        min-width: initial;
     }
 }
 
@@ -100,6 +101,6 @@ body::-webkit-scrollbar {
     .card {
         text-align: left;
         width: 90vw;
-        margin: 0 0 2vw;
+        margin: 0 0 16px;
     }
 }
