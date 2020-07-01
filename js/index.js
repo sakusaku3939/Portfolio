@@ -30,6 +30,7 @@ let resizeTimer;
 let lastInnerWidth = window.innerWidth;
 let lastInnerHeight = window.innerHeight;
 window.addEventListener('resize', function () {
+    custom_vh()
     //横幅変更
     if (lastInnerWidth !== window.innerWidth) {
         lastInnerWidth = window.innerWidth;
@@ -45,8 +46,7 @@ window.addEventListener('resize', function () {
     if (lastInnerHeight !== window.innerHeight) {
         lastInnerHeight = window.innerHeight;
         if (!isMin) {
-            $('#form').css('height', (window.innerHeight / 2 - 170) + 'px')
-            custom_vh()
+            form_height()
         }
     }
 });
@@ -100,16 +100,6 @@ function setPost_data(data) {
     }
 }
 
-//メールフォームの座標をセット
-function form_pos() {
-    const pos = $('.mail').offset()
-    if (isMin) {
-        $('#form').css('left', (pos.left - 118) + 'px')
-    } else {
-        $('#form').css('left', (pos.left - 125) + 'px')
-    }
-}
-
 //フォームのON/OFF
 let isForm = false
 let form_on_animation = false
@@ -142,6 +132,17 @@ function form_off() {
             scroll_toggle()
         }, 100);
     }
+}
+
+//メールフォームの座標をセット
+function form_pos() {
+    const pos = $('.mail').offset()
+    $('#form').css('left', (pos.left - 118) + 'px')
+}
+
+//メールフォームのheightをセット
+function form_height() {
+    $('#form').css('height', (window.innerHeight / 2 - 118) + 'px')
 }
 
 //記事のシェア用リンク設定
@@ -249,7 +250,7 @@ function scroll_toggle() {
         isMin = false
         const iframe = document.getElementById("iframe-list")
         iframe.style.height = "100vh"
-        $('#form').css('height', (window.innerHeight / 2 - 160) + 'px')
+        form_height()
         if (!isPost) index.style.overflowY = "hidden"
     }
 }
