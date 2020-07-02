@@ -97,8 +97,6 @@ function setPost_data(data) {
     let index = _getIndex(location.search.substr(7), post_data, 'parameter')
     if (index !== -1) {
         sessionStorage.setItem("src", "posts/" + post_data[index]['date'] + "/" + post_data[index]['parameter'] + ".html")
-        const meta = getMeta_twitter_card()
-        meta['og:title'].setAttribute('content','取得成功')
     }
 }
 
@@ -269,19 +267,4 @@ function iframe_height() {
 function custom_vh() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-//Twitterカードのメタデータ取得
-function getMeta_twitter_card() {
-    const cardList = ['og:title', 'og:description', 'og:image']
-    let metaList = {}
-    const metaDiscre = document.head.children
-    const metaLength = metaDiscre.length
-    for (let i = 0; i < metaLength; i++) {
-        const proper = metaDiscre[i].getAttribute('property')
-        if (cardList.indexOf(proper) !== -1) {
-            metaList[proper] = metaDiscre[i]
-        }
-    }
-    return metaList
 }

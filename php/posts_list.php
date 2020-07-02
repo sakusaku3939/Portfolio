@@ -95,7 +95,6 @@ function _parameter($folder)
             window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
             window.parent.history.pushState(null, null, "?posts=" + parameter)
             window.parent.posts_before_loading()
-            window.parent.setPost_data(<?php echo $json?>)
         }
     }
 </script>
