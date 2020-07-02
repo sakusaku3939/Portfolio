@@ -13,7 +13,7 @@ let post_data = {}  //記事データ(連想配列)を格納する変数
 
 custom_vh()
 
-console.log(getMeta_twitter_card()['description'])
+console.log(getMeta_twitter_card()['og:description'])
 
 //読み込み完了時
 Pace.on('done', function () {
@@ -272,12 +272,12 @@ function custom_vh() {
 }
 
 function getMeta_twitter_card() {
-    const cardList = ['title', 'description', 'image']
+    const cardList = ['og:title', 'og:description', 'og:image']
     let metaList = {}
     const metaDiscre = document.head.children
     const metaLength = metaDiscre.length
     for (let i = 0; i < metaLength; i++) {
-        const proper = metaDiscre[i].getAttribute('name')
+        const proper = metaDiscre[i].getAttribute('property')
         if (cardList.indexOf(proper) !== -1) {
             metaList[proper] = metaDiscre[i]
             // dis.setAttribute('content','取得成功')
