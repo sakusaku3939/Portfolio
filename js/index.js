@@ -13,6 +13,8 @@ let post_data = {}  //記事データ(連想配列)を格納する変数
 
 custom_vh()
 
+
+
 //読み込み完了時
 Pace.on('done', function () {
     $('#loader').fadeIn(300)
@@ -267,4 +269,18 @@ function iframe_height() {
 function custom_vh() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+function getMeta_twitter_card() {
+    const metaDiscre = document.head.children;
+    const metaLength = metaDiscre.length;
+    for(let i = 0; i < metaLength; i++){
+        const proper = metaDiscre[i].getAttribute('name');
+        if(proper === 'description'){
+            return metaDiscre[i];
+            // dis.setAttribute('content','取得成功');
+            // console.log(dis);
+        }
+    }
+    return null
 }
