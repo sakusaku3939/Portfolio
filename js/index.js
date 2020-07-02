@@ -13,8 +13,6 @@ let post_data = {}  //記事データ(連想配列)を格納する変数
 
 custom_vh()
 
-console.log(getMeta_twitter_card()['og:description'])
-
 //読み込み完了時
 Pace.on('done', function () {
     $('#loader').fadeIn(300)
@@ -99,6 +97,8 @@ function setPost_data(data) {
     let index = _getIndex(location.search.substr(7), post_data, 'parameter')
     if (index !== -1) {
         sessionStorage.setItem("src", "posts/" + post_data[index]['date'] + "/" + post_data[index]['parameter'] + ".html")
+        const meta = getMeta_twitter_card()
+        meta['og:title'].setAttribute('content','取得成功')
     }
 }
 
@@ -271,6 +271,7 @@ function custom_vh() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
+//Twitterカードのメタデータ取得
 function getMeta_twitter_card() {
     const cardList = ['og:title', 'og:description', 'og:image']
     let metaList = {}
@@ -280,7 +281,6 @@ function getMeta_twitter_card() {
         const proper = metaDiscre[i].getAttribute('property')
         if (cardList.indexOf(proper) !== -1) {
             metaList[proper] = metaDiscre[i]
-            // dis.setAttribute('content','取得成功')
         }
     }
     return metaList
