@@ -18,7 +18,7 @@ define('SMTP_PORT', 587);
 define('MAIL_FROM', getenv('MAIL_USERNAME'));
 
 // 表示名
-define('MAIL_FROM_NAME', 'テスト');
+define('MAIL_FROM_NAME', 'Portfolioメールフォーム');
 
 // メールタイトル
-define('MAIL_SUBJECT', 'タイトル');
+define('MAIL_SUBJECT', 'Portfolioからメールが来ています！');
