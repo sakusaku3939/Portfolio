@@ -27,8 +27,8 @@ $mail->addAddress('yuukiyuuki223@gmail.com', 'Me');
 $mail->Subject = MAIL_SUBJECT;
 $mail->isHTML(false);
 
-$body .= '名前： '.$name.'<br>';
-$body .= 'メールアドレス： '.$email.'<br><br>';
+$body .= '名前： '.$name.$name.PHP_EOL;
+$body .= 'メールアドレス： '.$email.$name.PHP_EOL.$name.PHP_EOL;
 $body .= $message;
 $mail->Body = $body;
 
