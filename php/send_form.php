@@ -25,7 +25,7 @@ $mail->Encoding = "base64";
 $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
 $mail->addAddress('yuukiyuuki223@gmail.com', 'Me');
 $mail->Subject = MAIL_SUBJECT;
-$mail->isHTML(true);
+$mail->isHTML(false);
 
 $body .= '名前： '.$name.'<br>';
 $body .= 'メールアドレス： '.$email.'<br><br>';
