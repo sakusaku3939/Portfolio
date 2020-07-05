@@ -1,6 +1,5 @@
 {
   "require": {
-    "ext-mbstring": "*",
     "ext-json": "*",
     "phpmailer/phpmailer": "^6.1"
   }
