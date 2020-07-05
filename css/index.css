@@ -40,6 +40,7 @@ body#index {
     width: 65vw;
     height: calc(var(--vh, 1vh) * 100);
     border: none;
+    margin: 0 calc(50% - 50vw);
 }
 
 #iframe-form {
