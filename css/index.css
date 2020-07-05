@@ -306,21 +306,21 @@ li a:hover {
     }
 
     #posts {
-        width: 95vw;
+        width: 97vw;
     }
 
     #navigation-bar {
-        height: 50px;
+        height: 40px;
     }
 
     #back {
         font-size: 13px;
         width: 70px;
-        line-height: 38px;
-        margin-top: 7px;
+        line-height: 35px;
+        margin-top: 5px;
     }
 
     #share {
-        margin-top: 8px;
+        margin-top: 2px;
     }
 }
