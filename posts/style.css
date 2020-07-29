@@ -20,6 +20,12 @@ h2 {
     line-height: 1.3;
     border-bottom: 1px solid #ddd;
     padding-bottom: 0.1em;
+    margin-top: 50px;
+}
+
+h2:before {
+    font-size: calc(1.4rem + ((1vw - 0.64rem) * 2.1429));
+    content: '■ ';
 }
 
 img {
