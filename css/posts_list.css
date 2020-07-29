@@ -13,6 +13,7 @@ body::-webkit-scrollbar {
 }
 
 .card-skin {
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
     overflow: hidden;
     transition: 0.15s;
 }
@@ -24,21 +25,10 @@ body::-webkit-scrollbar {
 .card_imgframe {
     width: 100%;
     height: auto;
-    padding-top: 100%;
+    padding-top: 72%;
     background-size: cover;
     background-position: center center;
     box-sizing: border-box;
-}
-
-.card_date::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background-color: #ffffff;
 }
 
 .card_date {
@@ -47,22 +37,26 @@ body::-webkit-scrollbar {
     color: #ffffff;
     font-size: 12px;
     z-index: 1;
-    top: 8px;
-    left: 20px;
+    top: 4px;
+    left: 2px;
+    padding: 4px 12px;
+    margin: -4px;
+    background-color: rgba(0, 0, 0, .4);
 }
 
 .card_textbox {
-    position: absolute;
     font-family: 'Noto Sans JP', sans-serif;
-    color: #ffffff;
+    color: #424242;
     bottom: 0;
     height: auto;
-    padding: 28px 20px;
+    padding: 16px 20px;
     box-sizing: border-box;
+    min-height: 144px;
+    background: #ffffff;
 }
 
 .card_textbox > * + * {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .card_titletext {

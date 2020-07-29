@@ -21,12 +21,11 @@ foreach (getFilename('../posts/') as $folder) {
 }
 
 $json = json_encode($post_data, JSON_UNESCAPED_UNICODE);
-
 foreach ($post_data as $post) {
     echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
-        '<div class="card_date">'.date('Y.m.d',strtotime($post['date'])).'</div>' .
+        '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' .
         '<div class="card_imgframe"
-         style="background-image: linear-gradient(to bottom,rgba(0, 0, 0, .2),transparent,transparent,transparent,transparent,rgba(0, 0, 0, .2),rgba(0, 0, 0, .3)), url(' . $post['image'] . ')
+         style="background-image: url(' . $post['image'] . ')
          "></div>' .
         '<div class="card_textbox">' .
         '<div class="card_titletext">' . $post['title'] . '</div>' .
