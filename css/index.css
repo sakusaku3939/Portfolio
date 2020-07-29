@@ -144,7 +144,7 @@ body#index {
     left: 50%;
     transform: translateX(-50%);
     width: 70vw;
-    max-width: 55rem;
+    max-width: 64rem;
     margin-bottom: 2rem;
     animation-name: fadein;
     animation-duration: 0.7s;
