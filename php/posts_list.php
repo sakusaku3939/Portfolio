@@ -8,11 +8,13 @@ foreach (getFilename('../posts/') as $folder) {
         $content = file_get_contents($path);
         $title = _title($content);
         $overview = _overview($content);
+        $position = _position($content);
         $image_path = _image($content, $folder);
 
         $post_data[] = [
             'title' => $title,
             'overview' => $overview,
+            'position' => $position,
             'image' => $image_path,
             'parameter' => $parameter,
             'date' => $folder
@@ -25,7 +27,7 @@ foreach ($post_data as $post) {
     echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
         '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' .
         '<div class="card_imgframe"
-         style="background-image: url(' . $post['image'] . ')
+         style="background-image: url(' . $post['image'] . '); background-position: center ' . $post['position'] . ';
          "></div>' .
         '<div class="card_textbox">' .
         '<div class="card_titletext">' . $post['title'] . '</div>' .
@@ -52,6 +54,14 @@ function _overview($content)
         return $overview[1];
     }
     return 'no overview';
+}
+
+function _position($content)
+{
+    if ($content and preg_match('!<div id="position">(.*?)</div>!s', $content, $overview)) {
+        return $overview[1];
+    }
+    return 'center';
 }
 
 function _image($content, $folder)

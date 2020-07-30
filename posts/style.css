@@ -34,7 +34,7 @@ img {
     width: 100%;
 }
 
-#overview {
+#overview, #position {
     display: none;
 }
 
