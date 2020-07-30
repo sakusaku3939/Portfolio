@@ -53,6 +53,12 @@ table tr:nth-child(odd) {
     background-color: #eee
 }
 
+.row img {
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 840px) {
     body {
         line-height: 2;
@@ -65,5 +71,10 @@ table tr:nth-child(odd) {
 
     h2 {
         font-size: 2.0rem;
+    }
+
+    .row img {
+        float: initial;
+        width: 100%;
     }
 }
