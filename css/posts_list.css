@@ -8,7 +8,7 @@ body::-webkit-scrollbar {
     width: 30%;
     min-width: 10rem;
     height: auto;
-    margin: 2vw 1vw 0 2vw;
+    margin: 0 1vw 2vw 2vw;
     display: inline-block;
 }
 
