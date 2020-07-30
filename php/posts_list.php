@@ -27,7 +27,7 @@ foreach ($post_data as $post) {
     echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
         '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' .
         '<div class="card_imgframe"
-         style="background-image: url(' . $post['image'] . '); background-position: center ' . $post['position'] . ';
+         style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';
          "></div>' .
         '<div class="card_textbox">' .
         '<div class="card_titletext">' . $post['title'] . '</div>' .
@@ -58,10 +58,10 @@ function _overview($content)
 
 function _position($content)
 {
-    if ($content and preg_match('!<div id="position">(.*?)</div>!s', $content, $overview)) {
-        return $overview[1];
+    if ($content and preg_match('!<div id="position">(.*?)\s(.*?)</div>!s', $content, $overview)) {
+        return $overview[1] . ' ' . $overview[2];
     }
-    return 'center';
+    return 'center center';
 }
 
 function _image($content, $folder)

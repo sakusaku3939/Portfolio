@@ -58,9 +58,20 @@ table tr:nth-child(odd) {
     display: flex;
     flex-wrap: wrap;
 }
+
 .row img {
     display: inline-block;
     width: 50%;
+}
+
+.four {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.four img {
+    display: inline-block;
+    width: 25%;
 }
 
 .code {
@@ -96,5 +107,10 @@ code {
     .row img {
         float: initial;
         width: 100%;
+    }
+
+    .four img {
+        display: inline-block;
+        width: 50%;
     }
 }
