@@ -66,7 +66,7 @@ function _position($content)
 
 function _image($content, $folder)
 {
-    if ($content and preg_match('!<img src="(.*?)" alt="">!s', $content, $image_path)) {
+    if ($content and preg_match('!<img src="(.*?)"!s', $content, $image_path)) {
         return '../posts/' . $folder . '/' . $image_path[1];
     }
     return '../image/NoImage.jpg';
