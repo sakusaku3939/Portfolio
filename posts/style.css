@@ -53,10 +53,13 @@ table tr:nth-child(odd) {
     background-color: #eee
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
 .row img {
-    float: left;
+    display: inline-block;
     width: 50%;
-    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 840px) {
