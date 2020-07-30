@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+<div id="overview">新型コロナウイルスに関する情報を取得してくれるSlackbot</div>
+<h1>COVID-19 bot</h1>
+<p>
+    最近新型コロナウイルスが流行しているということもあり、COVID-19に関する情報を取得してくれる対話式のチャットボットを作りました。
+    このボットは「Slack」といわれるチャットツールにて動作させることが出来ます。<br>
+
+</p>
+
+<img src="covid19-icon.jpg" alt="" style="width: 500px;">
+
+<p>
+    感染者数データは
+    <a href="https://www.stopcovid19.jp/" target="_blank">COVID-19 Japan</a>
+    より拝借しました。<br>
+</p>
+<h2>使用方法</h2>
+<p>
+    「covid19」の後に続くコマンドを打つことで情報を取得出来ます。<br>
+    現時点では全国の感染者数、都道府県別の感染者数の取得に対応しています。
+</p>
+<div class="code">
+    <code>covid19 - covid19の使用方法を表示
+        covid19 全国 - 全国の感染者数を表示
+        covid19 (都道府県名) - 指定した都道府県の累計陽性者数を表示</code>
+</div>
+
+<img src="output.gif" alt="">
+
+<h2>リンク</h2>
+<ul>
+    <li>GitHub<br>
+        <a href="https://github.com/sakusaku3939/covid19" target="_blank">https://github.com/sakusaku3939/covid19</a>
+    </li>
+</ul>
+<h2>使用技術</h2>
+<ul>
+    <li>言語・・・JavaScript（Node.js）</li>
+    <li>フレームワーク、ライブラリ・・・Hubot</li>
+    <li>ジェネレーター・・・Yeoman, generator-hubot</li>
+    <li>ツール・・・Slack, Git, GitHub, HerokuCLI, Vagrant, VirtualBox, WebStorm</li>
+    <li>OS・・・Ubuntu, Windows</li>
+</ul>
+<h2>制作期間</h2>
+<ul>
+    <li>2020.7.11 〜 2020.7.13</li>
+</ul>
+</body>
+</html>

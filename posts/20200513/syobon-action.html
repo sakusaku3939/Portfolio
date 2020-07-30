@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+<div id="overview">ちくさん制作の「しょぼんのアクション」をPythonで１から作り直したもの</div>
+<div id="position">bottom center</div>
+<h1>しょぼんのアクション Python版</h1>
+<p>
+    昔流行った某鬼畜ゲーム「しょぼんのアクション」を１から作り直してリメイクしたものです。
+    1面で登場する敵・トラップ・ステージについては完全に再現出来たと思います。<br>
+    また、Pythonでリメイクした利点としてExcelからのステージデータ読み取りに対応したため、簡単にステージの自作・改造が出来ます。
+</p>
+
+<div class="row">
+    <img src="syobon1.jpg" alt="">
+    <img src="syobon2.jpg" alt="">
+</div>
+
+<h2>良くなった点</h2>
+<ul>
+    <li>60fps対応。</li>
+    <li>Excelからステージデータが読み取れるため、簡単にステージ改造・自作が出来ます。</li>
+    <li>コードを追加・変更することで、簡単に様々な敵や要素が追加できます。</li>
+</ul>
+
+<div class="row">
+    <img src="syobon3.jpg" alt="">
+    <img src="syobon4.jpg" alt="">
+</div>
+
+<h2>ステージの改造方法</h2>
+<p>
+    resフォルダの中にあるステージデータ.xlsxのシート「1-1」を編集することでステージの改造・自作が出来ます。<br>
+    またステージに要素を追加する場合、それぞれステージデータに割り振られている番号を各セルに記入することで追加出来ます。
+</p>
+<img src="syobon-making.gif" alt="">
+
+<h2>リンク</h2>
+<ul>
+    <li>
+        正式リリース版DL<br>
+        <a href="https://github.com/sakusaku3939/SyobonAction/releases/tag/v1.0"
+           target="_blank">https://github.com/sakusaku3939/SyobonAction/releases/tag/v1.0</a><br>
+    </li>
+    <li>GitHub<br>
+        <a href="https://github.com/sakusaku3939/SyobonAction"
+           target="_blank">https://github.com/sakusaku3939/SyobonAction</a>
+    </li>
+    <li>
+        ちく制作しょぼんのアクション(原作)DL<br>
+        <a href="http://chibicon.net/slink/j062101/"
+           target="_blank">http://chibicon.net/slink/j062101/</a>
+    </li>
+</ul>
+<h2>使用技術</h2>
+<ul>
+    <li>言語・・・Python</li>
+    <li>フレームワーク、ライブラリ・・・Pygame, Tkinter, xlrd, cx_Freeze, NumPy</li>
+    <li>ツール・・・Git, GitHub, Excel, PyCharm</li>
+    <li>OS・・・Windows</li>
+</ul>
+<h2>制作期間</h2>
+<ul>
+    <li>2020.3.28 〜 2020.5.13</li>
+</ul>
+</body>
+</html>
