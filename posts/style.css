@@ -63,6 +63,17 @@ table tr:nth-child(odd) {
     width: 50%;
 }
 
+.code {
+    color: #FAFAFA;
+    background-color: #212121;
+    padding: 16px 40px 20px;
+    margin-bottom: 16px;
+}
+
+code {
+    white-space: pre-line;
+}
+
 @media screen and (max-width: 840px) {
     body {
         line-height: 2;
