@@ -2,6 +2,8 @@ window.addEventListener('popstate', () => {
     toggle(true)
 }, false)
 
+let isFirst_load = true  //最初の読み込み時か
+
 let isPost = false  //記事が表示されているか
 let isPost_loading_now = false  //記事の読み込み中か
 let isPost_click = false  //記事がクリックされたか(重複クリック防止)
@@ -15,9 +17,12 @@ custom_vh()
 
 //読み込み完了時
 Pace.on('done', function () {
-    $('#loader').fadeIn(300)
-    toggle(true, location.search !== '')
-    form_pos()
+    if (isFirst_load) {
+        isFirst_load = false
+        $('#loader').fadeIn(300)
+        if (!isPost_loading_now) toggle(true, location.search !== '')
+        form_pos()
+    }
 })
 
 //戻るボタンが押された場合
@@ -213,6 +218,7 @@ function copy_clipboard() {
 
 //記事ページの設定（読み込み前）
 function posts_before_loading() {
+    toggle(false)
     isPost_loading_now = true
     const elm = document.getElementById("iframe-posts")
     elm.style.height = "100vh"
