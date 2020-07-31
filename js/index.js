@@ -235,12 +235,16 @@ function posts_loading() {
 
         $("#iframe-posts").contents().on('click touchend', share_off)
 
-        const elm = document.getElementById("iframe-posts")
-        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
-
         const index = document.getElementById("index")
         index.style.overflowY = "scroll"
         scrollTo(0, 0)
+
+        const elm = document.getElementById("iframe-posts")
+        elm.style.height = "120vh"
+
+        setTimeout(function () {
+            elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
+        }, 100)
     }
 }
 
