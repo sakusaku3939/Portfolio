@@ -174,7 +174,7 @@ function share_on() {
         setTimeout(function () {
             isShare_menu = true
             share_on_animation = false
-        }, 100);
+        }, 200);
     }
 }
 
