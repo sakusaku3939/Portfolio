@@ -310,17 +310,17 @@ li a:hover {
     }
 
     #navigation-bar {
-        height: 40px;
+        height: 48px;
     }
 
     #back {
         font-size: 13px;
         width: 70px;
-        line-height: 35px;
+        line-height: 40px;
         margin-top: 5px;
     }
 
     #share {
-        margin-top: 2px;
+        margin-top: 5px;
     }
 }
