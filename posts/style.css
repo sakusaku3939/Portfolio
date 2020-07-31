@@ -35,6 +35,10 @@ img {
     margin-bottom: 16px;
 }
 
+a {
+    word-wrap: break-word;
+}
+
 #overview, #position {
     display: none;
 }
@@ -52,6 +56,14 @@ table th, table td {
 
 table tr:nth-child(odd) {
     background-color: #eee
+}
+
+.small {
+    width: 400px;
+}
+
+.medium {
+    width: 500px;
 }
 
 .row {
@@ -81,11 +93,13 @@ table tr:nth-child(odd) {
     margin-bottom: 16px;
 }
 
+/*@TODO 読み込み＆画像サイズ＆リンク見切れのスマホ対応*/
+
 code {
     white-space: pre-line;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 640px) {
     body {
         line-height: 2;
         margin: 20px;
@@ -102,6 +116,14 @@ code {
     h2:before {
         font-size: 1.9rem;
         content: '■ ';
+    }
+
+    .small {
+        width: 100%;
+    }
+
+    .medium {
+        width: 100%;
     }
 
     .row img {
