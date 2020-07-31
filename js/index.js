@@ -244,7 +244,7 @@ function posts_loading() {
 
         setTimeout(function () {
             elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
-        }, 100)
+        }, 300)
     }
 }
 
