@@ -74,7 +74,6 @@ function toggle(isPath = false, isToggle = true) {
 
     if (isToggle) isPost = !isPost
     if (isPost) {
-        scrollTo(0, 0)
         iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
     } else {
         const main = document.getElementById("main")
@@ -241,6 +240,7 @@ function posts_loading() {
 
         const index = document.getElementById("index")
         index.style.overflowY = "scroll"
+        scrollTo(0, 0)
     }
 }
 
