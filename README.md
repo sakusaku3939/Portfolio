@@ -1,6 +1,5 @@
 # Portfolio
 HTML,CSSべた書きで作ったサイトに記事管理機能やメールフォームを付けた自分用のポートフォリオサイトです。  
-HTML5から導入されたのHistoryAPIのpushState()メソッドを利用して「ページ遷移しないWebシステム」を自分なりに再現してみました。
 
 - 完成サイト  
 https://aokiyuki-portfolio.herokuapp.com/
