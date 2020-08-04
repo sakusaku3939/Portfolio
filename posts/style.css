@@ -24,7 +24,11 @@ h2 {
     margin-top: 50px;
 }
 
-h2:before {
+h2.no-block {
+    margin-top: 40px;
+}
+
+h2:not([class]):before {
     font-size: calc(1.4rem + ((1vw - 0.64rem) * 2.1429));
     content: '■ ';
 }
@@ -66,6 +70,10 @@ table tr:nth-child(odd) {
     width: 500px;
 }
 
+.large {
+    width: 80%;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -93,10 +101,34 @@ table tr:nth-child(odd) {
     margin-bottom: 16px;
 }
 
-/*@TODO 読み込み＆画像サイズ＆リンク見切れのスマホ対応*/
-
 code {
     white-space: pre-line;
+}
+
+.box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 2px #FF7043;
+    border-radius: 8px;
+}
+
+.box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 8px;
+    line-height: 1;
+    font-size: 20px;
+    background: #FFF;
+    color: #FF7043;
+    font-weight: bold;
+}
+
+.box p {
+    margin: 0;
+    padding: 8px;
 }
 
 @media screen and (max-width: 640px) {
@@ -123,6 +155,10 @@ code {
     }
 
     .medium {
+        width: 100%;
+    }
+
+    .large {
         width: 100%;
     }
 
