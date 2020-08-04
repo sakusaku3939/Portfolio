@@ -145,7 +145,7 @@ code {
         font-size: 2.0rem;
     }
 
-    h2:before {
+    h2:not([class]):before {
         font-size: 1.9rem;
         content: '■ ';
     }

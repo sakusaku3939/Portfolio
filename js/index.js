@@ -56,6 +56,14 @@ window.addEventListener('resize', function () {
     }
 });
 
+//スクロールリスナー
+window.addEventListener("scroll", () => {
+    if (isPost) {
+        const elm = document.getElementById("iframe-posts")
+        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
+    }
+});
+
 //記事一覧の読み込み時
 $('#iframe-list').on('load', function () {
     const iframe = $('#iframe-list').contents()
@@ -241,10 +249,6 @@ function posts_loading() {
 
         const elm = document.getElementById("iframe-posts")
         elm.style.height = "120vh"
-
-        setTimeout(function () {
-            elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
-        }, 300)
     }
 }
 
