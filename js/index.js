@@ -20,17 +20,15 @@ Pace.on('done', function () {
     if (isFirst_load) {
         isFirst_load = false
         $('#loader').fadeIn(300)
-        toggle(true, location.search !== '')
         if (location.search !== '') posts_loading()
         form_pos()
+        setTimeout(function () {
+            toggle(true, location.search !== '')
+        }, 500)
     } else {
         posts_loading()
     }
 })
-
-window.onload = function () {
-    scroll_toggle()
-}
 
 //戻るボタンが押された場合
 function back() {
