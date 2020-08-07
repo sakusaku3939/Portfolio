@@ -28,6 +28,10 @@ Pace.on('done', function () {
     }
 })
 
+window.onload = function () {
+    scroll_toggle()
+}
+
 //戻るボタンが押された場合
 function back() {
     window.history.back()
