@@ -20,8 +20,11 @@ Pace.on('done', function () {
     if (isFirst_load) {
         isFirst_load = false
         $('#loader').fadeIn(300)
-        if (!isPost_loading_now) toggle(true, location.search !== '')
+        toggle(true, location.search !== '')
+        if (location.search !== '') posts_loading()
         form_pos()
+    } else {
+        posts_loading()
     }
 })
 
