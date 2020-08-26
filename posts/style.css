@@ -101,10 +101,11 @@ table tr:nth-child(odd) {
     background-color: #212121;
     padding: 16px 40px 20px;
     margin-bottom: 16px;
+    overflow-x: auto;
 }
 
 code {
-    white-space: pre-line;
+    white-space: nowrap;
 }
 
 .box {
