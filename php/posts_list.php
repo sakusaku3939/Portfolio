@@ -114,7 +114,7 @@ function _parameter($folder)
         if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
             card.style.marginBottom = '96px'
         } else {
-            card.style.marginBottom = '16px'
+            card.style.marginBottom = '24px'
         }
     }
 </script>
