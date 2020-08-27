@@ -247,7 +247,9 @@ function posts_loading() {
         posts.style.display = "inline"
         setPost_click(false)
 
-        $("#iframe-posts").contents().on('click touchend', share_off)
+        $("#iframe-posts").on('load', function () {
+            $(this).contents().on('click touchend', share_off)
+        })
 
         const index = document.getElementById("index")
         index.style.overflowY = "scroll"

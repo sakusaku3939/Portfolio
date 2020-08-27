@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    touch-action: manipulation;
+    font-family: sans-serif;
+}
+
 body {
     background-image: url("../image/bg.jpg");
     background-position: center center;
@@ -170,13 +177,18 @@ body#index {
 }
 
 #navigation-bar {
+    position: relative;
     width: 100%;
     height: 80px;
-    margin-bottom: 15px;
 }
 
 #back {
-    margin-top: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
     width: 100px;
     line-height: 40px;
     font-size: 15px;
@@ -185,12 +197,13 @@ body#index {
     border: solid 1px #FAFAFA;
     border-radius: 5px;
     padding-right: 5px;
+    padding-top: 1px;
     transition-duration: 0.5s;
-    display: inline-block;
+    cursor: pointer;
 }
 
 .fa-angle-left {
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
 #back:hover {
@@ -198,13 +211,14 @@ body#index {
 }
 
 #share {
-    margin-top: 24px;
     display: inline-block;
-    text-align: right;
     color: #424242;
     position: absolute;
+    top: 51%;
     right: 5px;
-    padding: 7px 11px 3px 8px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    padding: 7px 12px 4px 8px;
     transition-duration: 0.1s;
 }
 
@@ -222,18 +236,13 @@ body#index {
 #share_menu {
     display: none;
     position: absolute;
+    top: 48px;
     right: 10px;
     padding: 5px 9px 2px 6px;
-
     list-style: none;
     width: 180px;
     background-color: #FAFAFA;
     box-shadow: 0 0 15px rgba(0, 0, 0, .2);
-}
-
-.menu_show {
-    margin-top: 30px;
-    display: inline-block;
 }
 
 .menu_icon {
@@ -252,6 +261,7 @@ li a {
     text-decoration: none;
     display: block;
     font-family: sans-serif;
+    cursor: pointer;
 }
 
 li a:hover {
@@ -286,14 +296,6 @@ li a:hover {
     #navigation-bar {
         height: 70px;
     }
-
-    #back {
-        margin-top: 15px;
-    }
-
-    #share {
-        margin-top: 17px;
-    }
 }
 
 @media screen and (max-width: 500px) {
@@ -310,17 +312,11 @@ li a:hover {
     }
 
     #navigation-bar {
-        height: 48px;
+        height: 64px;
     }
 
     #back {
         font-size: 13px;
         width: 70px;
-        line-height: 40px;
-        margin-top: 5px;
-    }
-
-    #share {
-        margin-top: 5px;
     }
 }
