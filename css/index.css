@@ -218,8 +218,10 @@ body#index {
     right: 5px;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-    padding: 7px 12px 4px 8px;
+    padding: 6px 11px 4px 8px;
     transition-duration: 0.1s;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
 }
 
 .fa-share-alt {
@@ -228,9 +230,6 @@ body#index {
 
 #share:active {
     background-color: rgba(0, 0, 0, .1);
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
 }
 
 #share_menu {
@@ -292,14 +291,6 @@ li a:hover {
 
     #posts {
         width: 90vw;
-    }
-
-    #navigation-bar {
-        /*height: 70px;*/
-    }
-
-    #back {
-        /*line-height: 38px;*/
     }
 }
 
