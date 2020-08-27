@@ -111,10 +111,8 @@ function _parameter($folder)
 
     window.onresize = function () {
         const card = document.getElementsByClassName('card-contents')[0]
-        if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
+        if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
             card.style.marginBottom = '96px'
-        } else {
-            card.style.marginBottom = '24px'
         }
     }
 </script>

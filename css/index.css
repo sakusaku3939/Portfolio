@@ -189,7 +189,7 @@ body#index {
     left: 0;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-    width: 100px;
+    width: 96px;
     line-height: 40px;
     font-size: 15px;
     text-align: center;
@@ -267,6 +267,7 @@ li a {
 li a:hover {
     background-color: rgba(0, 0, 0, .04);
 }
+
 /*--------------------------------------------*/
 @media screen and (max-width: 1400px) {
     .title {
@@ -294,9 +295,15 @@ li a:hover {
     }
 
     #navigation-bar {
-        height: 70px;
+        /*height: 70px;*/
+    }
+
+    #back {
+        /*line-height: 38px;*/
     }
 }
+
+
 
 @media screen and (max-width: 500px) {
     .side-bar {
@@ -321,6 +328,7 @@ li a:hover {
 
     #back {
         font-size: 13px;
-        width: 70px;
+        width: 72px;
+        line-height: 36px;
     }
 }
