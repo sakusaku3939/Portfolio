@@ -155,6 +155,10 @@ body::-webkit-scrollbar {
         margin: 0 0 16px;
     }
 
+    .card_textbox {
+        min-height: 144px;
+    }
+
     .card-contents:after {
         content: none;
     }
