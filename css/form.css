@@ -1,5 +1,6 @@
 html, body {
     min-height: 100%;
+    font-family: "Noto Sans JP", sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -65,7 +66,8 @@ form.hidden {
 label {
     position: absolute;
     top: 7px;
-    font: 400 15px Roboto;
+    font-weight: 400;
+    font-size: 15px;
     color: #A9A9A9;
     cursor: text;
     transition: 0.2s;
@@ -96,7 +98,8 @@ input:focus, input:valid {
 input:focus ~ label, input:valid ~ label {
     top: -12px;
     color: #FF6E40;
-    font: 700 12px Roboto;
+    font-weight: 700;
+    font-size: 12px;
 }
 
 textarea, textarea:focus {
@@ -107,7 +110,8 @@ textarea, textarea:focus {
     margin-top: 30px;
     border: 1px solid #FF6E40;
     outline: none;
-    font: 300 15px Roboto;
+    font-weight: 300;
+    font-size: 15px;
     resize: none;
 }
 
@@ -120,7 +124,8 @@ textarea:focus ~ label, textarea:valid ~ label, textarea:focus:focus ~ label, te
     top: 12px;
     left: 0;
     color: #FF6E40;
-    font: 700 12px Roboto;
+    font-weight: 700;
+    font-size: 12px;
 }
 
 textarea ~ label, textarea:focus ~ label {
