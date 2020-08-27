@@ -23,6 +23,7 @@ foreach (getFilename('../posts/') as $folder) {
 }
 
 $json = json_encode($post_data, JSON_UNESCAPED_UNICODE);
+echo '<div class="card-contents">';
 foreach ($post_data as $post) {
     echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
         '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' .
@@ -34,6 +35,7 @@ foreach ($post_data as $post) {
         '<div class="card_overviewtext">' . $post['overview'] . '</div>' .
         '</div></div>';
 }
+echo '</div>';
 
 function getFilename($directory)
 {
@@ -104,6 +106,15 @@ function _parameter($folder)
             window.parent.sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
             window.parent.history.pushState(null, null, "?posts=" + parameter)
             window.parent.posts_before_loading()
+        }
+    }
+
+    window.onresize = function () {
+        const card = document.getElementsByClassName('card-contents')[0]
+        if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)) {
+            card.style.marginBottom = '96px'
+        } else {
+            card.style.marginBottom = '16px'
         }
     }
 </script>
