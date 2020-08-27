@@ -277,7 +277,7 @@ li a:hover {
 @media screen and (max-width: 1000px) {
     .side-bar {
         width: 100vw;
-        height: 40vh;
+        height: 320px;
     }
 
     .title {
@@ -300,7 +300,7 @@ li a:hover {
 
 @media screen and (max-width: 500px) {
     .side-bar {
-        height: 30vh;
+        height: 240px;
     }
 
     .title {
