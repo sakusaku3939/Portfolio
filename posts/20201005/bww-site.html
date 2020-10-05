@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+<div id="overview">FRCチーム「BWW」の公式ホームページ制作</div>
+<h1>BWW New HP</h1>
+<p>
+    自分が所属しているFRCチーム「BWW」の新ホームページを1から制作しました。<br>
+    旧ホームページにはGoogle Sitesと呼ばれるSaaSサービスを使用していましたが、
+    モバイル時のデザイン崩れやSEO対策が出来ないこと、OGPが設定できないなどデメリットが目立ってきたため、今回1から作り直すことになりました。<br>
+    ホスティングサービスには表示速度や維持費の観点から静的サイトであるGitHub Pagesを採用し、HTML, CSS, JavaScriptのみを使用して制作しました。
+</p>
+<p>
+    お問い合わせフォームについては、PHPを使用することが出来ないため、GoogleフォームをカスタマイズしAjax送信を使用することで普通のフォームと遜色ない見た目に仕上げました。
+</p>
+<img src="home.png" alt="">
+<img src="frc.png" alt="">
+<img src="contact.png" alt="">
+
+<p>
+    ページ速度改善のために画像の遅延読み込みやWebp画像の切り替え処理実装、Jquery不使用などの対策を行いました。
+    画像の遅延読み込みには標準実装のObserver APIを使用し、独自実装によって外部との通信量を抑えました。
+</p>
+<div class="row">
+    <img src="speed1.png" alt="">
+    <img src="speed2.png" alt="">
+</div>
+
+<p>
+    また今回、プロトタイピングツールであるAdobe XDを使用し早期から完成イメージを示すことで、他メンバーと方向性の行き違いが起きないよう工夫しました。
+</p>
+<img src="mockup.png" alt="">
+
+<h2>リンク</h2>
+<ul>
+    <li>
+        完成サイト<br>
+        <a href="https://bww8231.fuji3.info/" target="_blank">https://bww8231.fuji3.info</a><br>
+    </li>
+    <li>GitHub<br>
+        <a href="https://github.com/frcbww/Website" target="_blank">https://github.com/frcbww/Website</a>
+    </li>
+    <li>プロトタイプ（Adobe XD）<br>
+        <a href="https://xd.adobe.com/view/8d3ba82a-27ab-43f4-997c-281b400d5363-d868/"
+           target="_blank">https://xd.adobe.com/view/8d3ba82a-27ab-43f4-997c-281b400d5363-d868/</a>
+    </li>
+    <li>
+        BWWブログ記事<br>
+        <a href="https://bwwfrcteam.blogspot.com/2020/10/blog-post.html#more"
+           target="_blank">https://bwwfrcteam.blogspot.com/2020/10/blog-post.html</a><br>
+    </li>
+</ul>
+<h2>使用技術</h2>
+<ul>
+    <li>言語・・・HTML, CSS, JavaScript</li>
+    <li>フレームワーク、ライブラリ・・・Anime.js, Modernizr</li>
+    <li>ツール・・・Git, GitHub Pages, Adobe XD, PHPStorm</li>
+    <li>OS・・・Windows</li>
+</ul>
+<h2>制作期間</h2>
+<ul>
+    <li>2020.8.16 〜 2020.10.5</li>
+</ul>
+</body>
+</html>
