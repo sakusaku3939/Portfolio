@@ -36,6 +36,16 @@ function back() {
     window.history.back()
 }
 
+//記事がクリックされた場合
+function click_posts(date, parameter) {
+    if (!isPost_click) {
+        isPost_click = true
+        sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
+        history.pushState(null, null, "?posts=" + parameter)
+        posts_before_loading()
+    }
+}
+
 //ウィンドウの横幅変更リスナー
 let resizeTimer;
 let lastInnerWidth = window.innerWidth;
@@ -52,6 +62,11 @@ window.addEventListener('resize', function () {
         resizeTimer = setTimeout(function () {
             scroll_toggle()
         }, 500);
+
+        const card = document.getElementsByClassName('card-contents')[0]
+        if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
+            card.style.marginBottom = '96px'
+        }
     }
     //縦幅変更
     if (lastInnerHeight !== window.innerHeight) {
@@ -70,12 +85,6 @@ window.addEventListener("scroll", () => {
     }
 });
 
-//記事一覧の読み込み時
-$('#iframe-list').on('load', function () {
-    const iframe = $('#iframe-list').contents()
-    iframe.on('click touchend', form_off);
-});
-
 //ドキュメント全体のクリックリスナー
 $(document).on('click touchend', function () {
     isPost ? share_off() : form_off()
@@ -84,17 +93,16 @@ $(document).on('click touchend', function () {
 //記事表示・非表示の切り替え
 function toggle(isPath = false, isToggle = true) {
     const iframe = document.getElementById("iframe-posts")
-    let addPath = isPath ? "./" : "../"
 
     if (isToggle) isPost = !isPost
     if (isPost) {
-        iframe.contentWindow.location.replace(addPath + sessionStorage.getItem('src'))
+        iframe.contentWindow.location.replace(sessionStorage.getItem('src'))
     } else {
         const main = document.getElementById("main")
         const posts = document.getElementById("posts")
         main.style.display = "inline"
         posts.style.display = "none"
-        iframe.contentWindow.location.replace(addPath + "hold.html")
+        iframe.contentWindow.location.replace("hold.html")
     }
     share()
     scroll_toggle()
@@ -209,7 +217,7 @@ function copy_clipboard() {
     const tmp = document.createElement("div");
     const pre = document.createElement('pre');
 
-    pre.style.webkitUserSelect = 'auto';
+    pre.style["webkitUserSelect"] = 'auto';
     pre.style.userSelect = 'auto';
     tmp.appendChild(pre).textContent = location.href;
 
@@ -267,21 +275,9 @@ function scroll_toggle() {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
         $('#form').css('height', '425px')
-        if (!isPost) iframe_height()
     } else {
         isMin = false
-        const iframe = document.getElementById("iframe-list")
-        iframe.style.height = "100vh"
         form_height()
-        if (!isPost) index.style.overflowY = "hidden"
-    }
-}
-
-//記事一覧のiframeのheightを設定
-function iframe_height() {
-    const elm = document.getElementById("iframe-list");
-    if (window.matchMedia('(max-width: 1000px)').matches) {
-        elm.style.height = 10 + elm.contentWindow.document.body.scrollHeight + "px";
     }
 }
 

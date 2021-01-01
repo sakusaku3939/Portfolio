@@ -14,40 +14,35 @@ body {
     background-color: #464646;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 body#index {
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 :root {
     --vh: 0;
 }
 
-/*--------------------------------------------*/
-#main {
-    display: inline;
-}
-
+/*  トップ --------------------------------------------*/
 #loader {
     display: none;
 }
 
 .side-bar {
+    position: fixed;
+    top: calc(var(--vh, 1vh) * 50);
+    transform: translateY(-50%);
     color: #FAFAFA;
     text-align: center;
-    width: 34vw;
-    height: calc(var(--vh, 1vh) * 100);
-
-    display: table-cell;
-    vertical-align: middle;
+    width: 32vw;
 }
 
 #iframe-list {
-    position: absolute;
-    width: 65vw;
-    height: calc(var(--vh, 1vh) * 100);
-    border: none;
-    margin: 0 calc(50% - 50vw);
+    margin-left: 32vw;
+    width: 68vw;
 }
 
 #iframe-form {
@@ -144,7 +139,125 @@ body#index {
     color: #616161;
 }
 
-/*--------------------------------------------*/
+/*  記事一覧 --------------------------------------------*/
+
+.card-contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.card-contents:before {
+    content: "";
+    display: block;
+    width: 28%;
+    min-width: 10rem;
+    margin: 1.2vw 1.6vw;
+    height: 0;
+    order: 1;
+}
+
+.card-contents:after {
+    content: "";
+    display: block;
+    width: 28%;
+    min-width: 10rem;
+    margin: 1.2vw 1.6vw;
+    height: 0;
+}
+
+.card {
+    position: relative;
+    width: 28%;
+    min-width: 10rem;
+    margin: 1.2vw 1.6vw;
+}
+
+.card-contents:before {
+    content: "";
+    display: block;
+    width: 28%;
+    min-width: 10rem;
+    margin: 1.2vw 1.6vw;
+    height: 0;
+    order: 1;
+}
+
+.card-contents:after {
+    content: "";
+    display: block;
+    width: 28%;
+    min-width: 10rem;
+    margin: 1.2vw 1.6vw;
+    height: 0;
+}
+
+.card-skin {
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    overflow: hidden;
+    transition: 0.15s;
+}
+
+.card-skin:active {
+    transform: scale(0.98);
+}
+
+.card_imgframe {
+    width: 100%;
+    height: auto;
+    padding-top: 72%;
+    background-size: cover;
+    box-sizing: border-box;
+}
+
+.card_date {
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
+    font-size: 12px;
+    z-index: 1;
+    top: 4px;
+    left: 2px;
+    padding: 4px 12px;
+    margin: -4px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.card_textbox {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #424242;
+    width: 100%;
+    height: auto;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    min-height: 160px;
+    background: #ffffff;
+}
+
+.card_textbox > * + * {
+    margin-top: 8px;
+}
+
+.card_titletext {
+    font-size: 25px;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card_overviewtext {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/*  記事ページ --------------------------------------------*/
 #posts {
     display: inline;
     position: absolute;
@@ -174,6 +287,7 @@ body#index {
     background-color: #FAFAFA;
     border: none;
     width: 100%;
+    margin-bottom: 32px;
 }
 
 #navigation-bar {
@@ -268,6 +382,24 @@ li a:hover {
 }
 
 /*--------------------------------------------*/
+@media screen and (max-width: 1600px) {
+    .card {
+        width: 44%;
+        margin: 1.6vw 2vw;
+        min-width: initial;
+    }
+
+    .card-contents:before {
+        content: none;
+    }
+
+    .card-contents:after {
+        width: 44%;
+        margin: 1.6vw 2vw;
+        min-width: initial;
+    }
+}
+
 @media screen and (max-width: 1400px) {
     .title {
         font-size: 64px;
@@ -276,6 +408,11 @@ li a:hover {
 
 @media screen and (max-width: 1000px) {
     .side-bar {
+        position: relative;
+        top: 0;
+        display: table-cell;
+        vertical-align: middle;
+        transform: none;
         width: 100vw;
         height: 320px;
     }
@@ -287,6 +424,7 @@ li a:hover {
     #iframe-list {
         position: static;
         width: 100vw;
+        margin-left: 0;
     }
 
     #posts {
@@ -294,7 +432,25 @@ li a:hover {
     }
 }
 
+@media screen and (max-width: 650px) {
+    body {
+        text-align: center;
+    }
 
+    .card {
+        text-align: left;
+        width: 90%;
+        margin: 0 0 16px;
+    }
+
+    .card_textbox {
+        min-height: 144px;
+    }
+
+    .card-contents:after {
+        content: none;
+    }
+}
 
 @media screen and (max-width: 500px) {
     .side-bar {
