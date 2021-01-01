@@ -102,15 +102,14 @@ function _parameter($folder)
                     <div class="sns_button twitter">
                         <a href="https://twitter.com/_aokiyuki" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </div>
-                    <div class="sns_button youtube">
-                        <a href="https://www.youtube.com/c/3939jp" title="YouTube"><i
-                                    class="fab fa-youtube"></i></a>
+                    <div class="sns_button github">
+                        <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
                     </div>
                     <div class="sns_button mail">
                         <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
                     </div>
-                    <div class="sns_button github">
-                        <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
+                    <div class="sns_button qiita">
+                        <a href="https://qiita.com/sakusaku3939" title="Qiita"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
                 <div id="form">

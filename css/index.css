@@ -127,12 +127,12 @@ body#index {
     color: #1B95E0;
 }
 
-.youtube:hover a {
-    color: #dd4b39;
-}
-
 .github:hover a {
     color: #000000;
+}
+
+.qiita:hover a {
+    color: #55C500;
 }
 
 .mail:hover a {
