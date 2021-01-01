@@ -149,25 +149,6 @@ body#index {
     margin-bottom: 24px;
 }
 
-.card-contents:before {
-    content: "";
-    display: block;
-    width: 28%;
-    min-width: 10rem;
-    margin: 1.2vw 1.6vw;
-    height: 0;
-    order: 1;
-}
-
-.card-contents:after {
-    content: "";
-    display: block;
-    width: 28%;
-    min-width: 10rem;
-    margin: 1.2vw 1.6vw;
-    height: 0;
-}
-
 .card {
     position: relative;
     width: 28%;
