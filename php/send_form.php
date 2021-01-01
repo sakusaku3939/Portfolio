@@ -22,11 +22,16 @@ $message = $_POST['message'];
 // メール内容設定
 $mail->CharSet = "UTF-8";
 $mail->Encoding = "base64";
-$mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
-$mail->addAddress('yuukiyuuki223@gmail.com', 'Me');
+try {
+    $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
+    $mail->addAddress(MAIL_USERNAME, 'Me');
+} catch (\PHPMailer\PHPMailer\Exception $e) {
+    echo '<div class="center"><span class="dli-close"></span><p>メールの送信に失敗しました</p></div>';
+}
 $mail->Subject = MAIL_SUBJECT;
 $mail->isHTML(false);
 
+$body = '';
 $body .= '名前： '.$name.PHP_EOL;
 $body .= 'メールアドレス： '.$email.PHP_EOL.PHP_EOL;
 $body .= $message;
