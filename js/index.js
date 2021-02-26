@@ -1,7 +1,3 @@
-window.addEventListener('popstate', () => {
-    toggle(true)
-}, false)
-
 let isFirst_load = true  //最初の読み込み時か
 
 let isPost = false  //記事が表示されているか
@@ -20,16 +16,30 @@ Pace.on('done', function () {
     if (isFirst_load) {
         isFirst_load = false
         $('#loader').fadeIn(300)
-        toggle(true, location.search !== '')
+        toggle(location.search !== '')
         if (location.search !== '') posts_loading()
         form_pos()
         setTimeout(function () {
             scroll_toggle()
         }, 300)
+        console.log("ok")
     } else {
         posts_loading()
     }
 })
+
+//戻る、進むのクリックリスナー
+window.addEventListener('popstate', () => {
+    toggle()
+    if (isPost) {
+        posts_loading()
+    } else {
+        const main = document.getElementById("main")
+        const posts = document.getElementById("posts")
+        main.style.display = "inline"
+        posts.style.display = "none"
+    }
+}, false)
 
 //戻るボタンが押された場合
 function back() {
@@ -91,19 +101,12 @@ $(document).on('click touchend', function () {
 });
 
 //記事表示・非表示の切り替え
-function toggle(isPath = false, isToggle = true) {
-    const iframe = document.getElementById("iframe-posts")
-
+function toggle(isToggle = true) {
     if (isToggle) isPost = !isPost
-    if (isPost) {
-        iframe.contentWindow.location.replace(sessionStorage.getItem('src'))
-    } else {
-        const main = document.getElementById("main")
-        const posts = document.getElementById("posts")
-        main.style.display = "inline"
-        posts.style.display = "none"
-        iframe.contentWindow.location.replace("hold.html")
-    }
+
+    const iframe = document.getElementById("iframe-posts")
+    iframe.contentWindow.location.replace(isPost ? sessionStorage.getItem('src') : "hold.html")
+
     share()
     scroll_toggle()
 }
@@ -239,7 +242,7 @@ function copy_clipboard() {
 
 //記事ページの設定（読み込み前）
 function posts_before_loading() {
-    toggle(false)
+    toggle()
     isPost_loading_now = true
     const elm = document.getElementById("iframe-posts")
     elm.style.height = "100vh"
