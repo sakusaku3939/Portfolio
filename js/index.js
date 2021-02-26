@@ -22,7 +22,6 @@ Pace.on('done', function () {
         setTimeout(function () {
             scroll_toggle()
         }, 300)
-        console.log("ok")
     } else {
         posts_loading()
     }
