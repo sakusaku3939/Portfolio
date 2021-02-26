@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+<div id="overview">BWWの活動日に活動報告を忘れないよう通知してくれるSlackbot</div>
+<h1>活動報告リマインダー</h1>
+<p>
+    自分が所属しているFRCチーム
+     <a href="https://bww8231.fuji3.info" target="_blank">BWW</a>
+    の活動日に毎回行う活動報告を忘れてしまうことが多かったため、TimeTreeから活動日の日程を取得し、
+    参加者からランダムで一人選んでSlackから通知するシステムを作りました。
+</p>
+
+<img src="screenshots.png" alt="" class="large">
+
+<p>
+    今回、リマインダー機能を追加するため、Slackbot開発にはGoogle Apps Script（GAS）を採用しました。<br>
+    また、活動日の取得にはTimeTree APIを使用しました。
+</p>
+
+<img src="output.gif" alt="">
+
+<h2>使用技術</h2>
+<ul>
+    <li>言語・・・Google Apps Script（GAS）</li>
+    <li>フレームワーク、ライブラリ・・・TimeTree API</li>
+    <li>ツール・・・Slack, TimeTree</li>
+    <li>OS・・・Windows</li>
+</ul>
+<h2>制作期間</h2>
+<ul>
+    <li>2020.12.25 〜 2020.12.28</li>
+</ul>
+</body>
+</html>
