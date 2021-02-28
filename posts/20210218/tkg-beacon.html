@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+<div id="overview">ビーコンを利用した、生徒と先生の位置情報共有Androidアプリ</div>
+<h1>TKG Beacon</h1>
+<p>
+    先生と入れ違いになることが多く不便だということから、ビーコンを利用して位置情報を共有できるアプリ「TKG Beacon」を共同開発しました。
+    アプリ名の由来は多摩科学技術高校から来ており、教室一つ一つにビーコンを置きそのビーコンのIDを取得することで位置を把握する仕組みになっています。
+</p>
+
+<!--<img src="tkg-beacon.jpg" alt="">-->
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/soyY8uM3568cAe" width="595" height="485"
+        style="border: 1px solid #CCC;margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+
+<p>
+    アプリには3つのタブがあり、メイン画面となる階層別の位置情報マップ、生徒や先生などの検索画面、アカウントやスキャン間隔の設定ができる設定画面があります。<br>
+    (検索画面は未完成なためAdobe XDで再現しています)
+</p>
+
+<div class="four">
+    <img src="video1.gif" alt="">
+    <img src="video2.gif" alt="">
+    <img src="video3.gif" alt="">
+    <img src="video4.gif" alt="">
+</div>
+
+<p>
+    初回起動時はログイン画面とパーミッション確認があり、ログイン画面ではパスワード漏洩のリスクやUXの向上などの観点から、
+    パスワードレス認証であるマジックリンクを採用しました。
+    この認証方法では、登録されたメールアドレス宛に1回限り使えるログイン用の認証リンクを送り、それをクリックすることでログインできます。
+</p>
+
+<div class="four">
+    <img src="onbording.gif" alt="">
+    <img src="onbording1.png" alt="">
+    <img src="onbording2.png" alt="">
+    <img src="onbording3.png" alt="">
+</div>
+
+
+<p>
+    今回制作したアプリはAndroidのみで動かすことができ、開発言語はKotlin、バックエンドにはFirebaseを使用しました。<br>
+    また、アプリを共同開発するにあたって認識のズレや要件の抜けが起きないよう、Adobe XDを使用し共同でUI設計を行いました。
+</p>
+
+<img src="adobe-xd.png" alt="">
+
+<h2>リンク</h2>
+<ul>
+    <li>リリース版<br>
+        <a href="https://github.com/sakusaku3939/Beacon/releases" target="_blank">https://github.com/sakusaku3939/Beacon/releases</a><br>
+    </li>
+    <li>プロトタイプ（Adobe XD）<br>
+        <a href="https://xd.adobe.com/view/5b8ae1ab-1d5e-49dc-92e6-69518574b684-0ed9/"
+           target="_blank">https://xd.adobe.com/view/5b8ae1ab-1d5e-49dc-92e6-69518574b684-0ed9/</a><br>
+    </li>
+    <li>GitHub<br>
+        <a href="https://github.com/sakusaku3939/Beacon" target="_blank">https://github.com/sakusaku3939/Beacon</a>
+    </li>
+</ul>
+<h2>使用技術</h2>
+<ul>
+    <li>言語・・・Kotlin</li>
+    <li>フレームワーク、ライブラリ・・・Firebase Auth, Firebase Cloud Firestore, Firebase Realtime Database, AltBeacon</li>
+    <li>ツール・・・Git, Adobe XD, Android Studio</li>
+    <li>OS・・・Windows</li>
+</ul>
+<h2>制作期間</h2>
+<ul>
+    <li>2020.11.9 〜 2021.2.18</li>
+</ul>
+</body>
+</html>
