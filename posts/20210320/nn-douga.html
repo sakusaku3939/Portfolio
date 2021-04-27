@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <title></title>
+</head>
+<body>
+<div id="overview">N予備校の「ニコニコ動画再現コース」を参考に制作したニコニコ動画の再現サイト</div>
+<h1>エヌエヌ動画</h1>
+<p>
+  N予備校の「ニコニコ動画再現コース」を参考に制作したニコニコ動画の再現サイトです。
+  投稿画面、閲覧画面、トップ画面、投稿した動画の一覧画面等が実装されています。<br>
+  フロントエンドはPugとBootstrapを利用し、動画再生にはdash.jsを利用することで、ほぼ全てのブラウザで視聴することが出来ます。
+  サーバーサイドはNode.jsとExpress.jsを利用し、セッション管理にはRedisを利用しました。<br>
+  動画用メディアサーバーはScala × Play Frameworkで作成し、動画のストリーミングやエンコード等にはFFmpegとMP4Boxを利用しました。
+</p>
+
+<img src="nn-douga1.png" alt="">
+<img src="nn-douga3.png" alt="">
+<img src="nn-douga2.png" alt="">
+
+<h2>使用技術</h2>
+<ul>
+  <li>言語・・・Pug, CSS, JavaScript, Node.js, Scala</li>
+  <li>フレームワーク、ライブラリ・・・Express.js, Play Framework, Akka</li>
+  <li>データベース・・・MySQL, Redis</li>
+  <li>ツール・・・Git, Vagrant, VirtualBox, FFmpeg, MP4Box, VSCode, IntelliJ</li>
+  <li>OS・・・Ubuntu, Windows</li>
+</ul>
+<h2>制作期間</h2>
+<ul>
+  <li>2021.3.6 〜 2021.3.19</li>
+</ul>
+<h2>参考資料</h2>
+<ul>
+  <li>N予備校「ニコニコ動画再現 Webアプリ」</li>
+</ul>
+</body>
+</html>
