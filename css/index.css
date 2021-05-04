@@ -31,6 +31,14 @@ body#index {
     display: none;
 }
 
+#main {
+    background-image: url("../image/bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .side-bar {
     position: fixed;
     top: calc(var(--vh, 1vh) * 50);
@@ -40,7 +48,7 @@ body#index {
     width: 32vw;
 }
 
-#iframe-list {
+#posts-grid {
     margin-left: 32vw;
     width: 68vw;
 }
@@ -176,7 +184,8 @@ body#index {
 }
 
 .card-skin {
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+    border-radius: 8px;
     overflow: hidden;
     transition: 0.15s;
 }
@@ -248,18 +257,22 @@ body#index {
     max-width: 64rem;
     margin-bottom: 2rem;
     animation-name: fadein;
-    animation-duration: 0.7s;
+    animation-duration: 0.4s;
     animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    z-index: 2;
 }
 
 @keyframes fadein {
     from {
         opacity: 0.5;
-        transform: translateX(-50%) translateY(10px);
+        transform: translateX(-50%) scale(0.98);
+        height: 100vh;
     }
     to {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translateX(-50%) scale(1);
+        height: 100vh;
     }
 }
 
@@ -269,6 +282,8 @@ body#index {
     border: none;
     width: 100%;
     margin-bottom: 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
 }
 
 #navigation-bar {
@@ -290,7 +305,7 @@ body#index {
     text-align: center;
     color: #FAFAFA;
     border: solid 1px #FAFAFA;
-    border-radius: 5px;
+    border-radius: 8px;
     padding-right: 5px;
     padding-top: 1px;
     transition-duration: 0.5s;
@@ -402,7 +417,7 @@ li a:hover {
         margin-top: 0;
     }
 
-    #iframe-list {
+    #posts-grid {
         position: static;
         width: 100vw;
         margin-left: 0;

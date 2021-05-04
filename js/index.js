@@ -35,7 +35,7 @@ window.addEventListener('popstate', () => {
     } else {
         const main = document.getElementById("main")
         const posts = document.getElementById("posts")
-        main.style.display = "inline"
+        main.style.filter = "none"
         posts.style.display = "none"
     }
 }, false)
@@ -90,7 +90,7 @@ window.addEventListener('resize', function () {
 window.addEventListener("scroll", () => {
     if (isPost) {
         const elm = document.getElementById("iframe-posts")
-        elm.style.height = 60 + elm.contentWindow.document.body.scrollHeight + "px"
+        elm.style.height = 72 + elm.contentWindow.document.body.scrollHeight + "px"
     }
 });
 
@@ -104,7 +104,10 @@ function toggle(isToggle = true) {
     if (isToggle) isPost = !isPost
 
     const iframe = document.getElementById("iframe-posts")
+    const main = document.getElementById("main")
     iframe.contentWindow.location.replace(isPost ? sessionStorage.getItem('src') : "hold.html")
+    main.style.pointerEvents = isPost ? "none" : "auto"
+    if (!isPost) main.style.position = "relative"
 
     share()
     scroll_toggle()
@@ -253,17 +256,15 @@ function posts_loading() {
         isPost_loading_now = false
         const main = document.getElementById("main")
         const posts = document.getElementById("posts")
-        main.style.display = "none"
+        main.style.filter = "blur(16px)"
+        main.style.position = "fixed"
         posts.style.display = "inline"
         setPost_click(false)
 
         $("#iframe-posts").on('load', function () {
             $(this).contents().on('click touchend', share_off)
         })
-
-        const index = document.getElementById("index")
-        index.style.overflowY = "scroll"
-        scrollTo(0, 0)
+        document.documentElement.scrollTop = 0
 
         const elm = document.getElementById("iframe-posts")
         elm.style.height = "120vh"

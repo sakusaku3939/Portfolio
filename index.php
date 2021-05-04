@@ -93,6 +93,24 @@ function _parameter($folder)
     <link rel="stylesheet" href="css/loading.css" type="text/css">
 </head>
 <body id="index">
+<div id="posts" style="display: none">
+    <div id="navigation-bar">
+        <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
+        <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i>
+            <ul id="share_menu">
+                <li><a onclick="copy_clipboard()"><span class="menu_icon">
+                <i class="fas fa-link"></i></span>リンクを取得</a></li>
+                <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
+                <i class="fab fa-twitter"></i></span>Twitter</a></li>
+                <li><a id="facebook" href="#" target="_blank"><span class="menu_icon">
+                <i class="fab fa-facebook-f"></i></span>Facebook</a></li>
+                <li><a id="pocket" href="#" target="_blank"><span class="menu_icon">
+                <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
+            </ul>
+        </div>
+    </div>
+    <iframe id="iframe-posts" src="" scrolling="no"></iframe>
+</div>
 <div id="loader">
     <div id="main">
         <div class="side-bar">
@@ -117,7 +135,7 @@ function _parameter($folder)
                 </div>
             </div>
         </div>
-        <div id="iframe-list">
+        <div id="posts-grid">
             <?php
             echo '<div class="card-contents">';
             foreach ($post_data as $post) {
@@ -151,24 +169,5 @@ function _parameter($folder)
 
 <script src="js/index.js" type="text/javascript"></script>
 <script> setPost_data(<?php echo $json?>) </script>
-
-<div id="posts" style="display: none">
-    <div id="navigation-bar">
-        <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
-        <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i>
-            <ul id="share_menu">
-                <li><a onclick="copy_clipboard()"><span class="menu_icon">
-                <i class="fas fa-link"></i></span>リンクを取得</a></li>
-                <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
-                <i class="fab fa-twitter"></i></span>Twitter</a></li>
-                <li><a id="facebook" href="#" target="_blank"><span class="menu_icon">
-                <i class="fab fa-facebook-f"></i></span>Facebook</a></li>
-                <li><a id="pocket" href="#" target="_blank"><span class="menu_icon">
-                <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
-            </ul>
-        </div>
-    </div>
-    <iframe id="iframe-posts" src="" scrolling="no"></iframe>
-</div>
 </body>
 </html>
