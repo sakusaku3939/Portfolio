@@ -184,7 +184,7 @@ body#index {
 }
 
 .card-skin {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+    box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
     border-radius: 8px;
     overflow: hidden;
     transition: 0.15s;
@@ -283,7 +283,7 @@ body#index {
     width: 100%;
     margin-bottom: 32px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+    box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
 }
 
 #navigation-bar {
