@@ -45,7 +45,7 @@ if (!$mail->send()) {
 }
 ?>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body::-webkit-scrollbar {
         display: none;

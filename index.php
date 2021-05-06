@@ -156,7 +156,7 @@ function _parameter($folder)
 </div>
 <!-- フォント -->
 <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
 <!-- アイコン -->
 <script src="https://kit.fontawesome.com/57176a007a.js" crossorigin="anonymous"></script>
