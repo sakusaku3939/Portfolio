@@ -141,8 +141,21 @@ body#index {
     color: #000000;
 }
 
-.qiita:hover a {
-    color: #55C500;
+.qiita {
+    position: relative;
+}
+
+#qiita-svg {
+    fill: white;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.qiita:hover #qiita-svg {
+    fill: #55C500;
 }
 
 .mail:hover a {
