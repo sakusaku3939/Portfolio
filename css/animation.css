@@ -1,0 +1,46 @@
+.posts-wrapper-animation {
+    animation-name: posts-blur;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    -webkit-animation: webkit-posts-blur 0.2s forwards ease-out;
+}
+
+.posts-animation {
+    animation-name: posts-fadein;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    -webkit-animation: posts-fadein 0.4s forwards ease-out;
+}
+
+@keyframes posts-blur {
+    from {
+        backdrop-filter: none;
+    }
+    to {
+        backdrop-filter: blur(16px);
+    }
+}
+
+@-webkit-keyframes webkit-posts-blur {
+    from {
+        -webkit-backdrop-filter: none;
+    }
+    to {
+        -webkit-backdrop-filter: blur(16px);
+    }
+}
+
+@keyframes posts-fadein {
+    from {
+        opacity: 0.5;
+        transform: translateX(-50%) scale(0.98);
+        height: 100vh;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        height: 100vh;
+    }
+}

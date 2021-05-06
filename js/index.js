@@ -33,10 +33,12 @@ window.addEventListener('popstate', () => {
     if (isPost) {
         posts_loading()
     } else {
-        const main = document.getElementById("main")
-        const posts = document.getElementById("posts")
-        main.style.filter = "none"
-        posts.style.display = "none"
+        const main = $("#main")
+        main.css("backdrop-filter", "none")
+        main.css("-webkit-backdrop-filter", "none")
+        document.getElementById("main").style.filter = "none"
+        document.getElementById("posts-wrapper").style.display = "none"
+        document.getElementById("index").style.overflowY = "scroll"
     }
 }, false)
 
@@ -71,11 +73,6 @@ window.addEventListener('resize', function () {
         resizeTimer = setTimeout(function () {
             scroll_toggle()
         }, 500);
-
-        const card = document.getElementsByClassName('card-contents')[0]
-        if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
-            card.style.marginBottom = '96px'
-        }
     }
     //縦幅変更
     if (lastInnerHeight !== window.innerHeight) {
@@ -87,7 +84,7 @@ window.addEventListener('resize', function () {
 });
 
 //スクロールリスナー
-window.addEventListener("scroll", () => {
+document.getElementById('posts-wrapper').addEventListener("scroll", () => {
     if (isPost) {
         const elm = document.getElementById("iframe-posts")
         elm.style.height = 72 + elm.contentWindow.document.body.scrollHeight + "px"
@@ -139,9 +136,7 @@ let form_off_animation = false
 function form_on() {
     if (!isForm && !form_off_animation) {
         $('#form').addClass('.form_show').fadeIn(200);
-        document.getElementById("index").style.overflowY = "hidden"
         form_pos()
-        document.documentElement.scrollTop = 0
 
         form_on_animation = true
         setTimeout(function () {
@@ -254,20 +249,28 @@ function posts_before_loading() {
 function posts_loading() {
     if (isPost) {
         isPost_loading_now = false
-        const main = document.getElementById("main")
-        const posts = document.getElementById("posts")
-        main.style.filter = "blur(16px)"
-        main.style.position = "fixed"
-        posts.style.display = "inline"
+        const index = document.getElementById("index")
+        index.style.overflowY = "hidden"
+
+        const main = $("#posts-wrapper")
+        main.css("backdrop-filter", "blur(16px)")
+        main.css("-webkit-backdrop-filter", "blur(16px)")
+
+        const posts_wrapper = document.getElementById("posts-wrapper")
+        posts_wrapper.style.display = "inline"
+        posts_wrapper.scrollTo(0, 0)
+
         setPost_click(false)
 
         $("#iframe-posts").on('load', function () {
             $(this).contents().on('click touchend', share_off)
         })
-        document.documentElement.scrollTop = 0
+        document.getElementById("iframe-posts").style.height = "120vh"
 
-        const elm = document.getElementById("iframe-posts")
-        elm.style.height = "120vh"
+        if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
+            const iframe_posts = document.getElementById("iframe-posts")
+            iframe_posts.style.marginBottom = '96px'
+        }
     }
 }
 

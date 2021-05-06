@@ -93,23 +93,25 @@ function _parameter($folder)
     <link rel="stylesheet" href="css/loading.css" type="text/css">
 </head>
 <body id="index">
-<div id="posts" style="display: none">
-    <div id="navigation-bar">
-        <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
-        <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i>
-            <ul id="share_menu">
-                <li><a onclick="copy_clipboard()"><span class="menu_icon">
+<div id="posts-wrapper" class="posts-wrapper-animation">
+    <div id="posts" class="posts-animation">
+        <div id="navigation-bar">
+            <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
+            <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i>
+                <ul id="share_menu">
+                    <li><a onclick="copy_clipboard()"><span class="menu_icon">
                 <i class="fas fa-link"></i></span>リンクを取得</a></li>
-                <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
+                    <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
                 <i class="fab fa-twitter"></i></span>Twitter</a></li>
-                <li><a id="facebook" href="#" target="_blank"><span class="menu_icon">
+                    <li><a id="facebook" href="#" target="_blank"><span class="menu_icon">
                 <i class="fab fa-facebook-f"></i></span>Facebook</a></li>
-                <li><a id="pocket" href="#" target="_blank"><span class="menu_icon">
+                    <li><a id="pocket" href="#" target="_blank"><span class="menu_icon">
                 <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
-            </ul>
+                </ul>
+            </div>
         </div>
+        <iframe id="iframe-posts" src="" scrolling="no"></iframe>
     </div>
-    <iframe id="iframe-posts" src="" scrolling="no"></iframe>
 </div>
 <div id="loader">
     <div id="main">
@@ -141,9 +143,7 @@ function _parameter($folder)
             foreach ($post_data as $post) {
                 echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
                     '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' .
-                    '<div class="card_imgframe"
-                 style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';
-                 "></div>' .
+                    '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
                     '<div class="card_textbox">' .
                     '<div class="card_titletext">' . $post['title'] . '</div>' .
                     '<div class="card_overviewtext">' . $post['overview'] . '</div>' .
@@ -169,5 +169,11 @@ function _parameter($folder)
 
 <script src="js/index.js" type="text/javascript"></script>
 <script> setPost_data(<?php echo $json?>) </script>
+<script>
+    $(function () {
+        let style = '<link rel="stylesheet" href="css/animation.css">';
+        $('head link:last').after(style);
+    });
+</script>
 </body>
 </html>

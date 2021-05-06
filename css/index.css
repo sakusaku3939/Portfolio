@@ -6,12 +6,22 @@
 }
 
 body {
+    background-color: #323232;
+}
+
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
     background-image: url("../image/bg.jpg");
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
-    background-color: #464646;
 }
 
 body::-webkit-scrollbar {
@@ -29,14 +39,6 @@ body#index {
 /*  トップ --------------------------------------------*/
 #loader {
     display: none;
-}
-
-#main {
-    background-image: url("../image/bg.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 .side-bar {
@@ -248,32 +250,29 @@ body#index {
 }
 
 /*  記事ページ --------------------------------------------*/
+#posts-wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    overflow-y: scroll;
+}
+
+#posts-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
 #posts {
-    display: inline;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     width: 70vw;
     max-width: 64rem;
     margin-bottom: 2rem;
-    animation-name: fadein;
-    animation-duration: 0.4s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-out;
     z-index: 2;
-}
-
-@keyframes fadein {
-    from {
-        opacity: 0.5;
-        transform: translateX(-50%) scale(0.98);
-        height: 100vh;
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) scale(1);
-        height: 100vh;
-    }
 }
 
 #iframe-posts {
