@@ -348,7 +348,7 @@ body#index {
     right: 10px;
     padding: 5px 9px 2px 6px;
     list-style: none;
-    width: 180px;
+    width: 160px;
     background-color: #FAFAFA;
     box-shadow: 0 0 15px rgba(0, 0, 0, .2);
 }
@@ -357,7 +357,7 @@ body#index {
     float: left;
     font-size: 20px;
     width: 25%;
-    margin-right: 15px;
+    margin-right: 12px;
     text-align: center;
 }
 
@@ -370,6 +370,7 @@ li a {
     display: block;
     font-family: sans-serif;
     cursor: pointer;
+    text-align: left;
 }
 
 li a:hover {
