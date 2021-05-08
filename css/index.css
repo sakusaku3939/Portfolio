@@ -323,6 +323,8 @@ body#index {
     padding-top: 1px;
     transition-duration: 0.5s;
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .fa-angle-left {
