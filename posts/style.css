@@ -14,7 +14,7 @@ h1 {
     font-size: calc(3.2rem + ((1vw - 0.64rem) * 2.1429));
     line-height: 1.3;
     font-weight: bold;
-    margin: 40px 0 24px;
+    margin: 40px 0 16px;
 }
 
 h2 {
@@ -46,6 +46,28 @@ a {
 
 #overview, #position {
     display: none;
+}
+
+ul#tag {
+    margin: 0 0 24px;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul#tag li {
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px;
+    padding: 3px 12px;
+    border: 1px solid #616161;
+    border-radius: 24px;
+    color: #616161;
+    text-decoration: none;
+}
+
+ul#tag li:hover {
+    background-color: #F5F5F5;
+    transition: .2s;
 }
 
 table {
@@ -143,7 +165,7 @@ table tr:nth-child(odd) {
 
     h1 {
         font-size: 3.0rem;
-        margin: 32px 0 16px;
+        margin: 32px 0 12px;
     }
 
     h2 {
@@ -153,6 +175,14 @@ table tr:nth-child(odd) {
     h2:not([class]):before {
         font-size: 1.9rem;
         content: '■ ';
+    }
+
+    ul#tag {
+        margin: 0 0 16px;
+    }
+
+    ul#tag li {
+        font-size: 12px;
     }
 
     .small {
