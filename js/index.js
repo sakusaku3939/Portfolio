@@ -9,6 +9,8 @@ getPost_click = () => isPost_click
 let isMin = false  //横幅が1000px以下か
 let post_data = {}  //記事データ(連想配列)を格納する変数
 
+const FORM_HEIGHT = 362
+
 custom_vh()
 
 //読み込み完了時
@@ -168,7 +170,8 @@ function form_pos() {
 
 //メールフォームのheightをセット
 function form_height() {
-    $('#form').css('height', (window.innerHeight / 2 - 118) + 'px')
+    const height = window.innerHeight / 2 - 100
+    $('#form').css('height', (height < FORM_HEIGHT ? height : FORM_HEIGHT) + 'px')
 }
 
 //記事のシェア用リンク設定
@@ -180,7 +183,7 @@ function share() {
     facebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + location.href
 
     const pocket = document.getElementById("pocket")
-    pocket.href = "http://getpocket.com/edit?url=" + location.href
+    pocket.href = "https://getpocket.com/edit?url=" + location.href
 }
 
 //シェアメニューのON/OFF
@@ -280,7 +283,7 @@ function scroll_toggle() {
     if (window.matchMedia('(max-width: 1000px)').matches) {
         isMin = true
         if (!isForm) index.style.overflowY = "scroll"
-        $('#form').css('height', '425px')
+        $('#form').css('height', FORM_HEIGHT + 'px')
     } else {
         isMin = false
         form_height()
