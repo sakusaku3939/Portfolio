@@ -119,14 +119,8 @@ function _parameter($folder)
             <div class="title">Portfolio</div>
             <div class="sns_box">
                 <div style="display: inline-block">
-                    <div class="sns_button twitter">
-                        <a href="https://twitter.com/_aokiyuki" title="Twitter"><i class="fa fa-twitter"></i></a>
-                    </div>
                     <div class="sns_button github">
                         <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
-                    </div>
-                    <div class="sns_button mail">
-                        <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
                     </div>
                     <div class="sns_button qiita">
                         <a href="https://qiita.com/sakusaku3939" title="Qiita">
@@ -137,6 +131,12 @@ function _parameter($folder)
                                 </g>
                             </svg>
                         </a>
+                    </div>
+                    <div class="sns_button mail">
+                        <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <div class="sns_button slideshare">
+                        <a href="https://www.slideshare.net/YukiAoki3" title="SlideShare"><i class="fab fa-slideshare"></i></a>
                     </div>
                 </div>
                 <div id="form">

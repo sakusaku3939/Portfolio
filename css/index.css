@@ -133,10 +133,6 @@ body#index {
     margin: 0 0 0 12px;
 }
 
-.twitter:hover a {
-    color: #1B95E0;
-}
-
 .github:hover a {
     color: #000000;
 }
@@ -162,6 +158,10 @@ body#index {
 
 .mail:hover a {
     color: #616161;
+}
+
+.slideshare:hover a {
+    color: #e98325;
 }
 
 /*  記事一覧 --------------------------------------------*/
@@ -230,7 +230,7 @@ body#index {
     padding: 4px 12px;
     margin: -4px;
     background-color: rgba(0, 0, 0, .3);
-    border-radius: 0 0 8px 0;
+    border-radius: 8px 0 8px 0;
 }
 
 .card_textbox {
