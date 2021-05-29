@@ -146,6 +146,8 @@ body#index {
 }
 
 #qiita-svg {
+    width: 50%;
+    height: 50%;
     fill: white;
     display: block;
     position: absolute;
