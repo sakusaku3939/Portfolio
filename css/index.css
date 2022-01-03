@@ -237,7 +237,7 @@ body#index {
     font-family: 'Noto Sans JP', sans-serif;
     color: #424242;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 16px 20px;
     box-sizing: border-box;
     min-height: 160px;
