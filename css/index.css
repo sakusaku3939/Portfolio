@@ -213,7 +213,6 @@ body#index {
 
 .card_imgframe {
     width: 100%;
-    height: auto;
     padding-top: 72%;
     background-size: cover;
     box-sizing: border-box;
