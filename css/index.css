@@ -232,6 +232,15 @@ body#index {
     border-radius: 8px 0 8px 0;
 }
 
+.card_pick {
+    position: absolute;
+    color: #FBC02D;
+    font-size: 16px;
+    z-index: 1;
+    top: 4px;
+    right: 8px;
+}
+
 .card_textbox {
     font-family: 'Noto Sans JP', sans-serif;
     color: #424242;

@@ -1,5 +1,14 @@
 <?php
+$pick_post_parameter = [
+    "presc",
+    "tkg-beacon",
+    "bww-new-hp",
+    "message-system",
+    "android-deepl",
+];
 $post_data = [];
+$pick_post_data = [];
+
 foreach (getFilename('./posts/') as $folder) {
     if ($folder !== 'style.css') {
         $parameter = _parameter($folder);
@@ -11,20 +20,34 @@ foreach (getFilename('./posts/') as $folder) {
         $tag_list = _tag($content);
         $image_path = _image($content, $folder);
 
-        $post_data[] = [
-            'title' => $title,
-            'overview' => $overview,
-            'tag' => $tag_list,
-            'position' => $position,
-            'image' => $image_path,
-            'parameter' => $parameter,
-            'date' => $folder
-        ];
+        if (in_array($parameter, $pick_post_parameter)) {
+            $pick_post_data[] = [
+                'title' => $title,
+                'overview' => $overview,
+                'tag' => $tag_list,
+                'position' => $position,
+                'image' => $image_path,
+                'parameter' => $parameter,
+                'date' => $folder,
+                'pick' => true,
+            ];
+        } else {
+            $post_data[] = [
+                'title' => $title,
+                'overview' => $overview,
+                'tag' => $tag_list,
+                'position' => $position,
+                'image' => $image_path,
+                'parameter' => $parameter,
+                'date' => $folder,
+                'pick' => false,
+            ];
+        }
     }
 }
 
+$post_data = array_merge($pick_post_data, $post_data);
 $json = json_encode($post_data, JSON_UNESCAPED_UNICODE);
-
 
 function getFilename($directory)
 {
@@ -120,7 +143,7 @@ function _parameter($folder)
                 </ul>
             </div>
         </div>
-        <iframe id="iframe-posts" src="" scrolling="no"></iframe>
+        <iframe id="iframe-posts" src=""></iframe>
     </div>
 </div>
 <div id="loader">
@@ -160,8 +183,9 @@ function _parameter($folder)
             <?php
             echo '<div class="card-contents">';
             foreach ($post_data as $post) {
+                $pick_mark = $post['pick'] ? '<div class="card_pick"><i class="fas fa-thumbtack"></i></div>' : '';
                 echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
-                    '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' .
+                    '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
                     '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
                     '<div class="card_textbox">' .
                     '<div class="card_titletext">' . $post['title'] . '</div>' .
