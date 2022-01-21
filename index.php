@@ -46,7 +46,6 @@ foreach (getFilename('./posts/') as $folder) {
     }
 }
 
-$post_data = array_merge($pick_post_data, $post_data);
 $json = json_encode($post_data, JSON_UNESCAPED_UNICODE);
 
 function getFilename($directory)
@@ -102,6 +101,23 @@ function _parameter($folder)
         }
     }
     return 'no-parameter';
+}
+
+function draw_card_content($post_data)
+{
+    echo '<div class="card-contents">';
+    foreach ($post_data as $post) {
+        $pick_mark = $post['pick'] ? '<div class="card_pick"><i class="fas fa-thumbtack"></i></div>' : '';
+        echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
+            '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
+            '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
+            '<div class="card_textbox">' .
+            '<div class="card_titletext">' . $post['title'] . '</div>' .
+            '<ul class="card_tag">' . $post['tag'] . '</ul>' .
+            '<div class="card_overviewtext">' . $post['overview'] . '</div>' .
+            '</div></div>';
+    }
+    echo '</div>';
 }
 
 ?>
@@ -180,21 +196,10 @@ function _parameter($folder)
             </div>
         </div>
         <div id="posts-grid">
-            <?php
-            echo '<div class="card-contents">';
-            foreach ($post_data as $post) {
-                $pick_mark = $post['pick'] ? '<div class="card_pick"><i class="fas fa-thumbtack"></i></div>' : '';
-                echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
-                    '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
-                    '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
-                    '<div class="card_textbox">' .
-                    '<div class="card_titletext">' . $post['title'] . '</div>' .
-                    '<ul class="card_tag">' . $post['tag'] . '</ul>' .
-                    '<div class="card_overviewtext">' . $post['overview'] . '</div>' .
-                    '</div></div>';
-            }
-            echo '</div>';
-            ?>
+            <div id="posts-filter"><i class="fas fa-thumbtack"></i> ピックアップ記事</div>
+            <?php draw_card_content($pick_post_data); ?>
+            <div id="posts-filter">その他の記事</div>
+            <?php draw_card_content($post_data); ?>
         </div>
     </div>
 </div>

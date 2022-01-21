@@ -55,6 +55,21 @@ body#index {
     width: 68vw;
 }
 
+#posts-filter {
+    display: inline-block;
+    margin: 24px 32px 0;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 8px;
+}
+
+#posts-filter i {
+    color: #FBC02D;
+    margin-right: 4px;
+}
+
 #iframe-form {
     width: 100%;
     height: 100%;
@@ -186,7 +201,7 @@ body#index {
     display: block;
     width: 28%;
     min-width: 10rem;
-    margin: 1.2vw 1.6vw;
+    margin: 0 1.6vw;
     height: 0;
     order: 1;
 }
@@ -196,7 +211,7 @@ body#index {
     display: block;
     width: 28%;
     min-width: 10rem;
-    margin: 1.2vw 1.6vw;
+    margin: 0 1.6vw;
     height: 0;
 }
 
@@ -457,7 +472,7 @@ li a:hover {
     }
 
     .title {
-        margin-top: 0;
+        margin-top: 32px;
     }
 
     #posts-grid {
