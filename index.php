@@ -2,8 +2,6 @@
 $pick_post_parameter = [
     "presc",
     "tkg-beacon",
-    "bww-new-hp",
-    "message-system",
     "android-deepl",
 ];
 $post_data = [];
