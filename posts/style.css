@@ -35,7 +35,7 @@ h2:not([class]):before {
     content: '■ ';
 }
 
-img {
+img, video {
     display: block;
     width: 100%;
     padding-bottom: 16px;
