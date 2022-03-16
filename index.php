@@ -127,6 +127,22 @@ function draw_card_content($post_data)
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex">
 
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            let f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l !== 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WKPDZ5L');</script>
+    <!-- End Google Tag Manager -->
+
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:site" content="@_aokiyuki"/>
     <meta property="og:title" content="Aokiti's Portfolio"/>
@@ -140,6 +156,12 @@ function draw_card_content($post_data)
     <link rel="stylesheet" href="css/loading.css" type="text/css">
 </head>
 <body id="index">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKPDZ5L"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div id="posts-wrapper" class="posts-wrapper-animation">
     <div id="posts" class="posts-animation">
         <div id="navigation-bar">
