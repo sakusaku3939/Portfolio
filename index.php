@@ -44,7 +44,7 @@ foreach (getFilename('./posts/') as $folder) {
     }
 }
 
-$json = json_encode($post_data, JSON_UNESCAPED_UNICODE);
+$json = json_encode(array_merge($pick_post_data, $post_data), JSON_UNESCAPED_UNICODE);
 
 function getFilename($directory)
 {
