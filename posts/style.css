@@ -191,6 +191,10 @@ table tr:nth-child(odd) {
     padding-bottom: 45%;
 }
 
+.speaker-deck {
+    max-width: 800px;
+}
+
 @media screen and (max-width: 640px) {
     body {
         line-height: 2;
