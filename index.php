@@ -189,10 +189,12 @@ function draw_card_content($post_data)
             <div class="sns_box">
                 <div style="display: inline-block">
                     <div class="sns_button github">
-                        <a href="https://github.com/sakusaku3939" title="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="https://github.com/sakusaku3939" title="GitHub" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
                     </div>
                     <div class="sns_button qiita">
-                        <a href="https://qiita.com/sakusaku3939" title="Qiita">
+                        <a href="https://qiita.com/sakusaku3939" title="Qiita" target="_blank">
                             <svg id="qiita-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
                                  preserveAspectRatio="none">
                                 <g>
@@ -202,12 +204,13 @@ function draw_card_content($post_data)
                             </svg>
                         </a>
                     </div>
+                    <div class="sns_button speaker-deck">
+                        <a href="https://speakerdeck.com/sakusaku3939" title="Speaker Deck" target="_blank">
+                            <i class="fab fa-speaker-deck"></i>
+                        </a>
+                    </div>
                     <div class="sns_button mail">
                         <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
-                    </div>
-                    <div class="sns_button slideshare">
-                        <a href="https://www.slideshare.net/YukiAoki3" title="SlideShare"><i
-                                    class="fab fa-slideshare"></i></a>
                     </div>
                 </div>
                 <div id="form">
