@@ -1,20 +1,17 @@
-name: Deploy heroku
+name: Deploy to heroku
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-          fetch-depth: 0
-    - name: Deploy to Heroku
-      env:
-        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-        HEROKU_APP_NAME: aokiyuki-portfolio
-      if: github.ref == 'refs/heads/master' && job.status == 'success'
-      run: |
-        git push -f https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git origin/master:master
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.8
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_TOKEN }}
+          heroku_app_name: 'aokiyuki-portfolio'
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
