@@ -70,12 +70,6 @@ body#index {
     margin-right: 4px;
 }
 
-#iframe-form {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
 #form {
     display: none;
     position: fixed;
