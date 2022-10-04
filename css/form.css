@@ -37,6 +37,7 @@ form.hidden {
 label {
     position: absolute;
     top: 7px;
+    left: 0;
     font-weight: 400;
     font-size: 15px;
     color: #A9A9A9;
@@ -120,9 +121,4 @@ button {
 button:hover {
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
-}
-
-::selection {
-    background: #FF6E40;
-    color: white;
 }

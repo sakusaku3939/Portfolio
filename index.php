@@ -214,7 +214,7 @@ function draw_card_content($post_data)
                     </div>
                 </div>
                 <div id="form">
-                    <iframe id="iframe-form" src="form.html"></iframe>
+                    <?php include("form.html"); ?>
                 </div>
             </div>
         </div>

@@ -94,8 +94,9 @@ document.getElementById('posts-wrapper').addEventListener("scroll", () => {
 });
 
 //ドキュメント全体のクリックリスナー
-$(document).on('click touchend', function () {
-    isPost ? share_off() : form_off()
+$(document).on('click touchend', function (e) {
+    if (!e.target.closest('#form')) form_off()
+    share_off()
 });
 
 //記事表示・非表示の切り替え
