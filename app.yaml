@@ -1,0 +1,34 @@
+runtime: php74
+
+env: standard
+instance_class: F1
+
+handlers:
+  - url: /css
+    static_dir: css
+
+  - url: /js
+    static_dir: js
+
+  - url: /php
+    static_dir: php
+
+  - url: /image
+    static_dir: image
+
+  - url: /posts
+    static_dir: posts
+
+  - url: .*
+    script: auto
+
+automatic_scaling:
+  target_cpu_utilization: 0.95
+  target_throughput_utilization: 0.95
+  min_idle_instances: 0
+  max_idle_instances: 1
+  min_instances: 0
+  max_instances: 1
+  min_pending_latency: 5000ms
+  max_pending_latency: automatic
+  max_concurrent_requests: 80
