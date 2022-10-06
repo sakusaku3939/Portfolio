@@ -125,7 +125,7 @@ let formCloseAnimation = false
 
 function openForm() {
     if (!form && !formCloseAnimation) {
-        $('#form').addClass('.form_show').fadeIn(200);
+        $('#form').addClass('.form-show').fadeIn(200);
         updateFormPos()
 
         formOpenAnimation = true
@@ -162,7 +162,7 @@ let shareCloseAnimation = false
 
 function openShareMenu() {
     if (!shareMenu && !shareCloseAnimation) {
-        $('#share_menu').addClass('.menu_show').fadeIn();
+        $('#share-menu').addClass('.menu_show').fadeIn();
 
         shareOpenAnimation = true
         setTimeout(function () {
@@ -174,7 +174,7 @@ function openShareMenu() {
 
 function closeShareMenu() {
     if (shareMenu && !shareOpenAnimation) {
-        $('#share_menu').fadeOut();
+        $('#share-menu').fadeOut();
 
         shareCloseAnimation = true
         setTimeout(function () {

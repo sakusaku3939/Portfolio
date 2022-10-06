@@ -105,14 +105,14 @@ function draw_card_content($post_data)
 {
     echo '<div class="card-contents">';
     foreach ($post_data as $post) {
-        $pick_mark = $post['pick'] ? '<div class="card_pick"><i class="fas fa-thumbtack"></i></div>' : '';
+        $pick_mark = $post['pick'] ? '<div class="card-pick"><i class="fas fa-thumbtack"></i></div>' : '';
         echo '<div class="card card-skin" onclick="clickPosts(\'' . fetch_posts($post["date"], $post["parameter"]) . '\', \'' . $post["parameter"] . '\')">' .
-            '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
-            '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
-            '<div class="card_textbox">' .
-            '<div class="card_titletext">' . $post['title'] . '</div>' .
-            '<ul class="card_tag">' . $post['tag'] . '</ul>' .
-            '<div class="card_overviewtext">' . $post['overview'] . '</div>' .
+            '<div class="card-date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
+            '<div class="card-img" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
+            '<div class="card-text-box">' .
+            '<div class="card-title">' . $post['title'] . '</div>' .
+            '<ul class="card-tag">' . $post['tag'] . '</ul>' .
+            '<div class="card-overview">' . $post['overview'] . '</div>' .
             '</div></div>';
     }
     echo '</div>';
@@ -175,22 +175,22 @@ function fetch_posts($folder, $parameter)
 <!-- End Google Tag Manager (noscript) -->
 <div id="posts-wrapper" class="posts-wrapper-animation">
     <div class="posts-animation">
-        <div id="navigation-bar">
-            <div id="back" onclick="window.history.back()"><i class="fas fa-angle-left"></i>Back</div>
-            <div id="share" onclick="openShareMenu()"><i class="fas fa-share-alt"></i>
-                <ul id="share_menu">
-                    <li><a onclick="copyClipboard()"><span class="menu_icon">
+        <div class="navigation-bar">
+            <div class="back" onclick="window.history.back()"><i class="fas fa-angle-left"></i>Back</div>
+            <div class="share" onclick="openShareMenu()"><i class="fas fa-share-alt"></i>
+                <ul id="share-menu">
+                    <li><a onclick="copyClipboard()"><span class="menu-icon">
                 <i class="fas fa-link"></i></span>リンクを取得</a></li>
-                    <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
+                    <li><a id="twitter" href="#" target="_blank"><span class="menu-icon">
                 <i class="fab fa-twitter"></i></span>Twitter</a></li>
-                    <li><a id="facebook" href="#" target="_blank"><span class="menu_icon">
+                    <li><a id="facebook" href="#" target="_blank"><span class="menu-icon">
                 <i class="fab fa-facebook-f"></i></span>Facebook</a></li>
-                    <li><a id="pocket" href="#" target="_blank"><span class="menu_icon">
+                    <li><a id="pocket" href="#" target="_blank"><span class="menu-icon">
                 <i class="fab fa-get-pocket"></i></span>Pocket</a></li>
                 </ul>
             </div>
         </div>
-        <div id="posts-content-wrapper">
+        <div class="posts-content-wrapper">
             <div id="posts-content" class="posts"></div>
         </div>
     </div>
@@ -199,14 +199,14 @@ function fetch_posts($folder, $parameter)
     <div id="main">
         <div class="side-bar">
             <div class="title">Portfolio</div>
-            <div class="sns_box">
+            <div class="sns-box">
                 <div style="display: inline-block">
-                    <div class="sns_button github">
+                    <div class="sns-button github">
                         <a href="https://github.com/sakusaku3939" title="GitHub" target="_blank">
                             <i class="fa fa-github"></i>
                         </a>
                     </div>
-                    <div class="sns_button qiita">
+                    <div class="sns-button qiita">
                         <a href="https://qiita.com/sakusaku3939" title="Qiita" target="_blank">
                             <svg id="qiita-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"
                                  preserveAspectRatio="none">
@@ -217,12 +217,12 @@ function fetch_posts($folder, $parameter)
                             </svg>
                         </a>
                     </div>
-                    <div class="sns_button speaker-deck">
+                    <div class="sns-button speaker-deck">
                         <a href="https://speakerdeck.com/sakusaku3939" title="Speaker Deck" target="_blank">
                             <i class="fab fa-speaker-deck"></i>
                         </a>
                     </div>
-                    <div class="sns_button mail">
+                    <div class="sns-button mail">
                         <a onclick="openForm()" title="Mail"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
@@ -231,10 +231,10 @@ function fetch_posts($folder, $parameter)
                 </div>
             </div>
         </div>
-        <div id="posts-grid">
-            <div id="posts-filter"><i class="fas fa-thumbtack"></i> ピックアップ記事</div>
+        <div class="posts-grid">
+            <div class="posts-filter"><i class="fas fa-thumbtack"></i> ピックアップ記事</div>
             <?php draw_card_content($pick_post_data); ?>
-            <div id="posts-filter">その他の記事</div>
+            <div class="posts-filter">その他の記事</div>
             <?php draw_card_content($post_data); ?>
         </div>
     </div>
