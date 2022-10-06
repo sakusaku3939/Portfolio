@@ -106,7 +106,7 @@ function draw_card_content($post_data)
     echo '<div class="card-contents">';
     foreach ($post_data as $post) {
         $pick_mark = $post['pick'] ? '<div class="card_pick"><i class="fas fa-thumbtack"></i></div>' : '';
-        echo '<div class="card card-skin" onclick="click_posts(\'' . $post["date"] . '\', \'' . $post["parameter"] . '\')">' .
+        echo '<div class="card card-skin" onclick="click_posts(\'' . fetch_posts($post["date"], $post["parameter"]) . '\', \'' . $post["parameter"] . '\')">' .
             '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
             '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
             '<div class="card_textbox">' .
@@ -116,6 +116,19 @@ function draw_card_content($post_data)
             '</div></div>';
     }
     echo '</div>';
+}
+
+function fetch_posts($folder, $parameter)
+{
+    $posts = file_get_contents("posts/$folder/$parameter.html");
+    $fix_style_path = str_replace("../style.css", "posts/style.css", $posts);
+
+    $img_reg = '/src=[\"|\']((?!.*https:).*?(jpg|jpeg|gif|png|mp4))[\"|\']/i';
+//    $img_reg = '/src=[\"|\'](.*?^(jpg|jpeg|gif|png|mp4)(?!.*https:).*$)[\"|\']/i';
+
+    $fix_image_path = preg_replace($img_reg, 'src="posts/' . $folder . '/$1"', $fix_style_path);
+
+    return base64_encode(rawurlencode($fix_image_path));
 }
 
 ?>
@@ -154,6 +167,7 @@ function draw_card_content($post_data)
     <link rel="shortcut icon" href="image/favicon.ico">
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="stylesheet" href="css/loading.css" type="text/css">
+    <!--    <link rel="stylesheet" href="posts/style.css" type="text/css">-->
 </head>
 <body id="index">
 <!-- Google Tag Manager (noscript) -->
@@ -163,7 +177,7 @@ function draw_card_content($post_data)
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="posts-wrapper" class="posts-wrapper-animation">
-    <div id="posts" class="posts-animation">
+    <div class="posts-animation">
         <div id="navigation-bar">
             <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
             <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i>
@@ -179,7 +193,10 @@ function draw_card_content($post_data)
                 </ul>
             </div>
         </div>
-        <iframe id="iframe-posts" src=""></iframe>
+        <div id="posts-content-wrapper">
+            <div id="posts-content" class="posts"></div>
+        </div>
+        <!--        <iframe id="iframe-posts" src=""></iframe>-->
     </div>
 </div>
 <div id="loader">
@@ -241,6 +258,20 @@ function draw_card_content($post_data)
 
 <script src="js/index.js" type="text/javascript"></script>
 <script> setPost_data(<?php echo $json?>) </script>
+<script>
+    <?php
+    if (isset($_GET["posts"])) {
+        $current_parameter = $_GET["posts"];
+
+        $merge_post_data = array_merge($pick_post_data, $post_data);
+        $array_parameter = array_column($merge_post_data, 'parameter');
+        $index = array_search($current_parameter, $array_parameter);
+        $folder = $merge_post_data[$index]['date'];
+
+        echo 'sessionStorage.setItem("posts", \'' . fetch_posts($folder, $current_parameter) . '\');';
+    }
+    ?>
+</script>
 <script>
     $(function () {
         let style = '<link rel="stylesheet" href="css/animation.css">';

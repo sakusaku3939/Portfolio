@@ -1,61 +1,52 @@
-html {
-    font-size: 62.5%;
-    overflow-y: hidden;
-}
-
-body {
-    margin: 32px;
-    font-size: 1.6rem;
+.posts {
     line-height: 2;
-    font-family: 'Noto Sans JP', sans-serif;
-    background-color: #FAFAFA;
 }
 
-h1 {
-    font-size: calc(3.2rem + ((1vw - 0.64rem) * 2.1429));
+.posts h1 {
+    font-size: 40px;
     line-height: 1.3;
     font-weight: bold;
     margin: 40px 0 16px;
 }
 
-h2 {
-    font-size: calc(1.6rem + ((1vw - 0.64rem) * 2.1429));
+.posts h2 {
+    font-size: 28px;
     line-height: 1.3;
     border-bottom: 1px solid #ddd;
     padding-bottom: 0.1em;
     margin-top: 48px;
 }
 
-h2.no-block {
+.posts h2.no-block {
     margin-top: 40px;
 }
 
-h2:not([class]):before {
-    font-size: calc(1.4rem + ((1vw - 0.64rem) * 2.1429));
+.posts h2:not([class]):before {
+    font-size: 24px;
     content: '■ ';
 }
 
-img, video {
+.posts img, video {
     display: block;
     width: 100%;
     padding-bottom: 16px;
 }
 
-a {
+.posts a {
     word-wrap: break-word;
 }
 
-#overview, #position {
+.posts #overview, #position {
     display: none;
 }
 
-ul#tag {
+.posts ul#tag {
     margin: 0 0 24px;
     padding: 0;
     list-style-type: none;
 }
 
-ul#tag li {
+.posts ul#tag li {
     display: inline-block;
     font-size: 14px;
     margin: 2px;
@@ -66,61 +57,61 @@ ul#tag li {
     text-decoration: none;
 }
 
-ul#tag li:hover {
+.posts ul#tag li:hover {
     background-color: #F5F5F5;
     transition: .2s;
 }
 
-table {
+.posts table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
 }
 
-table th, table td {
+.posts table th, table td {
     padding: 10px 0;
     text-align: center;
 }
 
-table tr:nth-child(odd) {
+.posts table tr:nth-child(odd) {
     background-color: #eee
 }
 
-.small {
+.posts .small {
     width: 400px;
 }
 
-.medium {
+.posts .medium {
     width: 500px;
 }
 
-.large {
+.posts .large {
     width: 80%;
 }
 
-.row {
+.posts .row {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
 }
 
-.row img {
+.posts .row img {
     display: inline-block;
     width: 50%;
 }
 
-.four {
+.posts .four {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
 }
 
-.four img {
+.posts .four img {
     display: inline-block;
     width: 25%;
 }
 
-.code {
+.posts .code {
     color: #FAFAFA;
     background-color: #212121;
     padding: 16px 40px;
@@ -128,11 +119,11 @@ table tr:nth-child(odd) {
     overflow-x: auto;
 }
 
-.code code {
+.posts .code code {
     white-space: pre;
 }
 
-.box {
+.posts .box {
     position: relative;
     margin: 2em 0;
     padding: 0.5em 1em;
@@ -140,7 +131,7 @@ table tr:nth-child(odd) {
     border-radius: 8px;
 }
 
-.box .box-title {
+.posts .box .box-title {
     position: absolute;
     display: inline-block;
     top: -13px;
@@ -153,12 +144,12 @@ table tr:nth-child(odd) {
     font-weight: bold;
 }
 
-.box p {
+.posts .box p {
     margin: 0;
     padding: 8px;
 }
 
-.youtube {
+.posts .youtube {
     position: relative;
     width: 100%;
     height: 0;
@@ -167,7 +158,7 @@ table tr:nth-child(odd) {
     margin: 16px 0;
 }
 
-.youtube iframe {
+.posts .youtube iframe {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -176,76 +167,76 @@ table tr:nth-child(odd) {
     border: none;
 }
 
-.youtube.small {
+.posts .youtube.small {
     width: 40%;
     padding-bottom: 22.5%;
 }
 
-.youtube.medium {
+.posts .youtube.medium {
     width: 60%;
     padding-bottom: 33.75%;
 }
 
-.youtube.large {
+.posts .youtube.large {
     width: 80%;
     padding-bottom: 45%;
 }
 
-.speaker-deck {
+.posts .speaker-deck {
+    width: 100%;
     max-width: 800px;
 }
 
-@media screen and (max-width: 640px) {
-    body {
-        line-height: 2;
-        margin: 20px;
+@media screen and (max-width: 1400px) {
+    .posts h1 {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .posts h1 {
+        font-size: 32px;
     }
 
-    h1 {
-        font-size: 3.0rem;
-        margin: 32px 0 12px;
+    .posts h2 {
+        font-size: 24px;
     }
 
-    h2 {
-        font-size: 2.0rem;
+    .posts h2:not([class]):before {
+        font-size: 20px;
     }
 
-    h2:not([class]):before {
-        font-size: 1.9rem;
-        content: '■ ';
-    }
-
-    ul#tag {
+    .posts ul#tag {
         margin: 0 0 16px;
     }
 
-    ul#tag li {
+    .posts ul#tag li {
         font-size: 12px;
     }
 
-    .small {
+    .posts .small {
         width: 100%;
     }
 
-    .medium {
+    .posts .medium {
         width: 100%;
     }
 
-    .large {
+    .posts .large {
         width: 100%;
     }
 
-    .row img {
+    .posts .row img {
         float: initial;
         width: 100%;
     }
 
-    .four img {
+    .posts .four img {
         display: inline-block;
         width: 50%;
     }
 
-    .youtube.large {
+    .posts .youtube.large {
         width: 100%;
         padding-bottom: 56.25%;
     }

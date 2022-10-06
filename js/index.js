@@ -50,14 +50,23 @@ function back() {
 }
 
 //記事がクリックされた場合
-function click_posts(date, parameter) {
+function click_posts(posts, parameter) {
     if (!isPost_click) {
         isPost_click = true
-        sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
+        sessionStorage.setItem("posts", posts)
         history.pushState(null, null, "?posts=" + parameter)
         posts_before_loading()
     }
 }
+
+// function click_posts(date, parameter) {
+//     if (!isPost_click) {
+//         isPost_click = true
+//         sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
+//         history.pushState(null, null, "?posts=" + parameter)
+//         posts_before_loading()
+//     }
+// }
 
 //ウィンドウの横幅変更リスナー
 let resizeTimer;
@@ -88,8 +97,8 @@ window.addEventListener('resize', function () {
 //スクロールリスナー
 document.getElementById('posts-wrapper').addEventListener("scroll", () => {
     if (isPost) {
-        const elm = document.getElementById("iframe-posts")
-        elm.style.height = 72 + elm.contentWindow.document.body.scrollHeight + "px"
+        // const elm = document.getElementById("iframe-posts")
+        // elm.style.height = 72 + elm.contentWindow.document.body.scrollHeight + "px"
     }
 });
 
@@ -103,14 +112,30 @@ $(document).on('click touchend', function (e) {
 function toggle(isToggle = true) {
     if (isToggle) isPost = !isPost
 
-    const iframe = document.getElementById("iframe-posts")
+    // const iframe = document.getElementById("iframe-posts")
     const main = document.getElementById("main")
-    iframe.contentWindow.location.replace(isPost ? sessionStorage.getItem('src') : "hold.html")
+    // iframe.contentWindow.location.replace(isPost ? sessionStorage.getItem('src') : "hold.html")
+    if (isPost) {
+        const content = remove_posts_content(document.getElementById('posts-content'))
+        content.insertAdjacentHTML('afterbegin', decodeURIComponent(atob(sessionStorage.getItem('posts'))));
+
+        $('#speaker-deck-script').remove()
+        const script = document.createElement('script')
+        script.id = "speaker-deck-script"
+        script.src = "//speakerdeck.com/assets/embed.js"
+        document.body.appendChild(script)
+    }
     main.style.pointerEvents = isPost ? "none" : "auto"
     if (!isPost) main.style.position = "relative"
 
     share()
     scroll_toggle()
+}
+
+function remove_posts_content(element) {
+    const clone = element.cloneNode(false);
+    element.parentNode.replaceChild(clone, element);
+    return clone
 }
 
 //外部リンクから記事ページに来た場合、phpから直接記事データを格納する
@@ -245,8 +270,8 @@ function copy_clipboard() {
 function posts_before_loading() {
     toggle()
     isPost_loading_now = true
-    const elm = document.getElementById("iframe-posts")
-    elm.style.height = "100vh"
+    // const elm = document.getElementById("iframe-posts")
+    // elm.style.height = "100vh"
 }
 
 //記事ページの設定（読み込み後）
@@ -260,21 +285,31 @@ function posts_loading() {
         main.css("backdrop-filter", "blur(16px)")
         main.css("-webkit-backdrop-filter", "blur(16px)")
 
+        const speakerDeck = $('.speaker-deck')
+        speakerDeck.ready(function () {
+            const radio = 0.5625
+            $('.speakerdeck-iframe').width(
+                speakerDeck.width()
+            ).height(
+                speakerDeck.width() * radio
+            )
+        })
+
         const posts_wrapper = document.getElementById("posts-wrapper")
         posts_wrapper.style.display = "inline"
         posts_wrapper.scrollTo(0, 0)
 
         setPost_click(false)
 
-        $("#iframe-posts").on('load', function () {
-            $(this).contents().on('click touchend', share_off)
-        })
-        document.getElementById("iframe-posts").style.height = "120vh"
+        // $("#iframe-posts").on('load', function () {
+        //     $(this).contents().on('click touchend', share_off)
+        // })
+        // document.getElementById("iframe-posts").style.height = "120vh"
 
-        if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
-            const iframe_posts = document.getElementById("iframe-posts")
-            iframe_posts.style.marginBottom = '96px'
-        }
+        // if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
+        //     const iframe_posts = document.getElementById("iframe-posts")
+        //     iframe_posts.style.marginBottom = '96px'
+        // }
     }
 }
 
