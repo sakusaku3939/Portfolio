@@ -106,7 +106,7 @@ function draw_card_content($post_data)
     echo '<div class="card-contents">';
     foreach ($post_data as $post) {
         $pick_mark = $post['pick'] ? '<div class="card_pick"><i class="fas fa-thumbtack"></i></div>' : '';
-        echo '<div class="card card-skin" onclick="click_posts(\'' . fetch_posts($post["date"], $post["parameter"]) . '\', \'' . $post["parameter"] . '\')">' .
+        echo '<div class="card card-skin" onclick="clickPosts(\'' . fetch_posts($post["date"], $post["parameter"]) . '\', \'' . $post["parameter"] . '\')">' .
             '<div class="card_date">' . date('Y.m.d', strtotime($post['date'])) . '</div>' . $pick_mark .
             '<div class="card_imgframe" style="background-image: url(' . $post['image'] . '); background-position: ' . $post['position'] . ';"></div>' .
             '<div class="card_textbox">' .
@@ -124,8 +124,6 @@ function fetch_posts($folder, $parameter)
     $fix_style_path = str_replace("../style.css", "posts/style.css", $posts);
 
     $img_reg = '/src=[\"|\']((?!.*https:).*?(jpg|jpeg|gif|png|mp4))[\"|\']/i';
-//    $img_reg = '/src=[\"|\'](.*?^(jpg|jpeg|gif|png|mp4)(?!.*https:).*$)[\"|\']/i';
-
     $fix_image_path = preg_replace($img_reg, 'src="posts/' . $folder . '/$1"', $fix_style_path);
 
     return base64_encode(rawurlencode($fix_image_path));
@@ -167,7 +165,6 @@ function fetch_posts($folder, $parameter)
     <link rel="shortcut icon" href="image/favicon.ico">
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="stylesheet" href="css/loading.css" type="text/css">
-    <!--    <link rel="stylesheet" href="posts/style.css" type="text/css">-->
 </head>
 <body id="index">
 <!-- Google Tag Manager (noscript) -->
@@ -179,10 +176,10 @@ function fetch_posts($folder, $parameter)
 <div id="posts-wrapper" class="posts-wrapper-animation">
     <div class="posts-animation">
         <div id="navigation-bar">
-            <div id="back" onclick="back()"><i class="fas fa-angle-left"></i>Back</div>
-            <div id="share" onclick="share_on()"><i class="fas fa-share-alt"></i>
+            <div id="back" onclick="window.history.back()"><i class="fas fa-angle-left"></i>Back</div>
+            <div id="share" onclick="openShareMenu()"><i class="fas fa-share-alt"></i>
                 <ul id="share_menu">
-                    <li><a onclick="copy_clipboard()"><span class="menu_icon">
+                    <li><a onclick="copyClipboard()"><span class="menu_icon">
                 <i class="fas fa-link"></i></span>リンクを取得</a></li>
                     <li><a id="twitter" href="#" target="_blank"><span class="menu_icon">
                 <i class="fab fa-twitter"></i></span>Twitter</a></li>
@@ -196,7 +193,6 @@ function fetch_posts($folder, $parameter)
         <div id="posts-content-wrapper">
             <div id="posts-content" class="posts"></div>
         </div>
-        <!--        <iframe id="iframe-posts" src=""></iframe>-->
     </div>
 </div>
 <div id="loader">
@@ -227,7 +223,7 @@ function fetch_posts($folder, $parameter)
                         </a>
                     </div>
                     <div class="sns_button mail">
-                        <a onclick="form_on()" title="Mail"><i class="fas fa-envelope"></i></a>
+                        <a onclick="openForm()" title="Mail"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
                 <div id="form">
@@ -257,8 +253,8 @@ function fetch_posts($folder, $parameter)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 
 <script src="js/index.js" type="text/javascript"></script>
-<script> setPost_data(<?php echo $json?>) </script>
 <script>
+    setPostData(<?php echo $json?>)
     <?php
     if (isset($_GET["posts"])) {
         $current_parameter = $_GET["posts"];
@@ -271,12 +267,6 @@ function fetch_posts($folder, $parameter)
         echo 'sessionStorage.setItem("posts", \'' . fetch_posts($folder, $current_parameter) . '\');';
     }
     ?>
-</script>
-<script>
-    $(function () {
-        let style = '<link rel="stylesheet" href="css/animation.css">';
-        $('head link:last').after(style);
-    });
 </script>
 </body>
 </html>

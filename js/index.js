@@ -1,146 +1,108 @@
-let isFirst_load = true  //最初の読み込み時か
+let posts = false
+let postData = {}
 
-let isPost = false  //記事が表示されているか
-let isPost_loading_now = false  //記事の読み込み中か
-let isPost_click = false  //記事がクリックされたか(重複クリック防止)
-setPost_click = (bool) => isPost_click = bool
-getPost_click = () => isPost_click
-
-let isMin = false  //横幅が1000px以下か
-let post_data = {}  //記事データ(連想配列)を格納する変数
-
-const FORM_HEIGHT = 362
-
+$('#loader').fadeIn(300)
 custom_vh()
 
 //読み込み完了時
-Pace.on('done', function () {
-    if (isFirst_load) {
-        isFirst_load = false
-        $('#loader').fadeIn(300)
-        toggle(location.search !== '')
-        if (location.search !== '') posts_loading()
-        form_pos()
-        setTimeout(function () {
-            scroll_toggle()
-        }, 300)
-    } else {
-        posts_loading()
-    }
+$(function () {
+    const hasParameter = location.search !== ''
+    if (hasParameter) openPosts()
+
+    const ref = "css/animation.css"
+    const style = '<link rel="stylesheet" href=' + ref + '>';
+    $('head link:last').after(style);
 })
 
 //戻る、進むのクリックリスナー
 window.addEventListener('popstate', () => {
-    toggle()
-    if (isPost) {
-        posts_loading()
-    } else {
-        const main = $("#main")
-        main.css("backdrop-filter", "none")
-        main.css("-webkit-backdrop-filter", "none")
-        document.getElementById("main").style.filter = "none"
-        document.getElementById("posts-wrapper").style.display = "none"
-        document.getElementById("index").style.overflowY = "scroll"
-    }
+    posts = !posts
+    posts ? openPosts() : closePosts()
 }, false)
 
-//戻るボタンが押された場合
-function back() {
-    window.history.back()
-}
-
-//記事がクリックされた場合
-function click_posts(posts, parameter) {
-    if (!isPost_click) {
-        isPost_click = true
-        sessionStorage.setItem("posts", posts)
-        history.pushState(null, null, "?posts=" + parameter)
-        posts_before_loading()
-    }
-}
-
-// function click_posts(date, parameter) {
-//     if (!isPost_click) {
-//         isPost_click = true
-//         sessionStorage.setItem("src", "posts/" + date + "/" + parameter + ".html")
-//         history.pushState(null, null, "?posts=" + parameter)
-//         posts_before_loading()
-//     }
-// }
-
 //ウィンドウの横幅変更リスナー
-let resizeTimer;
 let lastInnerWidth = window.innerWidth;
-let lastInnerHeight = window.innerHeight;
 window.addEventListener('resize', function () {
     custom_vh()
-    //横幅変更
     if (lastInnerWidth !== window.innerWidth) {
         lastInnerWidth = window.innerWidth;
-        form_pos()
-        if (!resizeTimer) {
-            clearTimeout(resizeTimer);
-        }
-        resizeTimer = setTimeout(function () {
-            scroll_toggle()
-        }, 500);
-    }
-    //縦幅変更
-    if (lastInnerHeight !== window.innerHeight) {
-        lastInnerHeight = window.innerHeight;
-        if (!isMin) {
-            form_height()
-        }
+        updateFormPos()
     }
 });
 
-//スクロールリスナー
-document.getElementById('posts-wrapper').addEventListener("scroll", () => {
-    if (isPost) {
-        // const elm = document.getElementById("iframe-posts")
-        // elm.style.height = 72 + elm.contentWindow.document.body.scrollHeight + "px"
-    }
-});
+//記事がクリックされた場合
+function clickPosts(posts, parameter) {
+    sessionStorage.setItem("posts", posts)
+    history.pushState(null, null, "?posts=" + parameter)
+    openPosts()
+}
+
+//iOS対策をしたカスタムプロパティをセット
+function custom_vh() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
 
 //ドキュメント全体のクリックリスナー
 $(document).on('click touchend', function (e) {
-    if (!e.target.closest('#form')) form_off()
-    share_off()
+    if (!e.target.closest('#form')) closeForm()
+    closeShareMenu()
 });
 
-//記事表示・非表示の切り替え
-function toggle(isToggle = true) {
-    if (isToggle) isPost = !isPost
+function openPosts() {
+    posts = true
 
-    // const iframe = document.getElementById("iframe-posts")
-    const main = document.getElementById("main")
-    // iframe.contentWindow.location.replace(isPost ? sessionStorage.getItem('src') : "hold.html")
-    if (isPost) {
-        const content = remove_posts_content(document.getElementById('posts-content'))
-        content.insertAdjacentHTML('afterbegin', decodeURIComponent(atob(sessionStorage.getItem('posts'))));
+    //PHPから取得した記事データを表示
+    const content = $("#posts-content")
+    content.empty()
+    content.append(decodeURIComponent(atob(sessionStorage.getItem('posts'))))
 
-        $('#speaker-deck-script').remove()
-        const script = document.createElement('script')
-        script.id = "speaker-deck-script"
-        script.src = "//speakerdeck.com/assets/embed.js"
-        document.body.appendChild(script)
-    }
-    main.style.pointerEvents = isPost ? "none" : "auto"
-    if (!isPost) main.style.position = "relative"
+    //Speaker Deckのスクリプト読み込み
+    $('#speaker-deck-script').remove()
+    const script = document.createElement('script')
+    script.id = "speaker-deck-script"
+    script.src = "//speakerdeck.com/assets/embed.js"
+    document.body.appendChild(script)
 
-    share()
-    scroll_toggle()
+    //Speaker Deckのスライドサイズを設定
+    const speakerDeck = $('.speaker-deck')
+    speakerDeck.ready(function () {
+        const radio = 0.5625
+        const iframe = $('.speakerdeck-iframe')
+        iframe.width(speakerDeck.width())
+        iframe.height(speakerDeck.width() * radio)
+    })
+
+    const postsWrapper = $("#posts-wrapper")
+    postsWrapper.css("backdrop-filter", "blur(16px)")
+    postsWrapper.css("-webkit-backdrop-filter", "blur(16px)")
+    postsWrapper.css("display", "inline")
+
+    $("#index").css("overflow-y", "hidden")
+    document.getElementById("posts-wrapper").scrollTo(0, 0)
+
+    // if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
+    //     const iframe_posts = document.getElementById("iframe-posts")
+    //     iframe_posts.style.marginBottom = '96px'
+    // }
+
+    setShareLink()
 }
 
-function remove_posts_content(element) {
-    const clone = element.cloneNode(false);
-    element.parentNode.replaceChild(clone, element);
-    return clone
+function closePosts() {
+    posts = false
+
+    const postsWrapper = $("#posts-wrapper")
+    postsWrapper.css("backdrop-filter", "none")
+    postsWrapper.css("-webkit-backdrop-filter", "none")
+    postsWrapper.css("display", "none")
+
+    $("#index").css("overflow-y", "scroll")
 }
 
 //外部リンクから記事ページに来た場合、phpから直接記事データを格納する
-function setPost_data(data) {
-    post_data = data
+function setPostData(data) {
+    postData = data
     let _getIndex = function (value, arr, prop) {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i][prop] === value) {
@@ -150,58 +112,80 @@ function setPost_data(data) {
         return -1;
     }
 
-    let index = _getIndex(location.search.substr(7), post_data, 'parameter')
+    let index = _getIndex(location.search.substr(7), postData, 'parameter')
     if (index !== -1) {
-        sessionStorage.setItem("src", "posts/" + post_data[index]['date'] + "/" + post_data[index]['parameter'] + ".html")
+        sessionStorage.setItem("src", "posts/" + postData[index]['date'] + "/" + postData[index]['parameter'] + ".html")
     }
 }
 
 //フォームのON/OFF
-let isForm = false
-let form_on_animation = false
-let form_off_animation = false
+let form = false
+let formOpenAnimation = false
+let formCloseAnimation = false
 
-function form_on() {
-    if (!isForm && !form_off_animation) {
+function openForm() {
+    if (!form && !formCloseAnimation) {
         $('#form').addClass('.form_show').fadeIn(200);
-        form_pos()
+        updateFormPos()
 
-        form_on_animation = true
+        formOpenAnimation = true
         setTimeout(function () {
-            isForm = true
-            form_on_animation = false
+            form = true
+            formOpenAnimation = false
         }, 100);
     }
 }
 
-function form_off() {
-    if (isForm && !form_on_animation) {
+function closeForm() {
+    if (form && !formOpenAnimation) {
         $('#form').fadeOut(200);
-        form_pos()
+        updateFormPos()
 
-        form_off_animation = true
+        formCloseAnimation = true
         setTimeout(function () {
-            isForm = false
-            form_off_animation = false
-            scroll_toggle()
+            form = false
+            formCloseAnimation = false
         }, 100);
     }
 }
 
 //メールフォームの座標をセット
-function form_pos() {
+function updateFormPos() {
     const pos = $('.mail').offset()
     $('#form').css('left', (pos.left - 118) + 'px')
 }
 
-//メールフォームのheightをセット
-function form_height() {
-    const height = window.innerHeight / 2 - 100
-    $('#form').css('height', (height < FORM_HEIGHT ? height : FORM_HEIGHT) + 'px')
+//シェアメニューのON/OFF
+let shareMenu = false
+let shareOpenAnimation = false
+let shareCloseAnimation = false
+
+function openShareMenu() {
+    if (!shareMenu && !shareCloseAnimation) {
+        $('#share_menu').addClass('.menu_show').fadeIn();
+
+        shareOpenAnimation = true
+        setTimeout(function () {
+            shareMenu = true
+            shareOpenAnimation = false
+        }, 200);
+    }
+}
+
+function closeShareMenu() {
+    if (shareMenu && !shareOpenAnimation) {
+        $('#share_menu').fadeOut();
+
+        shareCloseAnimation = true
+        setTimeout(function () {
+            shareMenu = false
+            shareCloseAnimation = false
+        }, 100);
+    }
 }
 
 //記事のシェア用リンク設定
-function share() {
+function setShareLink() {
     const twitter = document.getElementById("twitter")
     twitter.href = "https://twitter.com/share?url=" + location.href
 
@@ -212,47 +196,14 @@ function share() {
     pocket.href = "https://getpocket.com/edit?url=" + location.href
 }
 
-//シェアメニューのON/OFF
-let isShare_menu = false
-let share_on_animation = false
-let share_off_animation = false
-
-function share_on() {
-    if (!isShare_menu && !share_off_animation) {
-        $('#share_menu').addClass('.menu_show').fadeIn();
-
-        share_on_animation = true
-        setTimeout(function () {
-            isShare_menu = true
-            share_on_animation = false
-        }, 200);
-    }
-}
-
-function share_off() {
-    if (isShare_menu && !share_on_animation) {
-        $('#share_menu').fadeOut();
-
-        share_off_animation = true
-        setTimeout(function () {
-            isShare_menu = false
-            share_off_animation = false
-        }, 100);
-    }
-}
-
 //クリップボードにコピー
-function copy_clipboard() {
+function copyClipboard() {
     const tmp = document.createElement("div");
     const pre = document.createElement('pre');
 
     pre.style["webkitUserSelect"] = 'auto';
     pre.style.userSelect = 'auto';
     tmp.appendChild(pre).textContent = location.href;
-
-    const s = tmp.style;
-    s.position = 'fixed';
-    s.right = '200%';
 
     document.body.appendChild(tmp);
     document.getSelection().selectAllChildren(tmp);
@@ -264,70 +215,4 @@ function copy_clipboard() {
         icon: "success",
         button: false,
     });
-}
-
-//記事ページの設定（読み込み前）
-function posts_before_loading() {
-    toggle()
-    isPost_loading_now = true
-    // const elm = document.getElementById("iframe-posts")
-    // elm.style.height = "100vh"
-}
-
-//記事ページの設定（読み込み後）
-function posts_loading() {
-    if (isPost) {
-        isPost_loading_now = false
-        const index = document.getElementById("index")
-        index.style.overflowY = "hidden"
-
-        const main = $("#posts-wrapper")
-        main.css("backdrop-filter", "blur(16px)")
-        main.css("-webkit-backdrop-filter", "blur(16px)")
-
-        const speakerDeck = $('.speaker-deck')
-        speakerDeck.ready(function () {
-            const radio = 0.5625
-            $('.speakerdeck-iframe').width(
-                speakerDeck.width()
-            ).height(
-                speakerDeck.width() * radio
-            )
-        })
-
-        const posts_wrapper = document.getElementById("posts-wrapper")
-        posts_wrapper.style.display = "inline"
-        posts_wrapper.scrollTo(0, 0)
-
-        setPost_click(false)
-
-        // $("#iframe-posts").on('load', function () {
-        //     $(this).contents().on('click touchend', share_off)
-        // })
-        // document.getElementById("iframe-posts").style.height = "120vh"
-
-        // if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
-        //     const iframe_posts = document.getElementById("iframe-posts")
-        //     iframe_posts.style.marginBottom = '96px'
-        // }
-    }
-}
-
-//スクロール表示・非表示の切り替え
-function scroll_toggle() {
-    const index = document.getElementById("index")
-    if (window.matchMedia('(max-width: 1000px)').matches) {
-        isMin = true
-        if (!isForm) index.style.overflowY = "scroll"
-        $('#form').css('height', FORM_HEIGHT + 'px')
-    } else {
-        isMin = false
-        form_height()
-    }
-}
-
-//iOS対策をしたカスタムプロパティをセット
-function custom_vh() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
