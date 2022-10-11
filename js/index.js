@@ -9,10 +9,6 @@ $(function () {
     const hasParameter = location.search !== ''
     if (hasParameter) openPosts()
 
-    const ref = "css/animation.css"
-    const style = '<link rel="stylesheet" href=' + ref + '>';
-    $('head link:last').after(style);
-
     //メールフォーム送信時の処理
     const formData = $("#form-data")
     formData.submit(function (e) {

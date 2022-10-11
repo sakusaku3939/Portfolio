@@ -166,6 +166,7 @@ function fetch_posts($folder, $parameter): string
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="stylesheet" href="css/form.css" type="text/css">
     <link rel="stylesheet" href="css/loading.css" type="text/css">
+    <link rel="stylesheet" href="css/animation.css" type="text/css">
 </head>
 <body id="index">
 <!-- Google Tag Manager (noscript) -->
