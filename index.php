@@ -51,7 +51,7 @@ function getFilename($directory)
     return array_diff(scandir($directory, 1), array('.', '..'));
 }
 
-function _title($content)
+function _title($content): string
 {
     if ($content and preg_match('!<h1>(.*?)</h1>!s', $content, $title)) {
         return $title[1];
@@ -59,7 +59,7 @@ function _title($content)
     return 'no title';
 }
 
-function _overview($content)
+function _overview($content): string
 {
     if ($content and preg_match('!<div id="overview">(.*?)</div>!s', $content, $overview)) {
         return $overview[1];
@@ -67,7 +67,7 @@ function _overview($content)
     return 'no overview';
 }
 
-function _position($content)
+function _position($content): string
 {
     if ($content and preg_match('!<div id="position">(.*?)\s(.*?)</div>!s', $content, $overview)) {
         return $overview[1] . ' ' . $overview[2];
@@ -75,7 +75,7 @@ function _position($content)
     return 'center center';
 }
 
-function _image($content, $folder)
+function _image($content, $folder): string
 {
     if ($content and preg_match('!<img src="(.*?)"!s', $content, $image_path)) {
         return 'posts/' . $folder . '/' . $image_path[1];
@@ -83,7 +83,7 @@ function _image($content, $folder)
     return 'image/NoImage.jpg';
 }
 
-function _tag($content)
+function _tag($content): string
 {
     if ($content and preg_match('!<ul id="tag">(.*?)</ul>!s', $content, $overview)) {
         return $overview[1];
@@ -91,7 +91,7 @@ function _tag($content)
     return '';
 }
 
-function _parameter($folder)
+function _parameter($folder): string
 {
     foreach (getFilename('posts/' . $folder) as $name) {
         if (strpos($name, '.html')) {
@@ -118,7 +118,7 @@ function draw_card_content($post_data)
     echo '</div>';
 }
 
-function fetch_posts($folder, $parameter)
+function fetch_posts($folder, $parameter): string
 {
     $posts = file_get_contents("posts/$folder/$parameter.html");
     $fix_style_path = str_replace("../style.css", "posts/style.css", $posts);
