@@ -34,7 +34,7 @@ window.addEventListener('resize', function () {
     }
 });
 
-//記事がクリックされた場合
+//記事がクリックされた場合（PHPから呼び出し）
 function clickPosts(posts, parameter) {
     sessionStorage.setItem("posts", posts)
     history.pushState(null, null, "?posts=" + parameter)
@@ -56,7 +56,7 @@ $(document).on('click touchend', function (e) {
 function openPosts() {
     posts = true
 
-    //PHPから取得した記事データを表示
+    //PHPから取得した記事データを設定
     const content = $("#posts-content")
     content.empty()
     content.append(decodeURIComponent(atob(sessionStorage.getItem('posts'))))
@@ -77,6 +77,7 @@ function openPosts() {
         iframe.height(speakerDeck.width() * radio)
     })
 
+    //記事を表示
     const postsWrapper = $("#posts-wrapper")
     postsWrapper.css("backdrop-filter", "blur(16px)")
     postsWrapper.css("-webkit-backdrop-filter", "blur(16px)")
@@ -96,6 +97,7 @@ function openPosts() {
 function closePosts() {
     posts = false
 
+    //記事を非表示
     const postsWrapper = $("#posts-wrapper")
     postsWrapper.css("backdrop-filter", "none")
     postsWrapper.css("-webkit-backdrop-filter", "none")
