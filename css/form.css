@@ -1,43 +1,33 @@
-html, body {
-    min-height: 100%;
-}
-
-body::-webkit-scrollbar {
+#form {
     display: none;
-}
-
-body {
-    margin: 0;
-}
-
-form {
-    position: absolute;
-    background: #ffffff;
+    position: fixed;
+    z-index: 2;
     width: 280px;
-    transition: 0.3s;
+    margin-top: 16px;
+    font-size: 16px;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
 }
 
-form.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-100px);
-}
-
-.contact {
-    margin-top: 4px;
+#form:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-bottom: 15px solid #ffffff;
 }
 
 .group {
-    width: 250px;
-    margin: auto;
     position: relative;
+    margin: 0 16px;
 }
 
 label {
     position: absolute;
     top: 7px;
     left: 0;
-    font-weight: 400;
     font-size: 15px;
     color: #A9A9A9;
     cursor: text;
@@ -46,10 +36,9 @@ label {
 
 input {
     background: linear-gradient(to bottom, transparent 92%, #FF6E40 8%) no-repeat -300px 0;
-    background-size: 300px 100%;
     display: block;
-    width: 250px;
-    padding: 5px 0;
+    width: 240px;
+    padding: 4px 0;
     margin-top: 16px;
     border: none;
     border-bottom: solid 1px #FF6E40;
@@ -69,42 +58,40 @@ input:focus, input:valid {
 input:focus ~ label, input:valid ~ label {
     top: -12px;
     color: #FF6E40;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 12px;
 }
 
 textarea, textarea:focus {
+    display: block;
     background: #F9F9F9;
-    width: 230px;
-    height: 160px;
-    padding: 9px;
+    width: 235px;
+    height: 120px;
     margin-top: 30px;
     border: 1px solid #FF6E40;
     outline: none;
-    font-weight: 300;
     font-size: 15px;
     resize: none;
 }
 
 textarea:focus, textarea:valid, textarea:focus:focus, textarea:focus:valid {
-    padding: 7px;
     border: 3px solid #FF6E40;
 }
 
 textarea:focus ~ label, textarea:valid ~ label, textarea:focus:focus ~ label, textarea:focus:valid ~ label {
-    top: 12px;
+    top: -18px;
     left: 0;
     color: #FF6E40;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 12px;
 }
 
 textarea ~ label, textarea:focus ~ label {
-    top: 35px;
+    top: 5px;
     left: 7px;
 }
 
-button {
+#form button {
     display: block;
     width: 200px;
     height: 30px;
@@ -117,7 +104,7 @@ button {
     transition: all 0.3s ease-in-out;
 }
 
-button:hover {
+#form button:hover {
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
 }

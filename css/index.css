@@ -5,6 +5,7 @@
 
 body {
     background-color: #323232;
+    margin: 0;
 }
 
 body:before {
@@ -66,27 +67,6 @@ body#index {
 .posts-filter i {
     color: #FBC02D;
     margin-right: 4px;
-}
-
-#form {
-    display: none;
-    position: fixed;
-    z-index: 2;
-    margin-top: 16px;
-    width: 280px;
-    font-size: 16px;
-    background: #ffffff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
-}
-
-#form:before {
-    content: "";
-    position: absolute;
-    top: -24px;
-    left: 50%;
-    margin-left: -15px;
-    border: 15px solid transparent;
-    border-bottom: 15px solid #ffffff;
 }
 
 .form-show {

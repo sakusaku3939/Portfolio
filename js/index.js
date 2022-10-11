@@ -4,14 +4,22 @@ let postData = {}
 $('#loader').fadeIn(300)
 custom_vh()
 
-//読み込み完了時
 $(function () {
+    //外部から直接記事にアクセスしてきた場合
     const hasParameter = location.search !== ''
     if (hasParameter) openPosts()
 
     const ref = "css/animation.css"
     const style = '<link rel="stylesheet" href=' + ref + '>';
     $('head link:last').after(style);
+
+    //メールフォーム送信時の処理
+    const formData = $("#form-data")
+    formData.submit(function (e) {
+        e.preventDefault();
+        sendForm()
+        formData[0].reset();
+    });
 })
 
 //戻る、進むのクリックリスナー
@@ -153,6 +161,36 @@ function closeForm() {
 function updateFormPos() {
     const pos = $('.mail').offset()
     $('#form').css('left', (pos.left - 118) + 'px')
+}
+
+//PHPサーバーにフォーム内容を送信
+function sendForm() {
+    swal({
+        text: "送信中です",
+        button: false,
+    })
+
+    $.ajax({
+        url: "php/send_form.php",
+        type: "POST",
+        data: {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            message: $("#message").val(),
+        },
+        cache: false,
+        success: function (isSuccess) {
+            if (isSuccess) {
+                swal({text: "メールが送信されました", icon: "success", button: false});
+            } else {
+                swal({text: "メールの送信に失敗しました", icon: "error", button: false});
+            }
+        },
+        error: function (request, status, error) {
+            console.log(error);
+            swal({text: "メールの送信に失敗しました", icon: "error", button: false});
+        }
+    });
 }
 
 //シェアメニューのON/OFF

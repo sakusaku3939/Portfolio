@@ -164,6 +164,7 @@ function fetch_posts($folder, $parameter)
 
     <link rel="shortcut icon" href="image/favicon.ico">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/form.css" type="text/css">
     <link rel="stylesheet" href="css/loading.css" type="text/css">
 </head>
 <body id="index">
@@ -227,7 +228,18 @@ function fetch_posts($folder, $parameter)
                     </div>
                 </div>
                 <div id="form">
-                    <?php include("form.html"); ?>
+                    <form id="form-data">
+                        <div class="group"><input type="text" id="name" name="name" required="required">
+                            <label for="name">名前</label>
+                        </div>
+                        <div class="group"><input type="email" id="email" name="email" required="required">
+                            <label for="email">メールアドレス</label>
+                        </div>
+                        <div class="group"><textarea id="message" name="message" required="required"></textarea>
+                            <label for="message">ここに送る内容を入力</label>
+                        </div>
+                        <button value="submit">送信</button>
+                    </form>
                 </div>
             </div>
         </div>
