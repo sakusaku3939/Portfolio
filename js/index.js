@@ -172,13 +172,14 @@ function sendForm() {
         url: "php/send_form.php",
         type: "POST",
         data: {
+            token: $("#token").val(),
             name: $("#name").val(),
             email: $("#email").val(),
             message: $("#message").val(),
         },
         cache: false,
-        success: function (isSuccess) {
-            if (isSuccess) {
+        success: function (result) {
+            if (result === "success") {
                 swal({text: "メールが送信されました", icon: "success", button: false});
             } else {
                 swal({text: "メールの送信に失敗しました", icon: "error", button: false});

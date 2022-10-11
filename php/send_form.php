@@ -1,8 +1,12 @@
 <?php
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/setting.php';
+require_once dirname(__FILE__) . '/session.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
+
+$token = filter_input(INPUT_POST, 'token');
+if (!validate_token($token)) error_exit();
 
 $mail = new PHPMailer();
 
@@ -26,7 +30,7 @@ try {
     $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
     $mail->addAddress(MAIL_USERNAME, 'Me');
 } catch (\PHPMailer\PHPMailer\Exception $e) {
-    echo false;
+    error_exit();
 }
 $mail->Subject = MAIL_SUBJECT;
 $mail->isHTML(false);
@@ -39,10 +43,16 @@ $mail->Body = $body;
 //メール送信の実行
 try {
     if ($mail->send()) {
-        echo true;
+        echo "success";
     } else {
-        echo false;
+        error_exit();
     }
 } catch (\PHPMailer\PHPMailer\Exception $e) {
-    echo false;
+    error_exit();
+}
+
+function error_exit()
+{
+    echo "error";
+    exit;
 }

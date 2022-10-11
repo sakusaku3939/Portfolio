@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__FILE__) . '/php/session.php';
+
 $pick_post_parameter = [
     "presc",
     "tkg-beacon",
@@ -230,6 +232,7 @@ function fetch_posts($folder, $parameter): string
                 </div>
                 <div id="form">
                     <form id="form-data">
+                        <input type="hidden" id="token" value="<?php echo generate_token() ?>">
                         <div class="group"><input type="text" id="name" name="name" required="required">
                             <label for="name">名前</label>
                         </div>
