@@ -3,56 +3,40 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once dirname(__FILE__) . '/setting.php';
 require_once dirname(__FILE__) . '/session.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-
 $token = filter_input(INPUT_POST, 'token');
-if (!validate_token($token)) error_exit();
+if (!validate_token($token)) {
+    echo "error: Invalid Token";
+    exit;
+}
 
-$mail = new PHPMailer();
-
-$mail->isSMTP();
-$mail->SMTPAuth = true;
-$mail->Host = MAIL_HOST;
-$mail->Username = MAIL_USERNAME;
-$mail->Password = MAIL_PASSWORD;
-$mail->SMTPSecure = MAIL_ENCRPT;
-$mail->Port = SMTP_PORT;
-
-//POSTで受け取り
 $name = $_POST['name'];
 $email = $_POST['email'];
 $message = $_POST['message'];
 
-//メール内容設定
-$mail->CharSet = "UTF-8";
-$mail->Encoding = "base64";
-try {
-    $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
-    $mail->addAddress(MAIL_USERNAME, 'Me');
-} catch (\PHPMailer\PHPMailer\Exception $e) {
-    error_exit();
-}
-$mail->Subject = MAIL_SUBJECT;
-$mail->isHTML(false);
-
 $body = '名前： ' . $name . PHP_EOL;
 $body .= 'メールアドレス： ' . $email . PHP_EOL . PHP_EOL;
 $body .= $message;
-$mail->Body = $body;
 
-//メール送信の実行
-try {
-    if ($mail->send()) {
-        echo "success";
-    } else {
-        error_exit();
-    }
-} catch (\PHPMailer\PHPMailer\Exception $e) {
-    error_exit();
+$message = ['text' => $body];
+
+$ch = curl_init();
+$options = [
+    CURLOPT_URL => getenv('WEBHOOK_URL'),
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => http_build_query([
+        'payload' => json_encode($message)
+    ])
+];
+
+curl_setopt_array($ch, $options);
+curl_exec($ch);
+
+if (curl_errno($ch)) {
+    echo "error: " . curl_error($ch);
 }
 
-function error_exit()
-{
-    echo "error";
-    exit;
-}
+curl_close($ch);
+
+echo "success";
