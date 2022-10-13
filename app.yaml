@@ -3,24 +3,33 @@ runtime: php74
 env: standard
 instance_class: F1
 
+includes:
+  - secret.yaml
+
 handlers:
   - url: /css
     static_dir: css
+    secure: always
 
   - url: /js
     static_dir: js
-
-  - url: /php
-    static_dir: php
+    secure: always
 
   - url: /image
     static_dir: image
+    secure: always
 
   - url: /posts
     static_dir: posts
+    secure: always
 
-  - url: .*
-    script: auto
+  - url: /
+    script: index.php
+    secure: always
+
+  - url: /php/send_form
+    script: php/send_form.php
+    secure: always
 
 automatic_scaling:
   target_cpu_utilization: 0.95

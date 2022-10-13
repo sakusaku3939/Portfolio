@@ -169,7 +169,7 @@ function sendForm() {
     })
 
     $.ajax({
-        url: "php/send_form.php",
+        url: "/php/send_form",
         type: "POST",
         data: {
             token: $("#token").val(),
@@ -182,11 +182,12 @@ function sendForm() {
             if (result === "success") {
                 swal({text: "メールが送信されました", icon: "success", button: false});
             } else {
+                console.log(result);
                 swal({text: "メールの送信に失敗しました", icon: "error", button: false});
             }
         },
         error: function (request, status, error) {
-            console.log(error);
+            console.log("error: " + error);
             swal({text: "メールの送信に失敗しました", icon: "error", button: false});
         }
     });
