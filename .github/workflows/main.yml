@@ -18,7 +18,7 @@ jobs:
         run: echo -n $BASE64_SECRET_ENV | base64 --decode > ~/secret.yaml
 
       - name: decode secret.yaml
-        run: echo -n dGVzdA== | base64 --decode > ~/test.txt
+        run: echo -n dGVzdA== | base64 --decode > test.txt
 
       - run: ls
 
