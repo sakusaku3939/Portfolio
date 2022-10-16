@@ -17,6 +17,8 @@ jobs:
           BASE64_SECRET: ${{ secrets.BASE64_SECRET_ENV }}
         run: echo -n $BASE64_SECRET_ENV | base64 --decode > ~/secret.yaml
 
+      - run: ls
+
       - name: Deploy an App Engine app
         uses: google-github-actions/deploy-appengine@v0.8.2
         with:
