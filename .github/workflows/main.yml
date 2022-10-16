@@ -14,7 +14,7 @@ jobs:
 
       - name: decode secret.yaml
         env:
-          BASE64_SECRET: ${{ secrets.BASE64_SECRET_ENV }}
+          BASE64_SECRET_ENV: ${{ secrets.BASE64_SECRET_ENV }}
         run: echo -n $BASE64_SECRET_ENV | base64 --decode > secret.yaml
 
       - run: echo secret.yaml
