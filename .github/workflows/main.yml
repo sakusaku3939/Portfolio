@@ -17,12 +17,14 @@ jobs:
           BASE64_SECRET: ${{ secrets.BASE64_SECRET_ENV }}
         run: echo -n $BASE64_SECRET_ENV | base64 --decode > secret.yaml
 
-      - name: Auth to GCP
+      - run: ls
+
+      - name: auth to GCP
         uses: google-github-actions/auth@v0.8.2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Deploy an App Engine
+      - name: deploy an App Engine
         uses: google-github-actions/deploy-appengine@v0.8.2
         with:
           deliverables: app.yaml secret.yaml
