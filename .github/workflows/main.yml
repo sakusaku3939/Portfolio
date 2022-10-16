@@ -15,7 +15,7 @@ jobs:
       - name: decode secret.yaml
         env:
           BASE64_SECRET: ${{ secrets.BASE64_SECRET_ENV }}
-        run: echo -n $BASE64_SECRET_ENV | base64 --decode > ~/secret.yaml
+        run: echo -n $BASE64_SECRET_ENV | base64 --decode > secret.yaml
 
       - name: Auth to GCP
         uses: google-github-actions/auth@v0.8.2
