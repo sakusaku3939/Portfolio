@@ -1,4 +1,4 @@
-name: Deploy to heroku
+name: Deploy to GCP
 
 on:
   push:
@@ -10,8 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_TOKEN }}
-          heroku_app_name: 'aokiyuki-portfolio'
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+
+      - name: decode secret.yaml
+        env:
+          BASE64_SECRET: ${{ secrets.BASE64_SECRET_ENV }}
+        run: echo -n $BASE64_SECRET_ENV | base64 --decode > ~/secret.yaml
+
+      - name: Deploy an App Engine app
+          uses: google-github-actions/deploy-appengine@v0.3.1
+          with:
+            project_id: ${{ secrets.GCP_PROJECT_ID }}
+            deliverables: app.yaml secret.yaml
+            credentials: ${{ secrets.GCP_SA_KEY }}
+            version: v1
