@@ -18,9 +18,9 @@ jobs:
         run: echo -n $BASE64_SECRET_ENV | base64 --decode > ~/secret.yaml
 
       - name: Deploy an App Engine app
-          uses: google-github-actions/deploy-appengine@v0.3.1
-          with:
-            project_id: ${{ secrets.GCP_PROJECT_ID }}
-            deliverables: app.yaml secret.yaml
-            credentials: ${{ secrets.GCP_SA_KEY }}
-            version: v1
+        uses: google-github-actions/deploy-appengine@v0.8.2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          deliverables: app.yaml secret.yaml
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          version: v1
