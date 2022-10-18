@@ -86,11 +86,6 @@ function openPosts() {
     $("#index").css("overflow-y", "hidden")
     document.getElementById("posts-wrapper").scrollTo(0, 0)
 
-    // if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
-    //     const iframe_posts = document.getElementById("iframe-posts")
-    //     iframe_posts.style.marginBottom = '96px'
-    // }
-
     setShareLink()
 }
 

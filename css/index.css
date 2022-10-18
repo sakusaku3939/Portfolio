@@ -283,13 +283,9 @@ body#index {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     z-index: 2;
     overflow-y: scroll;
-}
-
-#posts-wrapper::-webkit-scrollbar {
-    display: none;
 }
 
 .posts-animation {
@@ -314,14 +310,8 @@ body#index {
     margin-bottom: 32px;
 }
 
-#iframe-posts {
-    display: inline;
-    background-color: #FAFAFA;
-    border: none;
-    width: 100%;
-    margin-bottom: 32px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
+.posts-bottom-margin {
+    height: 32px;
 }
 
 .navigation-bar {

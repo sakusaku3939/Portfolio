@@ -197,6 +197,7 @@ function fetch_posts($folder, $parameter): string
         <div class="posts-content-wrapper">
             <div id="posts-content" class="posts"></div>
         </div>
+        <div class="posts-bottom-margin"></div>
     </div>
 </div>
 <div id="loader">
