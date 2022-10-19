@@ -2,7 +2,6 @@ runtime: php74
 
 env: standard
 instance_class: F1
-threadsafe: true
 
 includes:
   - secret.yaml
